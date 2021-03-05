@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116693413DE42151C94D1B06 /* Pods_GourmentSearch_GourmentSearchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EC25F2FA9900E9F55E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2EB25F2FA9900E9F55E /* ViewController.swift */; };
@@ -15,6 +16,8 @@
 		3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2F225F2FA9A00E9F55E /* LaunchScreen.storyboard */; };
 		3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2FE25F2FA9B00E9F55E /* GourmentSearchTests.swift */; };
 		3DF3E30A25F2FA9B00E9F55E /* GourmentSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E30925F2FA9B00E9F55E /* GourmentSearchUITests.swift */; };
+		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
+		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		161E7E38632734874E294B7D /* Pods-GourmentSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch.release.xcconfig"; sourceTree = "<group>"; };
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +55,12 @@
 		3DF3E30525F2FA9B00E9F55E /* GourmentSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GourmentSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E30925F2FA9B00E9F55E /* GourmentSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmentSearchUITests.swift; sourceTree = "<group>"; };
 		3DF3E30B25F2FA9B00E9F55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88CFB4144202E7E881ACA57 /* Pods-GourmentSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearchTests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearchTests/Pods-GourmentSearchTests.release.xcconfig"; sourceTree = "<group>"; };
+		E5E8C6B746FC547BACFFA013 /* Pods-GourmentSearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearchTests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearchTests/Pods-GourmentSearchTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EBD730ED3049B5E0FA8D9C4E /* Pods-GourmentSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116693413DE42151C94D1B06 /* Pods_GourmentSearch_GourmentSearchUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				3DF3E2FD25F2FA9B00E9F55E /* GourmentSearchTests */,
 				3DF3E30825F2FA9B00E9F55E /* GourmentSearchUITests */,
 				3DF3E2E525F2FA9900E9F55E /* Products */,
+				D70DDB10AC653956C62E041D /* Pods */,
+				686671E4B2EC986DE07F1A62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,30 @@
 			path = GourmentSearchUITests;
 			sourceTree = "<group>";
 		};
+		686671E4B2EC986DE07F1A62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */,
+				A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */,
+				1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D70DDB10AC653956C62E041D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBD730ED3049B5E0FA8D9C4E /* Pods-GourmentSearch.debug.xcconfig */,
+				161E7E38632734874E294B7D /* Pods-GourmentSearch.release.xcconfig */,
+				99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */,
+				46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */,
+				E5E8C6B746FC547BACFFA013 /* Pods-GourmentSearchTests.debug.xcconfig */,
+				D88CFB4144202E7E881ACA57 /* Pods-GourmentSearchTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DF3E30E25F2FA9B00E9F55E /* Build configuration list for PBXNativeTarget "GourmentSearch" */;
 			buildPhases = (
+				F0312419E549E16504BFF7F0 /* [CP] Check Pods Manifest.lock */,
 				3DF3E2E025F2FA9900E9F55E /* Sources */,
 				3DF3E2E125F2FA9900E9F55E /* Frameworks */,
 				3DF3E2E225F2FA9900E9F55E /* Resources */,
+				92BDABD360B07E3BA836CA49 /* [CP] Embed Pods Frameworks */,
+				79C46D81AD348F91B9F93CD2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DF3E31125F2FA9B00E9F55E /* Build configuration list for PBXNativeTarget "GourmentSearchTests" */;
 			buildPhases = (
+				735912DA3F46177BDDE0B266 /* [CP] Check Pods Manifest.lock */,
 				3DF3E2F625F2FA9B00E9F55E /* Sources */,
 				3DF3E2F725F2FA9B00E9F55E /* Frameworks */,
 				3DF3E2F825F2FA9B00E9F55E /* Resources */,
+				0A02C779949D14E2EE2F26A1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DF3E31425F2FA9B00E9F55E /* Build configuration list for PBXNativeTarget "GourmentSearchUITests" */;
 			buildPhases = (
+				ABB87A41D594121D0E063B5C /* [CP] Check Pods Manifest.lock */,
 				3DF3E30125F2FA9B00E9F55E /* Sources */,
 				3DF3E30225F2FA9B00E9F55E /* Frameworks */,
 				3DF3E30325F2FA9B00E9F55E /* Resources */,
+				C6E9BF59546E08B3C6FDE0E3 /* [CP] Embed Pods Frameworks */,
+				CC64D77F4596C6643CE2C060 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +301,160 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A02C779949D14E2EE2F26A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearchTests/Pods-GourmentSearchTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearchTests/Pods-GourmentSearchTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GourmentSearchTests/Pods-GourmentSearchTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		735912DA3F46177BDDE0B266 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GourmentSearchTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79C46D81AD348F91B9F93CD2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92BDABD360B07E3BA836CA49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABB87A41D594121D0E063B5C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GourmentSearch-GourmentSearchUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6E9BF59546E08B3C6FDE0E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC64D77F4596C6643CE2C060 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0312419E549E16504BFF7F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GourmentSearch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3DF3E2E025F2FA9900E9F55E /* Sources */ = {
@@ -433,6 +636,7 @@
 		};
 		3DF3E30F25F2FA9B00E9F55E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBD730ED3049B5E0FA8D9C4E /* Pods-GourmentSearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +656,7 @@
 		};
 		3DF3E31025F2FA9B00E9F55E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161E7E38632734874E294B7D /* Pods-GourmentSearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +676,7 @@
 		};
 		3DF3E31225F2FA9B00E9F55E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5E8C6B746FC547BACFFA013 /* Pods-GourmentSearchTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +699,7 @@
 		};
 		3DF3E31325F2FA9B00E9F55E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D88CFB4144202E7E881ACA57 /* Pods-GourmentSearchTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +722,7 @@
 		};
 		3DF3E31525F2FA9B00E9F55E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +743,7 @@
 		};
 		3DF3E31625F2FA9B00E9F55E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

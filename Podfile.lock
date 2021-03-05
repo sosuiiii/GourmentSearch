@@ -1,0 +1,110 @@
+PODS:
+  - Alamofire (5.4.1)
+  - Differentiator (4.0.1)
+  - Direction (1.4.0):
+    - GoogleMaps
+  - GoogleMaps (4.1.0):
+    - GoogleMaps/Maps (= 4.1.0)
+  - GoogleMaps/Base (4.1.0)
+  - GoogleMaps/Maps (4.1.0):
+    - GoogleMaps/Base
+  - GooglePlaces (4.1.0):
+    - GoogleMaps/Base (= 4.1.0)
+  - IBAnimatable (6.1.0)
+  - Instantiate (4.0.0)
+  - InstantiateStandard (4.0.0):
+    - Instantiate (~> 4.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - Nimble (9.0.0)
+  - PKHUD (5.3.0)
+  - Quick (3.0.0)
+  - Realm (10.5.1):
+    - Realm/Headers (= 10.5.1)
+  - Realm/Headers (10.5.1)
+  - RealmSwift (10.5.1):
+    - Realm (= 10.5.1)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxTest (5.1.1):
+    - RxSwift (~> 5)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Direction
+  - GoogleMaps
+  - GooglePlaces
+  - IBAnimatable
+  - Instantiate
+  - InstantiateStandard
+  - Moya/RxSwift (~> 14.0)
+  - Nimble
+  - PKHUD
+  - Quick
+  - RealmSwift
+  - RxCocoa
+  - RxDataSources
+  - RxSwift
+  - RxTest
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Differentiator
+    - Direction
+    - GoogleMaps
+    - GooglePlaces
+    - IBAnimatable
+    - Instantiate
+    - InstantiateStandard
+    - Moya
+    - Nimble
+    - PKHUD
+    - Quick
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - RxTest
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Direction: 6a63afc0ef62e8164b900c6db91b5a82691bfbe8
+  GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
+  GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
+  IBAnimatable: 99dddd4c0625884a301ba3ecbc1615f8a390368e
+  Instantiate: 62516e7dde448721c1f5815a9ee7e0669d034d52
+  InstantiateStandard: 18ab1417ba787113350c71a5b2251f0b4448be67
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
+  Realm: 77fcb4e0b9f2963ea06f584749a0d7dc9cab95e1
+  RealmSwift: 6abe6aa6cd8b70cc1a87afcb9232cabea74ff1ac
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 0c08eae3f79684f1f5548ae1f7663c0c6537b056
+
+COCOAPODS: 1.10.0
