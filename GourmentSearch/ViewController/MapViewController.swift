@@ -21,6 +21,7 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
@@ -53,5 +54,21 @@ extension MapViewController: AlertViewDelegate {
     }
     
     func negativeTapped(type: AlertType) {
+    }
+}
+//MARK:ビュー
+extension MapViewController {
+    func setupView() {
+        searchBar.delegate = self
+    }
+}
+//MARK:UISearchBarDelegate
+extension MapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        viewModel.inputs.search.onNext(searchBar.text ?? "")
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
     }
 }
