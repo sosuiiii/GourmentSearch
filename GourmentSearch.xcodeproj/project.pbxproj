@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,14 @@
 		3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2F225F2FA9A00E9F55E /* LaunchScreen.storyboard */; };
 		3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2FE25F2FA9B00E9F55E /* GourmentSearchTests.swift */; };
 		3DF3E30A25F2FA9B00E9F55E /* GourmentSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E30925F2FA9B00E9F55E /* GourmentSearchUITests.swift */; };
+		3DF3E34025F2FF6300E9F55E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E33F25F2FF6300E9F55E /* Repository.swift */; };
+		3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E33F25F2FF6300E9F55E /* Repository.swift */; };
+		3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34825F2FF6F00E9F55E /* Entity.swift */; };
+		3DF3E34A25F2FF6F00E9F55E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34825F2FF6F00E9F55E /* Entity.swift */; };
+		3DF3E34F25F2FF8E00E9F55E /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34E25F2FF8E00E9F55E /* Moya.swift */; };
+		3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34E25F2FF8E00E9F55E /* Moya.swift */; };
+		3DF3E35625F3000800E9F55E /* IBDesignable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E35525F3000800E9F55E /* IBDesignable+Extension.swift */; };
+		3DF3E35725F3000800E9F55E /* IBDesignable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E35525F3000800E9F55E /* IBDesignable+Extension.swift */; };
 		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
 		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +63,10 @@
 		3DF3E30525F2FA9B00E9F55E /* GourmentSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GourmentSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E30925F2FA9B00E9F55E /* GourmentSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmentSearchUITests.swift; sourceTree = "<group>"; };
 		3DF3E30B25F2FA9B00E9F55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF3E33F25F2FF6300E9F55E /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		3DF3E34825F2FF6F00E9F55E /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		3DF3E34E25F2FF8E00E9F55E /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
+		3DF3E35525F3000800E9F55E /* IBDesignable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IBDesignable+Extension.swift"; sourceTree = "<group>"; };
 		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,8 +130,10 @@
 			children = (
 				3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */,
 				3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */,
-				3DF3E2EB25F2FA9900E9F55E /* ViewController.swift */,
-				3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */,
+				3DF3E33A25F2FF2100E9F55E /* ViewController */,
+				3DF3E33925F2FF1500E9F55E /* ViewModel */,
+				3DF3E33825F2FF1200E9F55E /* Views */,
+				3DF3E35E25F3002400E9F55E /* Model */,
 				3DF3E2F025F2FA9A00E9F55E /* Assets.xcassets */,
 				3DF3E2F225F2FA9A00E9F55E /* LaunchScreen.storyboard */,
 				3DF3E2F525F2FA9A00E9F55E /* Info.plist */,
@@ -145,6 +159,80 @@
 			path = GourmentSearchUITests;
 			sourceTree = "<group>";
 		};
+		3DF3E33825F2FF1200E9F55E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3DF3E33925F2FF1500E9F55E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3DF3E33A25F2FF2100E9F55E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */,
+				3DF3E2EB25F2FA9900E9F55E /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3DF3E33B25F2FF3000E9F55E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3DF3E33F25F2FF6300E9F55E /* Repository.swift */,
+				3DF3E34825F2FF6F00E9F55E /* Entity.swift */,
+				3DF3E34E25F2FF8E00E9F55E /* Moya.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		3DF3E33D25F2FF4900E9F55E /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		3DF3E33E25F2FF5400E9F55E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3DF3E35525F3000800E9F55E /* IBDesignable+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3DF3E35425F2FFD600E9F55E /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		3DF3E35E25F3002400E9F55E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3DF3E35F25F3004000E9F55E /* Const */,
+				3DF3E33E25F2FF5400E9F55E /* Extension */,
+				3DF3E35425F2FFD600E9F55E /* Validation */,
+				3DF3E33D25F2FF4900E9F55E /* DataSource */,
+				3DF3E33B25F2FF3000E9F55E /* API */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3DF3E35F25F3004000E9F55E /* Const */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
 		686671E4B2EC986DE07F1A62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +253,6 @@
 				E5E8C6B746FC547BACFFA013 /* Pods-GourmentSearchTests.debug.xcconfig */,
 				D88CFB4144202E7E881ACA57 /* Pods-GourmentSearchTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -461,9 +548,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF3E35625F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
 				3DF3E2EC25F2FA9900E9F55E /* ViewController.swift in Sources */,
+				3DF3E34F25F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
+				3DF3E34025F2FF6300E9F55E /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +563,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
+				3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */,
+				3DF3E34A25F2FF6F00E9F55E /* Entity.swift in Sources */,
+				3DF3E35725F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
+				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
