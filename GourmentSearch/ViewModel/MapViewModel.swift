@@ -12,6 +12,7 @@ import RxCocoa
 
 protocol MapViewModelInput {
     var searchText: AnyObserver<String>{get}
+    var search: AnyObserver<String>{get}
 }
 
 protocol MapViewModelOutput {
@@ -28,6 +29,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     
     //Input
     var searchText: AnyObserver<String>
+    var search: AnyObserver<String>
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
@@ -41,16 +43,18 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         let _validatedText = PublishRelay<String>()
         self.validatedText = _validatedText.asObservable()
         
-        let _serachText = PublishRelay<String>()
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
-            _serachText.accept(textOver.0)
+            _validatedText.accept(textOver.0)
             if textOver.1 == nil {return}
             _alert.accept(textOver.1)
         }
-        _serachText.subscribe({ text in
-            _validatedText.accept(text.element!)
-        }).disposed(by: disposeBag)
+        
+        self.search = AnyObserver<String>() { text in
+            Repository.search(keyValue: ["keyword": text], completion: { response in
+                
+            })
+        }
     }
 }
 

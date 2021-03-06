@@ -28,22 +28,26 @@ extension Repository {
             }
         }
     }
-    static func getGenre(completion: @escaping (Genre) -> ()) {
-        apiProvider.request(.getGenre) { response in
-            switch response {
-            case .success(let response):
-                do {
-                    let decodedData = try JSONDecoder().decode(Genre.self, from: response.data)
-                    completion(decodedData)
-                } catch let error {
-                    print(error)
+    static func getGenrea(keyValue: [String:Any]) -> Observable<HotPepperResponse> {
+        return Observable.create({ observer in
+            apiProvider.request(.search(keyValue: keyValue)) { response in
+                switch response {
+                case .success(let response):
+                    do {
+                        let decodedData = try JSONDecoder().decode(HotPepperResponse.self, from: response.data)
+                        observer.onNext(decodedData)
+                        observer.onCompleted()
+                    } catch let error {
+                        observer.onError(error)
+                    }
+                case .failure(let error):
+                    observer.onError(error)
                 }
-            case .failure(let error):
-                print(error)
             }
-        }
+            return Disposables.create{}
+        })
     }
-    static func getGenres() -> Observable<GenreResponse> {
+    static func getGenre() -> Observable<GenreResponse> {
         return Observable.create({ observer in
             apiProvider.request(.getGenre) { response in
                 switch response {

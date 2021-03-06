@@ -22,7 +22,13 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
+//        Repository.getGenrea(keyValue: ["keyword": "肉"]).subscribe({ response in
+//            print(response)
+//            
+//        }).disposed(by: disposeBag)
+        Repository.search(keyValue: ["keyword":"肉"], completion: { response in
+            print(response)
+        })
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)

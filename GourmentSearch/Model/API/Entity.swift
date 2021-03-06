@@ -8,12 +8,6 @@
 import Foundation
 import CoreLocation
 
-struct MockData {
-    var genreName: String
-    var genreCode: String
-}
-
-
 struct HotPepperResponse: Codable {
     let results: Result
 }
@@ -42,7 +36,7 @@ struct Shop: Codable, Identifiable {
     let nameKana: String?
     let address: String
     let stationName: String?
-    let ktaiCoupon: Int?
+//    let ktaiCoupon: Int?
     let largeServiceArea: Area?
     let serviceArea: Area?
     let largeArea: Area?
@@ -55,14 +49,14 @@ struct Shop: Codable, Identifiable {
     let budget: Budget?
     let budgetMemo: String?
     let `catch`: String
-    let capacity: Int?
+//    let capacity: Int?
     let access: String
     let mobileAccess: String?
     let urls: Urls
     let photo: Photo
     let open: String?
     let close: String?
-    let partyCapacity: Int?
+//    let partyCapacity: Int?
     let wifi: String?
     let wedding: String?
     let course: String?
@@ -100,7 +94,7 @@ struct Shop: Codable, Identifiable {
         case nameKana = "name_kana"
         case address
         case stationName = "station_name"
-        case ktaiCoupon = "ktai_coupon"
+//        case ktaiCoupon = "ktai_coupon"
         case largeServiceArea = "large_service_area"
         case serviceArea = "service_area"
         case largeArea = "large_area"
@@ -113,14 +107,14 @@ struct Shop: Codable, Identifiable {
         case budget
         case budgetMemo = "budget_memo"
         case `catch`
-        case capacity
+//        case capacity
         case access
         case mobileAccess = "mobile_access"
         case urls
         case photo
         case open
         case close
-        case partyCapacity = "party_capacity"
+//        case partyCapacity = "party_capacity"
         case wifi
         case wedding
         case course
