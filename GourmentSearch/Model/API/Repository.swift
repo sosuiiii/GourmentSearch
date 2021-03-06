@@ -13,25 +13,34 @@ final class Repository {
     private static let apiProvider = MoyaProvider<GourmentAPI>()
 }
 extension Repository {
-    static func search(keyValue: [String:Any]) -> Observable<HotPepperResponse> {
-        return Observable.create({ observer in
-            apiProvider.request(.search(keyValue: keyValue)) { response in
-                switch response {
-                case .success(let response):
-                    do {
-                        let decodedData = try JSONDecoder().decode(HotPepperResponse.self, from: response.data)
-                        observer.onNext(decodedData)
-                        observer.onCompleted()
-                    } catch let error {
-                        observer.onError(error)
-                    }
-                case .failure(let error):
-                    observer.onError(error)
-                }
-            }
-            return Disposables.create{}
-        })
+    
+    static func search(keyValue: [String: Any]) throws -> Observable<HotPepperResponse> {
+        return apiProvider.rx.request(.search(keyValue: keyValue))
+            .map { response in
+                try APIResponseStatusCodeHandler.handleStatusCode(response)
+                return try JSONDecoder().decode(HotPepperResponse.self, from: response.data)
+        }.asObservable()
     }
+    
+//    static func search(keyValue: [String:Any]) -> Observable<HotPepperResponse> {
+//        return Observable.create({ observer in
+//            apiProvider.request(.search(keyValue: keyValue)) { response in
+//                switch response {
+//                case .success(let response):
+//                    do {
+//                        let decodedData = try JSONDecoder().decode(HotPepperResponse.self, from: response.data)
+//                        observer.onNext(decodedData)
+//                        observer.onCompleted()
+//                    } catch let error {
+//                        observer.onError(error)
+//                    }
+//                case .failure(let error):
+//                    observer.onError(error)
+//                }
+//            }
+//            return Disposables.create{}
+//        })
+//    }
     static func getGenre() -> Observable<GenreResponse> {
         return Observable.create({ observer in
             apiProvider.request(.getGenre) { response in

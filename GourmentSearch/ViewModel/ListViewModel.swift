@@ -60,16 +60,25 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         self.search = AnyObserver<String>() { text in
             _search.accept(text.element!)
         }
-        _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+        
+        //materialzieを使わないとエラーで購読破棄される
+        _search.flatMapLatest({ text -> Observable<Event<HotPepperResponse>> in
+            var validText = text
+            if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
-            shared.addQuery(key: "keyword", value: text)
-            return Repository.search(keyValue: shared.getQuery())
-        }).subscribe(onNext: { response in
-            print(response)
-            
-            _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
-        }, onError: { error in
-            _alert.accept(.searchError)
+            shared.addQuery(key: "keyword", value: validText)
+            return try Repository.search(keyValue: shared.getQuery()).materialize()
+        }).subscribe({ event in
+            switch event {
+            case .next(let response):
+                print(response)
+                _datasource.accept([HotPepperResponseDataSource(items: (response.element?.results.shop)!)])
+            case .error(let error):
+                print("検索エラー::\(error)")
+                _alert.accept(.searchError)
+            case .completed:
+                break
+            }
         }).disposed(by: disposeBag)
     }
 }

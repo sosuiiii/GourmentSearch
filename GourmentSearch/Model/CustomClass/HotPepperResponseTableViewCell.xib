@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="38B-zd-sYX" firstAttribute="top" secondItem="n6h-5D-Gwh" secondAttribute="top" constant="10" id="Csu-lz-KjY"/>
                             <constraint firstItem="gdz-jD-vMZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O7b-kn-3eS" secondAttribute="bottom" constant="8" id="GBc-6n-ebo"/>
@@ -72,8 +71,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="baseView" destination="n6h-5D-Gwh" id="TRM-ie-A1V"/>
                 <outlet property="budget" destination="gdz-jD-vMZ" id="IVX-TQ-OZo"/>
                 <outlet property="genreAndStation" destination="txe-Nw-S4l" id="mLh-0v-hzM"/>
                 <outlet property="logoImage" destination="38B-zd-sYX" id="NUg-Xa-UQE"/>
@@ -82,9 +82,4 @@
             <point key="canvasLocation" x="203.62318840579712" y="114.17410714285714"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

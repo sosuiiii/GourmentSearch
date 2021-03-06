@@ -57,7 +57,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
             let shared = QueryShareManager.shared
             shared.addQuery(key: "keyword", value: text)
-            return Repository.search(keyValue: shared.getQuery())
+            return try Repository.search(keyValue: shared.getQuery())
         }).subscribe(onNext: { response in
             
         }, onError: { error in
