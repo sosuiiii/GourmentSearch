@@ -155,6 +155,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="リスト" image="list.bullet" catalog="system" id="faa-Dj-v5c"/>
+                    <connections>
+                        <outlet property="detailButton" destination="K9c-dj-Mhd" id="gRw-sd-1Qr"/>
+                        <outlet property="searchBar" destination="Z2W-ll-CkH" id="V4B-mK-tyI"/>
+                        <outlet property="tableView" destination="j8h-9h-z8X" id="diB-9H-7CU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIb-Vo-U8b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -54,9 +54,6 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         self.search = AnyObserver<String>() { text in
             _search.accept(text.element!)
         }
-        self.search = AnyObserver<String>() { text in
-            
-        }
         _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
             let shared = QueryShareManager.shared
             shared.addQuery(key: "keyword", value: text)

@@ -19,6 +19,7 @@ protocol ListViewModelInput {
 protocol ListViewModelOutput {
     var alert: Observable<AlertType?>{get}
     var validatedText: Observable<String>{get}
+    var datasource: Observable<[HotPepperResponseDataSource]>{get}
 }
 
 protocol ListViewModelType {
@@ -34,6 +35,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
+    var datasource: Observable<[HotPepperResponseDataSource]>
     //property
     private var disposeBag = DisposeBag()
     
@@ -43,6 +45,9 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         
         let _validatedText = PublishRelay<String>()
         self.validatedText = _validatedText.asObservable()
+        
+        let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
+        self.datasource = _datasource.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -55,15 +60,13 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         self.search = AnyObserver<String>() { text in
             _search.accept(text.element!)
         }
-        self.search = AnyObserver<String>() { text in
-            
-        }
         _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
             let shared = QueryShareManager.shared
             shared.addQuery(key: "keyword", value: text)
             return Repository.search(keyValue: shared.getQuery())
         }).subscribe(onNext: { response in
-            
+            print(response)
+            _datasource.accept(HotPepperResponseDataSource(items: [response]))
         }, onError: { error in
             _alert.accept(.searchError)
         }).disposed(by: disposeBag)
