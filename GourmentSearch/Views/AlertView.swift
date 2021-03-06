@@ -78,6 +78,7 @@ class AlertView: UIView, Reusable {
     
     
     func show(type: AlertType) {
+        if UserDefaults.standard.bool(forKey: "showAlert") {return}
         UserDefaults.standard.setValue(true, forKey: "showAlert")
         
         self.type = type

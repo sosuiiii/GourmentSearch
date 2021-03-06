@@ -44,7 +44,6 @@ class ListViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.alert.subscribe({ [weak self] alertType in
-            if UserDefaults.standard.bool(forKey: "showAlert") {return}
             let alertView = AlertView(frame: UIScreen.main.bounds)
             self?.view.addSubview(alertView)
             alertView.show(type: alertType.element!!)
@@ -74,7 +73,7 @@ extension ListViewController {
         
         datasource = RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>(configureCell: { _, tableView, indexPath, items in
             let cell = tableView.dequeueReusableCell(withIdentifier: HotPepperResponseTableViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseTableViewCell
-            cell.setupCell(item: items)
+            cell.setupCell(item: items, indexPath: indexPath)
             return cell
         })
     }

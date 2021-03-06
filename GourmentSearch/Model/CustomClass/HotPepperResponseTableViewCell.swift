@@ -8,6 +8,7 @@
 import UIKit
 import Instantiate
 import InstantiateStandard
+import SDWebImage
 
 class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
 
@@ -16,6 +17,7 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var budget: UILabel!
     @IBOutlet weak var genreAndStation: UILabel!
+    private var noImageURL = URL(string: "https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png")
     
     
     override func awakeFromNib() {
@@ -29,22 +31,22 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
         // Configure the view for the selected state
     }
     
-    func setupCell(item: Shop) {
-        logoImage.image = getImageFromURL(url: item.logoImage)
+    func setupCell(item: Shop, indexPath: IndexPath) {
+        
+        setImageBySDWebImage(with: item.logoImage ?? noImageURL)
         name.text = item.name
         budget.text = item.budget?.name
         genreAndStation.text = "\(item.genre.name)/\(item.stationName ?? "")駅"
     }
     
-    func getImageFromURL(url: URL?) -> UIImage {
-        let url = url
-        do {
-            let data = try Data(contentsOf: url!)
-            return UIImage(data: data)!
-        } catch let err {
-            print("Error : \(err.localizedDescription)")
+    func setImageBySDWebImage(with url: URL?) {
+        logoImage.sd_setImage(with: url) { [weak self] image, error, _, _ in
+            if error == nil, let image = image {
+                self?.logoImage.image = image
+            } else {
+                print("sd_webImage::error:\(String(describing: error))")
+            }
         }
-        return UIImage()
     }
     
 }
