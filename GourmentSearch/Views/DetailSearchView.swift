@@ -35,6 +35,8 @@ class DetailSearchView: UIView, Reusable {
     @IBOutlet weak var otherView: UIView!
     @IBOutlet weak var otherButton: UIButton!
     
+    var viewModel = DetailSearchViewModel()
+    private var datasource: RxCollectionViewSectionedReloadDataSource<MockDataSource>?
     private var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
@@ -52,6 +54,16 @@ class DetailSearchView: UIView, Reusable {
         addSubview(view)
     }
     func setupRx() {
+        collectionView.register(UINib(nibName: GenreCollectionViewCell.reusableIdentifier, bundle: nil), forCellWithReuseIdentifier: GenreCollectionViewCell.reusableIdentifier)
+        
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        datasource = RxCollectionViewSectionedReloadDataSource<MockDataSource>(configureCell:{ _, startCollectionView, indexPath, items in
+            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: GenreCollectionViewCell.reusableIdentifier, for: indexPath) as! GenreCollectionViewCell
+            cell.genreTitle.text = items.genreName
+            return cell
+        })
+        viewModel.outputs.items.bind(to: collectionView.rx.items(dataSource: datasource!))
+            .disposed(by: disposeBag)
     }
     
     @IBAction func genreTapped(_ sender: Any) {
