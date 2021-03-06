@@ -61,18 +61,18 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             _search.accept(text.element!)
         }
         
-        //materialzieを使わないとエラーで購読破棄される
-        _search.flatMapLatest({ text -> Observable<Event<HotPepperResponse>> in
+        
+        _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
             var validText = text
             if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
             shared.addQuery(key: "keyword", value: validText)
-            return try Repository.search(keyValue: shared.getQuery()).materialize()
+            return try Repository.search(keyValue: shared.getQuery())
         }).subscribe({ event in
             switch event {
             case .next(let response):
                 print(response)
-                _datasource.accept([HotPepperResponseDataSource(items: (response.element?.results.shop)!)])
+                _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
             case .error(_):
                 _alert.accept(.unexpectedServerError)
             case .completed:
