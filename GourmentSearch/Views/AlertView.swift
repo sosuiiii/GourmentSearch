@@ -19,7 +19,7 @@ enum AlertType {
     case delete
     case error
     case textOver
-    case searchError
+    case unexpectedServerError
 }
 
 protocol AlertViewDelegate: class {
@@ -78,8 +78,12 @@ class AlertView: UIView, Reusable {
     
     
     func show(type: AlertType) {
+        print(UserDefaults.standard.bool(forKey: "showAlert"))
+        
         if UserDefaults.standard.bool(forKey: "showAlert") {return}
+        
         UserDefaults.standard.setValue(true, forKey: "showAlert")
+        print(UserDefaults.standard.bool(forKey: "showAlert"))
         
         self.type = type
         switch type {
@@ -107,8 +111,8 @@ class AlertView: UIView, Reusable {
             message.text = "文字数が50文字を超過しています。"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
-        case .searchError:
-            message.text = "検索に失敗しました"
+        case .unexpectedServerError:
+            message.text = "予期せぬサーバーエラーが起きました"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
         }
@@ -116,7 +120,8 @@ class AlertView: UIView, Reusable {
         popView.animate(.zoomInvert(way: .in), duration: 0.5, damping: nil, velocity: nil, force: nil).delay(0.1)
     }
     private func dismiss() {
-        UserDefaults.standard.removeObject(forKey: "showAlert")
+        UserDefaults.standard.setValue(false, forKey: "showAlert")
+        print(UserDefaults.standard.bool(forKey: "showAlert"))
         backgroundView.backgroundColor = .clear
         popView.animate(.zoomInvert(way: .out), duration: 0.5, damping: nil, velocity: nil, force: nil).completion {
             self.removeFromSuperview()

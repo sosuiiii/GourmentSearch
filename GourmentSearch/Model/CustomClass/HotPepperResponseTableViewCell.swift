@@ -13,6 +13,7 @@ import SDWebImage
 class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
 
     
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var budget: UILabel!
@@ -27,12 +28,9 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    func setupCell(item: Shop, indexPath: IndexPath) {
-        
+    func setupCell(item: Shop) {
         setImageBySDWebImage(with: item.logoImage ?? noImageURL)
         name.text = item.name
         budget.text = item.budget?.name

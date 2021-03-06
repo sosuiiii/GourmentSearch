@@ -22,7 +22,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
