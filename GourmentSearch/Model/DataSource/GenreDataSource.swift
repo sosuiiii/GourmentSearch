@@ -8,6 +8,19 @@
 import Foundation
 import RxDataSources
 
+///ジャンルマスタAPIのレスポンス。
+///https://webservice.recruit.co.jp/hotpepper/genre/v1/?key=[YOUR_API-KEY]
+
+struct GenreDataSource {
+    var items: [Genre]
+}
+extension GenreDataSource: SectionModelType {
+    init(original: GenreDataSource, items: [Genre]) {
+        self = original
+        self.items = items
+    }
+}
+
 struct MockDataSource {
     var items: [MockData]
 }
@@ -17,8 +30,7 @@ extension MockDataSource: SectionModelType {
         self.items = items
     }
 }
-///ジャンルマスタAPIのレスポンス。
-///https://webservice.recruit.co.jp/hotpepper/genre/v1/?key=[YOUR_API-KEY]
+
 struct GenreData {
     static let mockData = [
         MockData(genreName: "居酒屋", genreCode: "G001"),

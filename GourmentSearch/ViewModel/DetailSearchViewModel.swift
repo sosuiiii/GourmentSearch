@@ -17,7 +17,7 @@ protocol DetailSerachViewModelInput {
 }
 
 protocol DetailSearchViewModelOutput {
-    var items: Observable<[MockDataSource]> {get}
+    var items: Observable<[GenreDataSource]> {get}
     var genreTitle: Observable<String> {get}
     var genreCode: Observable<String> {get}
 }
@@ -33,15 +33,15 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
     var row: AnyObserver<Int>
     
     //Output
-    var items: Observable<[MockDataSource]>
+    var items: Observable<[GenreDataSource]>
     var genreTitle: Observable<String>
     var genreCode: Observable<String>
     
     init() {
-
-        let mockDataSource = [MockDataSource(items: GenreData.mockData)]
         
-        let _items = BehaviorRelay<[MockDataSource]>(value: mockDataSource)
+        let genreDataSource = [GenreDataSource(items: GenreShareManager.shared.genres)]
+        
+        let _items = BehaviorRelay<[GenreDataSource]>(value: genreDataSource)
         items = _items.asObservable()
         
         let _genreTitle = PublishRelay<String>()
@@ -52,8 +52,8 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
         
         self.row = AnyObserver<Int>() { row in
             guard let row = row.element else {return}
-            _genreTitle.accept(mockDataSource[0].items[row].genreName)
-            _genreCode.accept(mockDataSource[0].items[row].genreCode)
+            _genreTitle.accept(genreDataSource[0].items[row].name)
+            _genreCode.accept(genreDataSource[0].items[row].code)
         }
     }
 }
