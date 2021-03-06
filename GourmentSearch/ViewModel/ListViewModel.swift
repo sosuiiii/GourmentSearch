@@ -1,31 +1,33 @@
 //
-//  MapViewModel.swift
+//  ListViewModel.swift
 //  GourmentSearch
 //
 //  Created by TanakaSoushi on 2021/03/06.
 //
+
 import Foundation
 import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
 
-protocol MapViewModelInput {
+protocol ListViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
 }
 
-protocol MapViewModelOutput {
+protocol ListViewModelOutput {
     var alert: Observable<AlertType?>{get}
     var validatedText: Observable<String>{get}
+    var datasource: Observable<[HotPepperResponseDataSource]>{get}
 }
 
-protocol MapViewModelType {
-    var inputs: MapViewModelInput {get}
-    var outputs: MapViewModelOutput {get}
+protocol ListViewModelType {
+    var inputs: ListViewModelInput {get}
+    var outputs: ListViewModelOutput {get}
 }
 
-class MapViewModel: MapViewModelInput, MapViewModelOutput {
+class ListViewModel: ListViewModelInput, ListViewModelOutput {
     
     //Input
     var searchText: AnyObserver<String>
@@ -33,6 +35,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
+    var datasource: Observable<[HotPepperResponseDataSource]>
     //property
     private var disposeBag = DisposeBag()
     
@@ -42,6 +45,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _validatedText = PublishRelay<String>()
         self.validatedText = _validatedText.asObservable()
+        
+        let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
+        self.datasource = _datasource.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -59,14 +65,16 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             shared.addQuery(key: "keyword", value: text)
             return Repository.search(keyValue: shared.getQuery())
         }).subscribe(onNext: { response in
+            print(response)
             
+            _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
         }, onError: { error in
             _alert.accept(.searchError)
         }).disposed(by: disposeBag)
     }
 }
 
-extension MapViewModel: MapViewModelType {
-    var inputs: MapViewModelInput {return self}
-    var outputs: MapViewModelOutput {return self}
+extension ListViewModel: ListViewModelType {
+    var inputs: ListViewModelInput {return self}
+    var outputs: ListViewModelOutput {return self}
 }
