@@ -42,9 +42,6 @@
                                 <state key="normal" title="詳細">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
-                                <connections>
-                                    <action selector="detailTapped:" destination="sr2-k1-kc9" eventType="touchUpInside" id="SbH-hR-LjV"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今すグルメ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-vW-4MN">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
@@ -85,6 +82,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="マップ" image="mappin.and.ellipse" catalog="system" id="yUh-gh-ynS"/>
+                    <connections>
+                        <outlet property="detailButton" destination="a8f-a4-tJ3" id="sEe-8p-AwZ"/>
+                        <outlet property="mapView" destination="wKT-2M-efE" id="gdg-hG-8vb"/>
+                        <outlet property="searchBar" destination="qJE-i1-2IJ" id="Wg0-ma-bpp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FET-wW-52f" sceneMemberID="firstResponder"/>
             </objects>
