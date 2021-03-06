@@ -6,9 +6,20 @@
 //
 
 import UIKit
+import Instantiate
+import InstantiateStandard
 
-class GenreCollectionViewCell: UICollectionViewCell {
+class GenreCollectionViewCell: UICollectionViewCell, Reusable {
 
+    @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var genreTitle: UILabel!
+    
+    override var isHighlighted: Bool {
+        didSet {
+            baseView.backgroundColor = isHighlighted ? .systemGray5 : .systemGray6
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
