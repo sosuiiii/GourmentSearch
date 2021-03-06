@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-2M-efE" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="184" width="414" height="629"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e31-fg-qvg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -54,10 +58,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-2M-efE" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="184" width="414" height="629"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NJF-t0-Yfg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,7 +85,7 @@
                     <tabBarItem key="tabBarItem" title="マップ" image="mappin.and.ellipse" catalog="system" id="yUh-gh-ynS"/>
                     <connections>
                         <outlet property="detailButton" destination="a8f-a4-tJ3" id="sEe-8p-AwZ"/>
-                        <outlet property="mapView" destination="wKT-2M-efE" id="gdg-hG-8vb"/>
+                        <outlet property="mapView" destination="wKT-2M-efE" id="4Y5-ye-aIR"/>
                         <outlet property="searchBar" destination="qJE-i1-2IJ" id="Wg0-ma-bpp"/>
                     </connections>
                 </viewController>

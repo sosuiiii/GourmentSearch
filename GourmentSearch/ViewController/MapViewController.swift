@@ -19,20 +19,20 @@ class MapViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     private var viewModel = MapViewModel()
+    private var marker = GMSMarker()
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
-//            let detailView = DetailSearchView(frame: UIScreen.main.bounds)
-//            self?.view.addSubview(detailView)
+            let detailView = DetailSearchView(frame: UIScreen.main.bounds)
+            self?.view.addSubview(detailView)
 //            detailView.show()
-            self?.setupMap()
         }).disposed(by: disposeBag)
         
         searchBar.rx.text.orEmpty.subscribe({ [weak self] text in
@@ -54,6 +54,8 @@ class MapViewController: UIViewController {
         
         setupView()
         setupMap()
+        
+        
     }
 }
 
@@ -64,22 +66,44 @@ extension MapViewController: AlertViewDelegate {
     func negativeTapped(type: AlertType) {
     }
 }
+
+//MARK: GMSMapViewDelegate
+extension MapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+//        print(coordinate)
+        
+        marker.position = coordinate
+        marker.title = "The Imperial Palace"
+        marker.snippet = "Tokyo"
+        marker.map = mapView
+        self.mapView = mapView
+        
+    }
+//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+//        print(position)
+//    }
+    
+}
 //MARK:ビュー
 extension MapViewController {
     func setupView() {
         searchBar.delegate = self
-        
+        mapView.delegate = self
     }
     func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 35.68154,                                                      longitude: 139.752498, zoom: 13)
-                mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//                mapView.isMyLocationEnabled = true
+        mapView.animate(toZoom: 12)
+        mapView.animate(toLocation: CLLocationCoordinate2DMake(35.68154,139.752498))
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
         
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
-                marker.title = "The Imperial Palace"
-                marker.snippet = "Tokyo"
-                marker.map = mapView
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
+        marker.title = "The Imperial Palace"
+        marker.snippet = "Tokyo"
+        marker.map = mapView
+        
+        
+        
     }
 }
 //MARK:UISearchBarDelegate
