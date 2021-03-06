@@ -36,7 +36,7 @@ struct Shop: Codable, Identifiable {
     let nameKana: String?
     let address: String
     let stationName: String?
-//    let ktaiCoupon: Int?
+    let ktaiCoupon: Int?
     let largeServiceArea: Area?
     let serviceArea: Area?
     let largeArea: Area?
@@ -49,7 +49,7 @@ struct Shop: Codable, Identifiable {
     let budget: Budget?
     let budgetMemo: String?
     let `catch`: String
-//    let capacity: Int?
+    let capacity: Int?
     let access: String
     let mobileAccess: String?
     let urls: Urls
@@ -94,7 +94,7 @@ struct Shop: Codable, Identifiable {
         case nameKana = "name_kana"
         case address
         case stationName = "station_name"
-//        case ktaiCoupon = "ktai_coupon"
+        case ktaiCoupon = "ktai_coupon"
         case largeServiceArea = "large_service_area"
         case serviceArea = "service_area"
         case largeArea = "large_area"
@@ -107,7 +107,7 @@ struct Shop: Codable, Identifiable {
         case budget
         case budgetMemo = "budget_memo"
         case `catch`
-//        case capacity
+        case capacity
         case access
         case mobileAccess = "mobile_access"
         case urls
