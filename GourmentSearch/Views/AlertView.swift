@@ -18,6 +18,7 @@ enum AlertType {
     case reset
     case delete
     case error
+    case textOver
 }
 
 protocol AlertViewDelegate: class {
@@ -76,6 +77,8 @@ class AlertView: UIView, Reusable {
     
     
     func show(type: AlertType) {
+        UserDefaults.standard.setValue(true, forKey: "showAlert")
+        
         self.type = type
         switch type {
         case .noSave:
@@ -98,11 +101,16 @@ class AlertView: UIView, Reusable {
             message.text = "エラーが発生しました。\n時間をおいてもう一度\n操作を試してください。"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
+        case .textOver:
+            message.text = "文字数が50文字を超過しています。"
+            positiveButton.setTitle("閉じる", for: .normal)
+            negativeButton.isHidden = true
         }
         backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         popView.animate(.zoomInvert(way: .in), duration: 0.5, damping: nil, velocity: nil, force: nil).delay(0.1)
     }
     private func dismiss() {
+        UserDefaults.standard.removeObject(forKey: "showAlert")
         backgroundView.backgroundColor = .clear
         popView.animate(.zoomInvert(way: .out), duration: 0.5, damping: nil, velocity: nil, force: nil).completion {
             self.removeFromSuperview()

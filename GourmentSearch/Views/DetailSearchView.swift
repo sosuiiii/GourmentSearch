@@ -35,6 +35,7 @@ class DetailSearchView: UIView, Reusable {
     @IBOutlet weak var otherView: UIView!
     @IBOutlet weak var otherButton: UIButton!
     
+    weak var delegate: DetailSearchViewDelegate?
     var viewModel = DetailSearchViewModel()
     private var datasource: RxCollectionViewSectionedReloadDataSource<GenreDataSource>?
     private var disposeBag = DisposeBag()
@@ -177,4 +178,10 @@ extension DetailSearchView: AlertViewDelegate {
             break
         }
     }
+}
+
+protocol DetailSearchViewDelegate: class {
+    func save()
+    func reset()
+    func close()
 }

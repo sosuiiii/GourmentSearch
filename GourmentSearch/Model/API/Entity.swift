@@ -8,12 +8,6 @@
 import Foundation
 import CoreLocation
 
-struct MockData {
-    var genreName: String
-    var genreCode: String
-}
-
-
 struct HotPepperResponse: Codable {
     let results: Result
 }
@@ -62,7 +56,7 @@ struct Shop: Codable, Identifiable {
     let photo: Photo
     let open: String?
     let close: String?
-    let partyCapacity: Int?
+//    let partyCapacity: Int?
     let wifi: String?
     let wedding: String?
     let course: String?
@@ -120,7 +114,7 @@ struct Shop: Codable, Identifiable {
         case photo
         case open
         case close
-        case partyCapacity = "party_capacity"
+//        case partyCapacity = "party_capacity"
         case wifi
         case wedding
         case course

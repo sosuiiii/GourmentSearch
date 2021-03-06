@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //キャッシュ代わり
         if !shared.genres.isEmpty {return true}
-        Repository.getGenres().subscribe(onNext: { [weak self] response in
+        Repository.getGenre().subscribe(onNext: { [weak self] response in
             self?.shared.genres = response.results.genre
         }, onError: { error in
             print("ジャンルが取得できませんでした：\(error)")
