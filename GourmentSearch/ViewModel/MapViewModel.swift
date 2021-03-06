@@ -18,11 +18,13 @@ protocol MapViewModelInput {
 protocol MapViewModelOutput {
     var alert: Observable<AlertType?>{get}
     var validatedText: Observable<String>{get}
+    var datasource: Observable<[HotPepperResponseDataSource]>{get}
 }
 
 protocol MapViewModelType {
     var inputs: MapViewModelInput {get}
     var outputs: MapViewModelOutput {get}
+    
 }
 
 class MapViewModel: MapViewModelInput, MapViewModelOutput {
@@ -33,6 +35,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
+    var datasource: Observable<[HotPepperResponseDataSource]>
     //property
     private var disposeBag = DisposeBag()
     
@@ -42,6 +45,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _validatedText = PublishRelay<String>()
         self.validatedText = _validatedText.asObservable()
+        
+        let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
+        self.datasource = _datasource.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -64,7 +70,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             switch event {
             case .next(let response):
                 print(response)
-//                _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
+                _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
             case .error(_):
                 _alert.accept(.unexpectedServerError)
             case .completed:
