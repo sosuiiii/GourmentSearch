@@ -73,7 +73,7 @@ extension ListViewController {
         
         datasource = RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>(configureCell: { _, tableView, indexPath, items in
             let cell = tableView.dequeueReusableCell(withIdentifier: HotPepperResponseTableViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseTableViewCell
-            cell.setupCell(item: items, indexPath: indexPath)
+            cell.setupCell(item: items)
             return cell
         })
     }
