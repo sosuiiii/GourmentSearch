@@ -19,6 +19,7 @@ enum AlertType {
     case delete
     case error
     case textOver
+    case searchError
 }
 
 protocol AlertViewDelegate: class {
@@ -77,6 +78,7 @@ class AlertView: UIView, Reusable {
     
     
     func show(type: AlertType) {
+        if UserDefaults.standard.bool(forKey: "showAlert") {return}
         UserDefaults.standard.setValue(true, forKey: "showAlert")
         
         self.type = type
@@ -103,6 +105,10 @@ class AlertView: UIView, Reusable {
             negativeButton.isHidden = true
         case .textOver:
             message.text = "文字数が50文字を超過しています。"
+            positiveButton.setTitle("閉じる", for: .normal)
+            negativeButton.isHidden = true
+        case .searchError:
+            message.text = "検索に失敗しました"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
         }

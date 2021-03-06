@@ -17,6 +17,7 @@ def install_pods
   # google map SDK for iOS
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'SDWebImage', '~> 4.3.3'
 
 end
 
