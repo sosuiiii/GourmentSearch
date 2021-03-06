@@ -19,7 +19,7 @@ enum AlertType {
     case delete
     case error
     case textOver
-    case searchError
+    case unexpectedServerError
 }
 
 protocol AlertViewDelegate: class {
@@ -111,8 +111,8 @@ class AlertView: UIView, Reusable {
             message.text = "文字数が50文字を超過しています。"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
-        case .searchError:
-            message.text = "検索に失敗しました"
+        case .unexpectedServerError:
+            message.text = "予期せぬサーバーエラーが起きました"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
         }

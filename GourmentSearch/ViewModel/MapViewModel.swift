@@ -54,14 +54,23 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         self.search = AnyObserver<String>() { text in
             _search.accept(text.element!)
         }
-        _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+        _search.flatMapLatest({ text -> Observable<Event<HotPepperResponse>> in
+            var validText = text
+            //空文字で投げるとステータスコード200で
+            //別の構造体が返ってくるため無理やり制御
+            if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
-            shared.addQuery(key: "keyword", value: text)
-            return try Repository.search(keyValue: shared.getQuery())
-        }).subscribe(onNext: { response in
-            
-        }, onError: { error in
-            _alert.accept(.searchError)
+            shared.addQuery(key: "keyword", value: validText)
+            return try Repository.search(keyValue: shared.getQuery()).materialize()
+        }).subscribe({ event in
+            switch event {
+            case .next(let response):
+                print(response)
+            case .error(_):
+                _alert.accept(.unexpectedServerError)
+            case .completed:
+                break
+            }
         }).disposed(by: disposeBag)
     }
 }

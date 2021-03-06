@@ -73,9 +73,8 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             case .next(let response):
                 print(response)
                 _datasource.accept([HotPepperResponseDataSource(items: (response.element?.results.shop)!)])
-            case .error(let error):
-                print("検索エラー::\(error)")
-                _alert.accept(.searchError)
+            case .error(_):
+                _alert.accept(.unexpectedServerError)
             case .completed:
                 break
             }
