@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyP-F7-DWd" customClass="AnimatableView" customModule="IBAnimatable">
+                    <rect key="frame" x="27" y="333" width="360" height="230"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgK-hQ-aG8">
+                            <rect key="frame" x="0.0" y="180" width="360" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkD-ug-Y6i">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="TLs-HJ-t7L"/>
+                                        <constraint firstAttribute="width" constant="180" id="ghh-sb-HcK"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="削除する">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6K-xH-W1s">
+                                    <rect key="frame" x="180" y="0.0" width="180" height="50"/>
+                                    <color key="backgroundColor" red="1" green="0.51620613449999997" blue="0.42535270879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="180" id="9Nx-ln-byG"/>
+                                        <constraint firstAttribute="height" constant="50" id="OVt-Mz-dd9"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="削除しない">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVs-uN-yA0">
+                            <rect key="frame" x="0.0" y="0.0" width="360" height="180"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本当に削除しますか？ 本当に削除しますか？ 本当に削除しますか？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxh-8G-aXY">
+                                    <rect key="frame" x="20" y="54" width="320" height="72"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bxh-8G-aXY" secondAttribute="trailing" constant="20" id="MkZ-UV-dDJ"/>
+                                <constraint firstItem="bxh-8G-aXY" firstAttribute="centerY" secondItem="NVs-uN-yA0" secondAttribute="centerY" id="qRE-7e-Eo8"/>
+                                <constraint firstItem="bxh-8G-aXY" firstAttribute="leading" secondItem="NVs-uN-yA0" secondAttribute="leading" constant="20" id="t70-MN-e6Y"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="zgK-hQ-aG8" firstAttribute="centerX" secondItem="tyP-F7-DWd" secondAttribute="centerX" id="2xn-ar-i8N"/>
+                        <constraint firstAttribute="width" constant="360" id="4SE-bA-gAx"/>
+                        <constraint firstAttribute="trailing" secondItem="NVs-uN-yA0" secondAttribute="trailing" id="4uC-RK-V6G"/>
+                        <constraint firstItem="zgK-hQ-aG8" firstAttribute="top" secondItem="NVs-uN-yA0" secondAttribute="bottom" id="INq-Z0-1ix"/>
+                        <constraint firstAttribute="bottom" secondItem="zgK-hQ-aG8" secondAttribute="bottom" id="Wgk-q0-Lmm"/>
+                        <constraint firstItem="NVs-uN-yA0" firstAttribute="leading" secondItem="tyP-F7-DWd" secondAttribute="leading" id="afz-lu-XpE"/>
+                        <constraint firstAttribute="height" constant="230" id="dpk-61-ss8"/>
+                        <constraint firstItem="NVs-uN-yA0" firstAttribute="top" secondItem="tyP-F7-DWd" secondAttribute="top" id="yfT-zn-Tlv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="tyP-F7-DWd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0to-OB-dOf"/>
+                <constraint firstItem="tyP-F7-DWd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dkj-zn-LIr"/>
+            </constraints>
+            <point key="canvasLocation" x="-145" y="85"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
