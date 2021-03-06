@@ -1,19 +1,20 @@
 //
-//  ViewController.swift
+//  FavoritesViewController.swift
 //  GourmentSearch
 //
 //  Created by TanakaSoushi on 2021/03/06.
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
-class ViewController: UIViewController {
+class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view. 
+
+        
     }
-
-
 }
-
