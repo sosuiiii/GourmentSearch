@@ -6,11 +6,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class MapViewController: UIViewController {
+    
+    private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Repository.getGenres().subscribe(onNext: { response in
+            print(response)
+        }, onError: { error in
+            print(error)
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func detailTapped(_ sender: Any) {
