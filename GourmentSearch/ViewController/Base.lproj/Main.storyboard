@@ -33,13 +33,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmX-ks-2ii">
-                                <rect key="frame" x="361" y="760" width="33" height="33"/>
+                                <rect key="frame" x="349" y="683" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="Ijj-u8-vC5"/>
-                                    <constraint firstAttribute="width" constant="33" id="hAs-Dh-ajz"/>
+                                    <constraint firstAttribute="height" constant="55" id="Ijj-u8-vC5"/>
+                                    <constraint firstAttribute="width" constant="55" id="hAs-Dh-ajz"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="list.bullet" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.34999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8f-a4-tJ3">
                                 <rect key="frame" x="364" y="127.5" width="35" height="33"/>
@@ -67,7 +82,7 @@
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="bottom" secondItem="e31-fg-qvg" secondAttribute="bottom" id="2eH-wC-CPP"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="9zD-nI-lQY"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="DPd-XN-E9P"/>
-                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="bottom" secondItem="OmX-ks-2ii" secondAttribute="bottom" constant="20" id="Et5-6b-z4R"/>
+                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="bottom" secondItem="OmX-ks-2ii" secondAttribute="bottom" constant="75" id="Et5-6b-z4R"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="QFh-ed-LX4"/>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="bottom" secondItem="NJF-t0-Yfg" secondAttribute="bottom" id="UdW-Ta-loc"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="WbD-mA-xT4"/>
@@ -77,7 +92,7 @@
                             <constraint firstItem="wKT-2M-efE" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="gl5-fY-DH2"/>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="top" secondItem="qJE-i1-2IJ" secondAttribute="bottom" constant="20" id="kwV-nN-yId"/>
                             <constraint firstItem="a8f-a4-tJ3" firstAttribute="leading" secondItem="qJE-i1-2IJ" secondAttribute="trailing" constant="5" id="loU-GO-Maj"/>
-                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="trailing" secondItem="OmX-ks-2ii" secondAttribute="trailing" constant="20" id="tBG-OF-XMd"/>
+                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="trailing" secondItem="OmX-ks-2ii" secondAttribute="trailing" constant="10" id="tBG-OF-XMd"/>
                             <constraint firstItem="NJF-t0-Yfg" firstAttribute="trailing" secondItem="a8f-a4-tJ3" secondAttribute="trailing" constant="15" id="v4n-vj-Hun"/>
                             <constraint firstItem="qJE-i1-2IJ" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" constant="10" id="vt7-YX-8YG"/>
                         </constraints>

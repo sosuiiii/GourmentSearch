@@ -95,15 +95,8 @@ extension MapViewController {
         mapView.animate(toLocation: CLLocationCoordinate2DMake(35.68154,139.752498))
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
-        marker.title = "The Imperial Palace"
-        marker.snippet = "Tokyo"
-        marker.map = mapView
-        
-        
-        
+        mapView.padding = UIEdgeInsets(top: 0, left: 0,
+                                            bottom: 0, right: 0)
     }
 }
 //MARK:UISearchBarDelegate
