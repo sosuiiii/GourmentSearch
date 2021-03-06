@@ -55,6 +55,8 @@
 		3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E42625F349B300E9F55E /* TextFieldValidation.swift */; };
 		3DF3E44925F35D8800E9F55E /* QueryShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E44825F35D8800E9F55E /* QueryShareManager.swift */; };
 		3DF3E44A25F35D8800E9F55E /* QueryShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E44825F35D8800E9F55E /* QueryShareManager.swift */; };
+		3DF3E45B25F3639900E9F55E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E45A25F3639900E9F55E /* ListViewModel.swift */; };
+		3DF3E45C25F3639900E9F55E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E45A25F3639900E9F55E /* ListViewModel.swift */; };
 		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
 		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,7 @@
 		3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreShareManager.swift; sourceTree = "<group>"; };
 		3DF3E42625F349B300E9F55E /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		3DF3E44825F35D8800E9F55E /* QueryShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryShareManager.swift; sourceTree = "<group>"; };
+		3DF3E45A25F3639900E9F55E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +226,7 @@
 			children = (
 				3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */,
 				3DF3E40025F3381500E9F55E /* MapViewModel.swift */,
+				3DF3E45A25F3639900E9F55E /* ListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -649,6 +653,7 @@
 				3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
+				3DF3E45B25F3639900E9F55E /* ListViewModel.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
@@ -679,6 +684,7 @@
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
 				3DF3E44A25F35D8800E9F55E /* QueryShareManager.swift in Sources */,
 				3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */,
+				3DF3E45C25F3639900E9F55E /* ListViewModel.swift in Sources */,
 				3DF3E3D425F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E38925F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E3F625F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,

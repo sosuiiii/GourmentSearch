@@ -1,31 +1,32 @@
 //
-//  MapViewModel.swift
+//  ListViewModel.swift
 //  GourmentSearch
 //
 //  Created by TanakaSoushi on 2021/03/06.
 //
+
 import Foundation
 import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
 
-protocol MapViewModelInput {
+protocol ListViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
 }
 
-protocol MapViewModelOutput {
+protocol ListViewModelOutput {
     var alert: Observable<AlertType?>{get}
     var validatedText: Observable<String>{get}
 }
 
-protocol MapViewModelType {
-    var inputs: MapViewModelInput {get}
-    var outputs: MapViewModelOutput {get}
+protocol ListViewModelType {
+    var inputs: ListViewModelInput {get}
+    var outputs: ListViewModelOutput {get}
 }
 
-class MapViewModel: MapViewModelInput, MapViewModelOutput {
+class ListViewModel: ListViewModelInput, ListViewModelOutput {
     
     //Input
     var searchText: AnyObserver<String>
@@ -69,7 +70,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     }
 }
 
-extension MapViewModel: MapViewModelType {
-    var inputs: MapViewModelInput {return self}
-    var outputs: MapViewModelOutput {return self}
+extension ListViewModel: ListViewModelType {
+    var inputs: ListViewModelInput {return self}
+    var outputs: ListViewModelOutput {return self}
 }

@@ -13,22 +13,7 @@ final class Repository {
     private static let apiProvider = MoyaProvider<GourmentAPI>()
 }
 extension Repository {
-    static func search(keyValue: [String:Any], completion: @escaping (HotPepperResponse) -> ()){
-        apiProvider.request(.search(keyValue: keyValue)) { response in
-            switch response {
-            case let .success(response):
-                do {
-                    let decodedData = try JSONDecoder().decode(HotPepperResponse.self, from: response.data)
-                    completion(decodedData)
-                } catch let error {
-                    print(error)
-                }
-            case let .failure(error):
-                print(error)
-            }
-        }
-    }
-    static func getGenrea(keyValue: [String:Any]) -> Observable<HotPepperResponse> {
+    static func search(keyValue: [String:Any]) -> Observable<HotPepperResponse> {
         return Observable.create({ observer in
             apiProvider.request(.search(keyValue: keyValue)) { response in
                 switch response {
