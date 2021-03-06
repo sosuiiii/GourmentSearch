@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let googleKey = "AIzaSyAhLVH0AI2PYWS3G_dHAcLbNPwkZ2fA76c"
+        GMSServices.provideAPIKey(googleKey)
         
         //キャッシュ代わり
         if !shared.genres.isEmpty {return true}
