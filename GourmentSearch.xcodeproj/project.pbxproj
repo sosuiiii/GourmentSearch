@@ -51,6 +51,8 @@
 		3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E40025F3381500E9F55E /* MapViewModel.swift */; };
 		3DF3E41E25F33C9600E9F55E /* GenreShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */; };
 		3DF3E41F25F33C9600E9F55E /* GenreShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */; };
+		3DF3E42725F349B300E9F55E /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E42625F349B300E9F55E /* TextFieldValidation.swift */; };
+		3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E42625F349B300E9F55E /* TextFieldValidation.swift */; };
 		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
 		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,7 @@
 		3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSearchViewModel.swift; sourceTree = "<group>"; };
 		3DF3E40025F3381500E9F55E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreShareManager.swift; sourceTree = "<group>"; };
+		3DF3E42625F349B300E9F55E /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +264,7 @@
 		3DF3E35425F2FFD600E9F55E /* Validation */ = {
 			isa = PBXGroup;
 			children = (
+				3DF3E42625F349B300E9F55E /* TextFieldValidation.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -645,6 +649,7 @@
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
+				3DF3E42725F349B300E9F55E /* TextFieldValidation.swift in Sources */,
 				3DF3E3D925F3095900E9F55E /* FavoriteViewController.swift in Sources */,
 				3DF3E3EF25F30D6D00E9F55E /* GenreDataSource.swift in Sources */,
 				3DF3E34025F2FF6300E9F55E /* Repository.swift in Sources */,
@@ -657,6 +662,7 @@
 			files = (
 				3DF3E3DA25F3095900E9F55E /* FavoriteViewController.swift in Sources */,
 				3DF3E3C025F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
+				3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */,
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
 				3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */,
 				3DF3E3F025F30D6D00E9F55E /* GenreDataSource.swift in Sources */,
