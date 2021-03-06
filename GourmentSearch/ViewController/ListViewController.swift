@@ -61,7 +61,9 @@ extension ListViewController: AlertViewDelegate {
 }
 //MARK: UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 }
 //MARK:ビュー
 extension ListViewController {
@@ -69,8 +71,10 @@ extension ListViewController {
         searchBar.delegate = self
         tableView.register(UINib(nibName: HotPepperResponseTableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: HotPepperResponseTableViewCell.reusableIdentifier)
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
         datasource = RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>(configureCell: { _, tableView, indexPath, items in
             let cell = tableView.dequeueReusableCell(withIdentifier: HotPepperResponseTableViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseTableViewCell
+            cell.setupCell(item: items)
             return cell
         })
     }

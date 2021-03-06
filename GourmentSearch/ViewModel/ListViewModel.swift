@@ -66,7 +66,8 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             return Repository.search(keyValue: shared.getQuery())
         }).subscribe(onNext: { response in
             print(response)
-            _datasource.accept(HotPepperResponseDataSource(items: [response]))
+            
+            _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
         }, onError: { error in
             _alert.accept(.searchError)
         }).disposed(by: disposeBag)

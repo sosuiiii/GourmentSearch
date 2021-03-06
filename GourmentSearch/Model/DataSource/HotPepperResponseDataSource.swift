@@ -9,10 +9,10 @@ import Foundation
 import RxDataSources
 
 struct HotPepperResponseDataSource {
-    var items: [HotPepperResponse]
+    var items: [Shop]
 }
 extension HotPepperResponseDataSource: SectionModelType {
-    init(original: HotPepperResponseDataSource, items: [HotPepperResponse]) {
+    init(original: HotPepperResponseDataSource, items: [Shop]) {
         self = original
         self.items = items
     }
