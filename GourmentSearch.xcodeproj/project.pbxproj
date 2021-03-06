@@ -43,6 +43,10 @@
 		3DF3E3DA25F3095900E9F55E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */; };
 		3DF3E3E025F30A7B00E9F55E /* SubUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3DF25F30A7B00E9F55E /* SubUIScrollView.swift */; };
 		3DF3E3E125F30A7B00E9F55E /* SubUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3DF25F30A7B00E9F55E /* SubUIScrollView.swift */; };
+		3DF3E3EF25F30D6D00E9F55E /* GenreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3EE25F30D6D00E9F55E /* GenreDataSource.swift */; };
+		3DF3E3F025F30D6D00E9F55E /* GenreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3EE25F30D6D00E9F55E /* GenreDataSource.swift */; };
+		3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */; };
+		3DF3E3F625F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */; };
 		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
 		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +99,8 @@
 		3DF3E3D225F3095000E9F55E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		3DF3E3DF25F30A7B00E9F55E /* SubUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubUIScrollView.swift; sourceTree = "<group>"; };
+		3DF3E3EE25F30D6D00E9F55E /* GenreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDataSource.swift; sourceTree = "<group>"; };
+		3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSearchViewModel.swift; sourceTree = "<group>"; };
 		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +209,7 @@
 		3DF3E33925F2FF1500E9F55E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 		3DF3E33D25F2FF4900E9F55E /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				3DF3E3EE25F30D6D00E9F55E /* GenreDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -609,8 +617,10 @@
 				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
+				3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
 				3DF3E3D925F3095900E9F55E /* FavoriteViewController.swift in Sources */,
+				3DF3E3EF25F30D6D00E9F55E /* GenreDataSource.swift in Sources */,
 				3DF3E34025F2FF6300E9F55E /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +633,7 @@
 				3DF3E3C025F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
 				3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */,
+				3DF3E3F025F30D6D00E9F55E /* GenreDataSource.swift in Sources */,
 				3DF3E34A25F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E3CB25F3094700E9F55E /* MapViewController.swift in Sources */,
 				3DF3E3E125F30A7B00E9F55E /* SubUIScrollView.swift in Sources */,
@@ -631,6 +642,7 @@
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
 				3DF3E3D425F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E38925F3057000E9F55E /* AlertView.swift in Sources */,
+				3DF3E3F625F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

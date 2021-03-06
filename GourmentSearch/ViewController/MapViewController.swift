@@ -11,6 +11,9 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func detailTapped(_ sender: Any) {
         let detailView = DetailSearchView(frame: UIScreen.main.bounds)
         view.addSubview(detailView)
         detailView.show()

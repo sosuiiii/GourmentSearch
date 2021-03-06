@@ -39,9 +39,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8f-a4-tJ3">
                                 <rect key="frame" x="364" y="127.5" width="35" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="詳細"/>
+                                <state key="normal" title="詳細">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
-                                    <action selector="detailTapped:" destination="sr2-k1-kc9" eventType="touchUpInside" id="mI5-6k-jyd"/>
+                                    <action selector="detailTapped:" destination="sr2-k1-kc9" eventType="touchUpInside" id="SbH-hR-LjV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今すグルメ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-vW-4MN">
@@ -114,7 +116,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9c-dj-Mhd">
                                 <rect key="frame" x="364" y="127.5" width="35" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="詳細"/>
+                                <state key="normal" title="詳細">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今すグルメ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-EH-uqn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
@@ -241,6 +245,9 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -8,7 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertView" customModule="GourmentSearch" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="iN0-l3-epB" id="b7B-cZ-AWy"/>
+                <outlet property="message" destination="bxh-8G-aXY" id="NWy-bb-OZm"/>
+                <outlet property="negativeButton" destination="s6K-xH-W1s" id="s5i-YP-rK3"/>
+                <outlet property="popView" destination="tyP-F7-DWd" id="bo6-Bq-1w7"/>
+                <outlet property="positiveButton" destination="SkD-ug-Y6i" id="YTq-aQ-2ee"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -31,6 +39,9 @@
                                     <state key="normal" title="削除する">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="positiveTapped:" destination="-1" eventType="touchUpInside" id="g3g-C6-G20"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6K-xH-W1s">
                                     <rect key="frame" x="180" y="0.0" width="180" height="50"/>
@@ -43,6 +54,9 @@
                                     <state key="normal" title="削除しない">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="negativeTapped:" destination="-1" eventType="touchUpInside" id="NPA-vV-P4C"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>

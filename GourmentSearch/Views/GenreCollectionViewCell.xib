@@ -56,6 +56,10 @@
                 <constraint firstItem="Eun-9v-f1C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="f9n-na-itr"/>
             </constraints>
             <size key="customSize" width="158" height="109"/>
+            <connections>
+                <outlet property="baseView" destination="Eun-9v-f1C" id="oHM-Tv-EAb"/>
+                <outlet property="genreTitle" destination="T0M-3I-DKq" id="a5P-Di-Hsc"/>
+            </connections>
             <point key="canvasLocation" x="-405.79710144927537" y="174.44196428571428"/>
         </collectionViewCell>
     </objects>
