@@ -51,8 +51,10 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         }
         
         self.search = AnyObserver<String>() { text in
-            Repository.search(keyValue: ["keyword": text], completion: { response in
-                
+            let shared = QueryShareManager.shared
+            shared.addQuery(key: "keyword", value: text.element!)
+            Repository.search(keyValue: shared.getQuery(), completion: { response in
+                print(response)
             })
         }
     }
