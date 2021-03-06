@@ -166,7 +166,7 @@ struct Area: Codable {
 }
 
 struct Genre: Codable {
-    let code: String?
+    let code: String
     let name: String
     enum CodingKeys: String, CodingKey {
         case code

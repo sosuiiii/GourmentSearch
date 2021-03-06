@@ -16,11 +16,6 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Repository.getGenres().subscribe(onNext: { response in
-            print(response)
-        }, onError: { error in
-            print(error)
-        }).disposed(by: disposeBag)
     }
     
     @IBAction func detailTapped(_ sender: Any) {
