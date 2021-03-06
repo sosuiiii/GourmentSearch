@@ -20,6 +20,7 @@ PODS:
     - Moya/Core
     - RxSwift (~> 5.0)
   - Nimble (9.0.0)
+  - PanModal (1.2.7)
   - PKHUD (5.3.0)
   - Quick (3.0.0)
   - Realm (10.5.1):
@@ -54,6 +55,7 @@ DEPENDENCIES:
   - InstantiateStandard
   - Moya/RxSwift (~> 14.0)
   - Nimble
+  - PanModal
   - PKHUD
   - Quick
   - RealmSwift
@@ -76,6 +78,7 @@ SPEC REPOS:
     - InstantiateStandard
     - Moya
     - Nimble
+    - PanModal
     - PKHUD
     - Quick
     - Realm
@@ -99,6 +102,7 @@ SPEC CHECKSUMS:
   InstantiateStandard: 18ab1417ba787113350c71a5b2251f0b4448be67
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
   Realm: 77fcb4e0b9f2963ea06f584749a0d7dc9cab95e1
@@ -111,6 +115,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: cc5ca5a8a4c925ef97a93f4eeec59e8924627afa
+PODFILE CHECKSUM: a20770f7e9af4322e85a64ffb7869a924e8d1435
 
 COCOAPODS: 1.10.0

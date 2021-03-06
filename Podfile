@@ -18,6 +18,7 @@ def install_pods
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'SDWebImage', '~> 4.3.3'
+  pod 'PanModal'
 
 end
 

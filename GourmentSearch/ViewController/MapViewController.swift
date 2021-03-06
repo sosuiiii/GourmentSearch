@@ -10,16 +10,21 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import GoogleMaps
+import CoreLocation
 
 class MapViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var listButton: UIButton!
     
     private var disposeBag = DisposeBag()
     private var viewModel = MapViewModel()
+    private var datasource: RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var marker = GMSMarker()
+    private var locationManager = CLLocationManager()
+    private var modalVC = ModalViewController.instantiate()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -27,16 +32,23 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        setupMap()
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
             self?.view.addSubview(detailView)
-//            detailView.show()
+            detailView.show()
         }).disposed(by: disposeBag)
         
         searchBar.rx.text.orEmpty.subscribe({ [weak self] text in
-//            self?.viewModel.inputs.searchText.onNext(text.element!)
+            self?.viewModel.inputs.searchText.onNext(text.element!)
+        }).disposed(by: disposeBag)
+        
+        listButton.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.presentPanModal(self.modalVC)
         }).disposed(by: disposeBag)
         
         
@@ -51,19 +63,6 @@ class MapViewController: UIViewController {
             self?.view.addSubview(alertView)
             alertView.show(type: alertType.element!!)
         }).disposed(by: disposeBag)
-        
-        setupView()
-        setupMap()
-        
-        
-    }
-}
-
-extension MapViewController: AlertViewDelegate {
-    func positiveTapped(type: AlertType) {
-    }
-    
-    func negativeTapped(type: AlertType) {
     }
 }
 
@@ -91,19 +90,15 @@ extension MapViewController {
         mapView.delegate = self
     }
     func setupMap() {
-        mapView.animate(toZoom: 12)
-        mapView.animate(toLocation: CLLocationCoordinate2DMake(35.68154,139.752498))
+        mapView.animate(toZoom: 16)
+        let location = CLLocationCoordinate2DMake(35.68154,139.752498)
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            mapView.animate(toLocation: locationManager.location?.coordinate ?? location)
+        } else {
+            mapView.animate(toLocation: location)
+        }
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
-        marker.title = "The Imperial Palace"
-        marker.snippet = "Tokyo"
-        marker.map = mapView
-        
-        
-        
     }
 }
 //MARK:UISearchBarDelegate
@@ -114,5 +109,14 @@ extension MapViewController: UISearchBarDelegate {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
+    }
+}
+
+//MARK: AlertViewDelegate
+extension MapViewController: AlertViewDelegate {
+    func positiveTapped(type: AlertType) {
+    }
+    
+    func negativeTapped(type: AlertType) {
     }
 }

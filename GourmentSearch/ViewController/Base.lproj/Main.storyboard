@@ -19,13 +19,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-2M-efE" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="184" width="414" height="629"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e31-fg-qvg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                             </view>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="qJE-i1-2IJ">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="キーワード" translatesAutoresizingMaskIntoConstraints="NO" id="qJE-i1-2IJ">
                                 <rect key="frame" x="10" y="124" width="349" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1cJ-Cx-MXA"/>
@@ -33,13 +33,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmX-ks-2ii">
-                                <rect key="frame" x="361" y="760" width="33" height="33"/>
+                                <rect key="frame" x="349" y="683" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="Ijj-u8-vC5"/>
-                                    <constraint firstAttribute="width" constant="33" id="hAs-Dh-ajz"/>
+                                    <constraint firstAttribute="height" constant="55" id="Ijj-u8-vC5"/>
+                                    <constraint firstAttribute="width" constant="55" id="hAs-Dh-ajz"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="list.bullet" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.34999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8f-a4-tJ3">
                                 <rect key="frame" x="364" y="127.5" width="35" height="33"/>
@@ -48,7 +63,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今すグルメ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-vW-4MN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルスポ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-vW-4MN">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -67,7 +82,7 @@
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="bottom" secondItem="e31-fg-qvg" secondAttribute="bottom" id="2eH-wC-CPP"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="9zD-nI-lQY"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="DPd-XN-E9P"/>
-                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="bottom" secondItem="OmX-ks-2ii" secondAttribute="bottom" constant="20" id="Et5-6b-z4R"/>
+                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="bottom" secondItem="OmX-ks-2ii" secondAttribute="bottom" constant="75" id="Et5-6b-z4R"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="QFh-ed-LX4"/>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="bottom" secondItem="NJF-t0-Yfg" secondAttribute="bottom" id="UdW-Ta-loc"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="WbD-mA-xT4"/>
@@ -77,7 +92,7 @@
                             <constraint firstItem="wKT-2M-efE" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="gl5-fY-DH2"/>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="top" secondItem="qJE-i1-2IJ" secondAttribute="bottom" constant="20" id="kwV-nN-yId"/>
                             <constraint firstItem="a8f-a4-tJ3" firstAttribute="leading" secondItem="qJE-i1-2IJ" secondAttribute="trailing" constant="5" id="loU-GO-Maj"/>
-                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="trailing" secondItem="OmX-ks-2ii" secondAttribute="trailing" constant="20" id="tBG-OF-XMd"/>
+                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="trailing" secondItem="OmX-ks-2ii" secondAttribute="trailing" constant="10" id="tBG-OF-XMd"/>
                             <constraint firstItem="NJF-t0-Yfg" firstAttribute="trailing" secondItem="a8f-a4-tJ3" secondAttribute="trailing" constant="15" id="v4n-vj-Hun"/>
                             <constraint firstItem="qJE-i1-2IJ" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" constant="10" id="vt7-YX-8YG"/>
                         </constraints>
@@ -85,6 +100,7 @@
                     <tabBarItem key="tabBarItem" title="マップ" image="mappin.and.ellipse" catalog="system" id="yUh-gh-ynS"/>
                     <connections>
                         <outlet property="detailButton" destination="a8f-a4-tJ3" id="sEe-8p-AwZ"/>
+                        <outlet property="listButton" destination="OmX-ks-2ii" id="Voh-df-dSh"/>
                         <outlet property="mapView" destination="wKT-2M-efE" id="4Y5-ye-aIR"/>
                         <outlet property="searchBar" destination="qJE-i1-2IJ" id="Wg0-ma-bpp"/>
                     </connections>
@@ -109,7 +125,7 @@
                                 <rect key="frame" x="10" y="184" width="394" height="629"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-ll-CkH">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="キーワード" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-ll-CkH">
                                 <rect key="frame" x="10" y="124" width="349" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="V0K-21-nFq"/>
@@ -123,7 +139,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今すグルメ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-EH-uqn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルスポ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-EH-uqn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -191,7 +207,7 @@
                                     <segment title="スター数"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今すグルメ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEH-iS-kU8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルスポ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEH-iS-kU8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -258,6 +274,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
