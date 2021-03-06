@@ -47,6 +47,10 @@
 		3DF3E3F025F30D6D00E9F55E /* GenreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3EE25F30D6D00E9F55E /* GenreDataSource.swift */; };
 		3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */; };
 		3DF3E3F625F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */; };
+		3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E40025F3381500E9F55E /* MapViewModel.swift */; };
+		3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E40025F3381500E9F55E /* MapViewModel.swift */; };
+		3DF3E41E25F33C9600E9F55E /* GenreShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */; };
+		3DF3E41F25F33C9600E9F55E /* GenreShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */; };
 		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
 		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +105,8 @@
 		3DF3E3DF25F30A7B00E9F55E /* SubUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubUIScrollView.swift; sourceTree = "<group>"; };
 		3DF3E3EE25F30D6D00E9F55E /* GenreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDataSource.swift; sourceTree = "<group>"; };
 		3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSearchViewModel.swift; sourceTree = "<group>"; };
+		3DF3E40025F3381500E9F55E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreShareManager.swift; sourceTree = "<group>"; };
 		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */,
+				3DF3E40025F3381500E9F55E /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -261,6 +268,8 @@
 		3DF3E35E25F3002400E9F55E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3DF3E41025F33C0B00E9F55E /* Realm */,
+				3DF3E40625F3390300E9F55E /* Manager */,
 				3DF3E3DE25F30A6C00E9F55E /* CustomClass */,
 				3DF3E35F25F3004000E9F55E /* Const */,
 				3DF3E33E25F2FF5400E9F55E /* Extension */,
@@ -284,6 +293,21 @@
 				3DF3E3DF25F30A7B00E9F55E /* SubUIScrollView.swift */,
 			);
 			path = CustomClass;
+			sourceTree = "<group>";
+		};
+		3DF3E40625F3390300E9F55E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		3DF3E41025F33C0B00E9F55E /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		686671E4B2EC986DE07F1A62 /* Frameworks */ = {
@@ -612,8 +636,10 @@
 				3DF3E39425F3059B00E9F55E /* DetailSearchView.swift in Sources */,
 				3DF3E3BF25F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
 				3DF3E34F25F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3DF3E41E25F33C9600E9F55E /* GenreShareManager.swift in Sources */,
 				3DF3E3E025F30A7B00E9F55E /* SubUIScrollView.swift in Sources */,
 				3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */,
+				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
@@ -640,9 +666,11 @@
 				3DF3E35725F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
 				3DF3E39525F3059B00E9F55E /* DetailSearchView.swift in Sources */,
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3DF3E3D425F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E38925F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E3F625F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
+				3DF3E41F25F33C9600E9F55E /* GenreShareManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

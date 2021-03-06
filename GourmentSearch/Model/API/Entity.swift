@@ -166,9 +166,21 @@ struct Area: Codable {
 }
 
 struct Genre: Codable {
-    let code: String?
+    let code: String
     let name: String
-    let `catch`: String?
+    enum CodingKeys: String, CodingKey {
+        case code
+        case name
+    }
+}
+struct GenreResponse: Codable {
+    let results: GenreArr
+}
+struct GenreArr: Codable {
+    let genre: [Genre]
+    enum CodingKeys: String, CodingKey {
+        case genre
+    }
 }
 
 struct Budget: Codable {

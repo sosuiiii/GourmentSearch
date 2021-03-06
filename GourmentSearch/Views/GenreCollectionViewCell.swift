@@ -20,6 +20,10 @@ class GenreCollectionViewCell: UICollectionViewCell, Reusable {
         }
     }
     
+    func setupCell(item: Genre) {
+        genreTitle.text = item.name
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
