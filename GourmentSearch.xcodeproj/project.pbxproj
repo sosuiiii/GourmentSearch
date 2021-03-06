@@ -10,7 +10,6 @@
 		116693413DE42151C94D1B06 /* Pods_GourmentSearch_GourmentSearchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
-		3DF3E2EC25F2FA9900E9F55E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2EB25F2FA9900E9F55E /* ViewController.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
 		3DF3E2F125F2FA9A00E9F55E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2F025F2FA9A00E9F55E /* Assets.xcassets */; };
 		3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2F225F2FA9A00E9F55E /* LaunchScreen.storyboard */; };
@@ -36,6 +35,12 @@
 		3DF3E3C025F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3BD25F306F000E9F55E /* GenreCollectionViewCell.swift */; };
 		3DF3E3C125F306F000E9F55E /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E3BE25F306F000E9F55E /* GenreCollectionViewCell.xib */; };
 		3DF3E3C225F306F000E9F55E /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E3BE25F306F000E9F55E /* GenreCollectionViewCell.xib */; };
+		3DF3E3CA25F3094700E9F55E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3C925F3094700E9F55E /* MapViewController.swift */; };
+		3DF3E3CB25F3094700E9F55E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3C925F3094700E9F55E /* MapViewController.swift */; };
+		3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3D225F3095000E9F55E /* ListViewController.swift */; };
+		3DF3E3D425F3095000E9F55E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3D225F3095000E9F55E /* ListViewController.swift */; };
+		3DF3E3D925F3095900E9F55E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */; };
+		3DF3E3DA25F3095900E9F55E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */; };
 		F1084F4E43F2376768A5F86A /* Pods_GourmentSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */; };
 		F5F56D2C4175655F4BEC0510 /* Pods_GourmentSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,7 +69,6 @@
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3DF3E2EB25F2FA9900E9F55E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3DF3E2EE25F2FA9900E9F55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DF3E2F025F2FA9A00E9F55E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DF3E2F325F2FA9A00E9F55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,9 @@
 		3DF3E39925F305A700E9F55E /* DetailSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSearchView.xib; sourceTree = "<group>"; };
 		3DF3E3BD25F306F000E9F55E /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DF3E3BE25F306F000E9F55E /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
+		3DF3E3C925F3094700E9F55E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3DF3E3D225F3095000E9F55E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		46C22FE2218EE81BCBD10780 /* Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99A5FCFB6166F2F3DC7C1EC3 /* Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; path = "Target Support Files/Pods-GourmentSearch-GourmentSearchUITests/Pods-GourmentSearch-GourmentSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch_GourmentSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,7 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */,
-				3DF3E2EB25F2FA9900E9F55E /* ViewController.swift */,
+				3DF3E3C925F3094700E9F55E /* MapViewController.swift */,
+				3DF3E3D225F3095000E9F55E /* ListViewController.swift */,
+				3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -578,15 +587,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF3E3CA25F3094700E9F55E /* MapViewController.swift in Sources */,
 				3DF3E35625F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
 				3DF3E39425F3059B00E9F55E /* DetailSearchView.swift in Sources */,
 				3DF3E3BF25F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
-				3DF3E2EC25F2FA9900E9F55E /* ViewController.swift in Sources */,
 				3DF3E34F25F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
+				3DF3E3D925F3095900E9F55E /* FavoriteViewController.swift in Sources */,
 				3DF3E34025F2FF6300E9F55E /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,13 +606,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF3E3DA25F3095900E9F55E /* FavoriteViewController.swift in Sources */,
 				3DF3E3C025F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
 				3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */,
 				3DF3E34A25F2FF6F00E9F55E /* Entity.swift in Sources */,
+				3DF3E3CB25F3094700E9F55E /* MapViewController.swift in Sources */,
 				3DF3E35725F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
 				3DF3E39525F3059B00E9F55E /* DetailSearchView.swift in Sources */,
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3DF3E3D425F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E38925F3057000E9F55E /* AlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

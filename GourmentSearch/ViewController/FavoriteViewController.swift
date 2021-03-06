@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  FavoriteViewController.swift
 //  GourmentSearch
 //
 //  Created by TanakaSoushi on 2021/03/06.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class FavoriteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
