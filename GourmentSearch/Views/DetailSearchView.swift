@@ -63,7 +63,6 @@ class DetailSearchView: UIView, Reusable {
     @IBOutlet weak var shochu: UIButton!
     @IBOutlet weak var cocktail: UIButton!
     @IBOutlet weak var wine: UIButton!
-    @IBOutlet weak var numberOfPeople: UITextField!
     
     weak var delegate: DetailSearchViewDelegate?
     var viewModel = DetailSearchViewModel()
@@ -156,50 +155,49 @@ class DetailSearchView: UIView, Reusable {
         //MARK:こだわり条件
         withWifi.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.withWifi.tag)
             self.activeOther(button: self.withWifi)
+            self.viewModel.inputs.wifi.onNext(self.withWifi.tag)
         }).disposed(by: disposeBag)
         withPersonalSpace.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.withPersonalSpace.tag)
             self.activeOther(button: self.withPersonalSpace)
+            self.viewModel.inputs.personalSpace.onNext(self.withPersonalSpace.tag)
         }).disposed(by: disposeBag)
         credit.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.credit.tag)
             self.activeOther(button: self.credit)
+            self.viewModel.inputs.credit.onNext(self.credit.tag)
         }).disposed(by: disposeBag)
         freeFood.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.freeFood.tag)
             self.activeOther(button: self.freeFood)
+            self.viewModel.inputs.freeFood.onNext(self.freeFood.tag)
         }).disposed(by: disposeBag)
         freeDrink.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.freeDrink.tag)
             self.activeOther(button: self.freeDrink)
+            self.viewModel.inputs.freeDrink.onNext(self.freeDrink.tag)
         }).disposed(by: disposeBag)
         japLiquor.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.japLiquor.tag)
             self.activeOther(button: self.japLiquor)
+            self.viewModel.inputs.japLiquor.onNext(self.japLiquor.tag)
         }).disposed(by: disposeBag)
         shochu.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.shochu.tag)
             self.activeOther(button: self.shochu)
+            self.viewModel.inputs.shochu.onNext(self.shochu.tag)
         }).disposed(by: disposeBag)
         cocktail.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.cocktail.tag)
             self.activeOther(button: self.cocktail)
+            self.viewModel.inputs.cocktail.onNext(self.cocktail.tag)
         }).disposed(by: disposeBag)
         wine.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.inputs.wifi.onNext(self.wine.tag)
             self.activeOther(button: self.wine)
+            self.viewModel.inputs.wine.onNext(self.wine.tag)
         }).disposed(by: disposeBag)
-        numberOfPeople.rx.text.orEmpty.bind(to: viewModel.inputs.numberOfPeople).disposed(by: disposeBag)
         
         viewModel.outputs.resetOtherOutput.subscribe({ [weak self] _ in
             guard let self = self else {return}
@@ -241,7 +239,6 @@ extension DetailSearchView: AlertViewDelegate {
             viewModel.inputs.lengthTapped.onNext(99)
             collectionView.reloadData()
             feeField.text = nil
-            numberOfPeople.text = nil
             viewModel.inputs.resetOther.onNext(Void())
         default:
             break

@@ -46,7 +46,6 @@ protocol DetailSearchViewModelOutput {
     var shochuActive: Observable<Bool> {get}
     var cocktailActive: Observable<Bool> {get}
     var wineActive: Observable<Bool> {get}
-    var numberOfPeopleValid: Observable<String> {get}
     
     var resetOtherOutput: Observable<Void> {get}
 }
@@ -90,7 +89,6 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
     var shochuActive: Observable<Bool>
     var cocktailActive: Observable<Bool>
     var wineActive: Observable<Bool>
-    var numberOfPeopleValid: Observable<String>
     var resetOtherOutput: Observable<Void>
     
     init() {
@@ -123,8 +121,6 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
         cocktailActive = _cocktailActive.asObservable()
         let _wineActive = PublishRelay<Bool>()
         wineActive = _wineActive.asObservable()
-        let _numberOfPeopleValid = PublishRelay<String>()
-        numberOfPeopleValid = _numberOfPeopleValid.asObservable()
         let _resetOtherOutput = PublishRelay<Void>()
         resetOtherOutput = _resetOtherOutput.asObservable()
         
@@ -158,34 +154,32 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
             _validFee.accept("\(validFee.0)")
         }
         //こだわり条件
-        self.wifi = AnyObserver<Int> { _ in
-            _wifiActive.accept(true)
+        self.wifi = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "wifi", int: int)
         }
-        self.personalSpace = AnyObserver<Int> { _ in
-            _personalSpaceActive.accept(true)
+        self.personalSpace = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "private_room", int: int)
         }
-        self.credit = AnyObserver<Int> { _ in
-            _creditActive.accept(true)
+        self.credit = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "card", int: int)
         }
-        self.freeFood = AnyObserver<Int> { _ in
-            _freeFoodActive.accept(true)
+        self.freeFood = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "free_food", int: int)
         }
-        self.freeDrink = AnyObserver<Int> { _ in
-            _freeDrinkActive.accept(true)
+        self.freeDrink = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "free_drink", int: int)
         }
-        self.japLiquor = AnyObserver<Int> { _ in
-            _japLiquorActive.accept(true)
+        self.japLiquor = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "sake", int: int)
         }
-        self.shochu = AnyObserver<Int> { _ in
-            _shochuActive.accept(true)
+        self.shochu = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "shochu", int: int)
         }
-        self.cocktail = AnyObserver<Int> { _ in
-            _cocktailActive.accept(true)
+        self.cocktail = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "cocktail", int: int)
         }
-        self.wine = AnyObserver<Int> { _ in
-            _wineActive.accept(true)
-        }
-        self.numberOfPeople = AnyObserver<String> { text in
+        self.wine = AnyObserver<Int> { int in
+            QueryShareManager.shared.addQuery(key: "wine", int: int)
         }
         self.resetOther = AnyObserver<Void> { _ in
             _resetOtherOutput.accept(Void())
