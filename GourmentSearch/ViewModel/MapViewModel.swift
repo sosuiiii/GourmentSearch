@@ -19,6 +19,7 @@ protocol MapViewModelOutput {
     var alert: Observable<AlertType?>{get}
     var validatedText: Observable<String>{get}
     var datasource: Observable<[HotPepperResponseDataSource]>{get}
+    var showCell: Observable<Void>{get}
 }
 
 protocol MapViewModelType {
@@ -36,6 +37,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
     var datasource: Observable<[HotPepperResponseDataSource]>
+    var showCell: Observable<Void>
     //property
     private var disposeBag = DisposeBag()
     
@@ -45,6 +47,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _validatedText = PublishRelay<String>()
         self.validatedText = _validatedText.asObservable()
+        
+        let _showCell = PublishRelay<Void>()
+        self.showCell = _showCell.asObservable()
         
         let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
         self.datasource = _datasource.asObservable()
@@ -71,6 +76,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             case .next(let response):
                 print(response)
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
+                _showCell.accept(Void())
             case .error(_):
                 _alert.accept(.unexpectedServerError)
             case .completed:
