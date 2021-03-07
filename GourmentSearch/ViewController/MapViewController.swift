@@ -82,11 +82,9 @@ class MapViewController: UIViewController {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             if !self.shown {
                 self.listButton.transform = .init(translationX: 0, y: -170)
-//                    self.collectionView.alpha = 1
                 self.collectionView.transform = .init(translationX: 0, y: 0)
             } else {
                 self.listButton.transform = .init(translationX: 0, y: 0)
-//                    self.collectionView.alpha = 0
                 self.collectionView.transform = .init(translationX: 0, y: 250)
             }
         }, completion: { _ in
