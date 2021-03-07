@@ -63,6 +63,20 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qrd-7G-vHb">
+                                <rect key="frame" x="0.0" y="583" width="414" height="220"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="iGl-Br-iNU"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="34e-rt-9Sy">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルスポ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz0-vW-4MN">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -79,14 +93,17 @@
                         <constraints>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="0DX-gs-nr1"/>
                             <constraint firstItem="qJE-i1-2IJ" firstAttribute="top" secondItem="Nz0-vW-4MN" secondAttribute="bottom" constant="20" id="0h1-Q3-PoW"/>
+                            <constraint firstItem="Qrd-7G-vHb" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="2Np-0P-ET9"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="bottom" secondItem="e31-fg-qvg" secondAttribute="bottom" id="2eH-wC-CPP"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="9zD-nI-lQY"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="DPd-XN-E9P"/>
                             <constraint firstItem="NJF-t0-Yfg" firstAttribute="bottom" secondItem="OmX-ks-2ii" secondAttribute="bottom" constant="75" id="Et5-6b-z4R"/>
+                            <constraint firstItem="Qrd-7G-vHb" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="P8A-Kx-Zqc"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="QFh-ed-LX4"/>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="bottom" secondItem="NJF-t0-Yfg" secondAttribute="bottom" id="UdW-Ta-loc"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="leading" secondItem="NJF-t0-Yfg" secondAttribute="leading" id="WbD-mA-xT4"/>
                             <constraint firstItem="Nz0-vW-4MN" firstAttribute="top" secondItem="NJF-t0-Yfg" secondAttribute="top" id="YR6-ak-669"/>
+                            <constraint firstItem="NJF-t0-Yfg" firstAttribute="bottom" secondItem="Qrd-7G-vHb" secondAttribute="bottom" constant="10" id="ZTZ-jX-3SB"/>
                             <constraint firstItem="e31-fg-qvg" firstAttribute="top" secondItem="7Kg-ya-NtC" secondAttribute="top" id="cLh-Oi-Utm"/>
                             <constraint firstItem="a8f-a4-tJ3" firstAttribute="centerY" secondItem="qJE-i1-2IJ" secondAttribute="centerY" id="dVM-e0-8fs"/>
                             <constraint firstItem="wKT-2M-efE" firstAttribute="trailing" secondItem="NJF-t0-Yfg" secondAttribute="trailing" id="gl5-fY-DH2"/>
@@ -99,6 +116,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="マップ" image="mappin.and.ellipse" catalog="system" id="yUh-gh-ynS"/>
                     <connections>
+                        <outlet property="collectionView" destination="Qrd-7G-vHb" id="eGH-iK-kPX"/>
                         <outlet property="detailButton" destination="a8f-a4-tJ3" id="sEe-8p-AwZ"/>
                         <outlet property="listButton" destination="OmX-ks-2ii" id="Voh-df-dSh"/>
                         <outlet property="mapView" destination="wKT-2M-efE" id="4Y5-ye-aIR"/>

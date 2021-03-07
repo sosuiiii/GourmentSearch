@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		116693413DE42151C94D1B06 /* Pods_GourmentSearch_GourmentSearchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4444CF9C6CA40AF6A9E65EA /* Pods_GourmentSearch_GourmentSearchUITests.framework */; };
-		3D0D1CE225F3D458005BC2C0 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE125F3D458005BC2C0 /* ModalViewController.swift */; };
-		3D0D1CE325F3D458005BC2C0 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE125F3D458005BC2C0 /* ModalViewController.swift */; };
-		3D0D1CE825F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */; };
-		3D0D1CE925F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */; };
 		3D0D1CEF25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */; };
 		3D0D1CF025F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */; };
 		3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */; };
@@ -104,8 +100,6 @@
 		0979D9F6D8693754A4450B1A /* Pods_GourmentSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1565181BC2DEF2897D3B60A4 /* Pods_GourmentSearchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GourmentSearchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		161E7E38632734874E294B7D /* Pods-GourmentSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch.release.xcconfig"; sourceTree = "<group>"; };
-		3D0D1CE125F3D458005BC2C0 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModalViewController.storyboard; sourceTree = "<group>"; };
 		3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPepperResponseCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotPepperResponseCollectionViewCell.xib; sourceTree = "<group>"; };
 		3D0D1CF625F44BFD005BC2C0 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
@@ -272,8 +266,6 @@
 				3DF3E3C925F3094700E9F55E /* MapViewController.swift */,
 				3DF3E3D225F3095000E9F55E /* ListViewController.swift */,
 				3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */,
-				3D0D1CE125F3D458005BC2C0 /* ModalViewController.swift */,
-				3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -501,7 +493,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */,
-				3D0D1CE825F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */,
 				3DF3E38E25F3057C00E9F55E /* AlertView.xib in Resources */,
 				3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */,
 				3DF3E2F125F2FA9A00E9F55E /* Assets.xcassets in Resources */,
@@ -521,7 +512,6 @@
 				3DF3E3C225F306F000E9F55E /* GenreCollectionViewCell.xib in Resources */,
 				3D0D1CF225F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */,
 				3DF3E39B25F305A700E9F55E /* DetailSearchView.xib in Resources */,
-				3D0D1CE925F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +694,6 @@
 				3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E49525F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
-				3D0D1CE225F3D458005BC2C0 /* ModalViewController.swift in Sources */,
 				3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E45B25F3639900E9F55E /* ListViewModel.swift in Sources */,
@@ -747,7 +736,6 @@
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
 				3DF3E44A25F35D8800E9F55E /* QueryShareManager.swift in Sources */,
 				3DF3E4D525F394FA00E9F55E /* Error.swift in Sources */,
-				3D0D1CE325F3D458005BC2C0 /* ModalViewController.swift in Sources */,
 				3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3DF3E45C25F3639900E9F55E /* ListViewModel.swift in Sources */,
 				3DF3E3D425F3095000E9F55E /* ListViewController.swift in Sources */,
