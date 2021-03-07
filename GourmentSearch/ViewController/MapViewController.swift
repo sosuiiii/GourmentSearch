@@ -25,12 +25,14 @@ class MapViewController: UIViewController {
     private var datasource: RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
+    private var shown = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupRx()
         setupMap()
+        collectionView.transform = .init(translationX: 0, y: 250)
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
@@ -45,7 +47,7 @@ class MapViewController: UIViewController {
         
         listButton.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.collectionView.isHidden.toggle()
+            self.openClose()
         }).disposed(by: disposeBag)
         
         
@@ -66,7 +68,30 @@ class MapViewController: UIViewController {
         
         viewModel.outputs.datasource.bind(to: collectionView.rx.items(dataSource: datasource!)).disposed(by: disposeBag)
         
+        viewModel.outputs.showCell.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.listButton.backgroundColor = .white
+            self.listButton.isEnabled = true
+            if self.shown { return }
+            self.openClose()
+        }).disposed(by: disposeBag)
         
+        
+    }
+    func openClose() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            if !self.shown {
+                self.listButton.transform = .init(translationX: 0, y: -170)
+//                    self.collectionView.alpha = 1
+                self.collectionView.transform = .init(translationX: 0, y: 0)
+            } else {
+                self.listButton.transform = .init(translationX: 0, y: 0)
+//                    self.collectionView.alpha = 0
+                self.collectionView.transform = .init(translationX: 0, y: 250)
+            }
+        }, completion: { _ in
+            self.shown.toggle()
+        })
     }
 }
 
