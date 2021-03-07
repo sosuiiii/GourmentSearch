@@ -18,22 +18,21 @@ class MapViewController: UIViewController {
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var listButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     private var disposeBag = DisposeBag()
     private var viewModel = MapViewModel()
-    private var datasource: RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>?
+    private var datasource: RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
-    private var modalVC = ModalViewController.instantiate()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+    private var shown = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupRx()
         setupMap()
+        collectionView.transform = .init(translationX: 0, y: 250)
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
@@ -48,9 +47,8 @@ class MapViewController: UIViewController {
         
         listButton.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
-            self.presentPanModal(self.modalVC)
+            self.openClose()
         }).disposed(by: disposeBag)
-        
         
         
         //MARK: Output
@@ -63,6 +61,58 @@ class MapViewController: UIViewController {
             self?.view.addSubview(alertView)
             alertView.show(type: alertType.element!!)
         }).disposed(by: disposeBag)
+        
+        viewModel.outputs.datasource.subscribe({ data in
+            print(data)
+        }).disposed(by: disposeBag)
+        
+        viewModel.outputs.datasource.bind(to: collectionView.rx.items(dataSource: datasource!)).disposed(by: disposeBag)
+        
+        viewModel.outputs.showCell.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.listButton.backgroundColor = .white
+            self.listButton.isEnabled = true
+            if self.shown { return }
+            self.openClose()
+        }).disposed(by: disposeBag)
+        
+        
+    }
+    func openClose() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            if !self.shown {
+                self.listButton.transform = .init(translationX: 0, y: -170)
+//                    self.collectionView.alpha = 1
+                self.collectionView.transform = .init(translationX: 0, y: 0)
+            } else {
+                self.listButton.transform = .init(translationX: 0, y: 0)
+//                    self.collectionView.alpha = 0
+                self.collectionView.transform = .init(translationX: 0, y: 250)
+            }
+        }, completion: { _ in
+            self.shown.toggle()
+        })
+    }
+}
+
+extension MapViewController: UICollectionViewDelegate{
+}
+
+
+//MARK: UICollectionViewDelegateFlowLayout
+extension MapViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width * 0.85
+        return CGSize(width: width, height: collectionView.bounds.height)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
@@ -99,6 +149,18 @@ extension MapViewController {
         }
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+    }
+    func setupRx() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.register(UINib(nibName: HotPepperResponseCollectionViewCell.reusableIdentifier, bundle: nil), forCellWithReuseIdentifier: HotPepperResponseCollectionViewCell.reusableIdentifier)
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        datasource = RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>(configureCell: {_, collectionView, indexPath, items in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HotPepperResponseCollectionViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseCollectionViewCell
+            cell.setupCell(item: items, row: indexPath.row)
+            return cell
+        })
     }
 }
 //MARK:UISearchBarDelegate

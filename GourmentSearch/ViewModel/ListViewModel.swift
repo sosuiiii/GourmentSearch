@@ -60,8 +60,6 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         self.search = AnyObserver<String>() { text in
             _search.accept(text.element!)
         }
-        
-        
         _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
             var validText = text
             if text.isEmpty { validText = "あ"}
