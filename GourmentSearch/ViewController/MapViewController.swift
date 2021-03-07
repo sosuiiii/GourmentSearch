@@ -56,7 +56,7 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.alert.subscribe({ [weak self] alertType in
-            if UserDefaults.standard.bool(forKey: "showAlert") {return}
+            if AlertShareManager.shared.shown {return}
             let alertView = AlertView(frame: UIScreen.main.bounds)
             self?.view.addSubview(alertView)
             alertView.show(type: alertType.element!!)

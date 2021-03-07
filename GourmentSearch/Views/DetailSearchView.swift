@@ -67,6 +67,7 @@ class DetailSearchView: UIView, Reusable {
     
     weak var delegate: DetailSearchViewDelegate?
     var viewModel = DetailSearchViewModel()
+    private var toolBar = UIToolbar()
     private var datasource: RxCollectionViewSectionedReloadDataSource<GenreDataSource>?
     private var disposeBag = DisposeBag()
     
@@ -83,11 +84,14 @@ class DetailSearchView: UIView, Reusable {
     func setupView() {
         
         searchBar.delegate = self
+        saveButton.isHidden = true
+        setupToolBar(toolBar, target: self, action: #selector(done))
+        feeField.inputAccessoryView = toolBar
+        
+        
+        //MARK: 閉じる、リセット
         closeButton.rx.tap.subscribe({ [weak self] _ in
-            let alertView = AlertView(frame: UIScreen.main.bounds)
-            alertView.delegate = self
-            self?.addSubview(alertView)
-            alertView.show(type: .noSave)
+            self?.dismiss()
         }).disposed(by: disposeBag)
         
         resetButton.rx.tap.subscribe({ [weak self] _ in
@@ -97,27 +101,71 @@ class DetailSearchView: UIView, Reusable {
             alertView.show(type: .reset)
         }).disposed(by: disposeBag)
         
-        saveButton.rx.tap.subscribe({ [weak self] _ in
-            let alertView = AlertView(frame: UIScreen.main.bounds)
-            alertView.delegate = self
-            self?.addSubview(alertView)
-            alertView.show(type: .save)
+        //MARK: ジャンル
+        collectionView.rx.itemSelected.subscribe({ indexPath in
+            guard let indexPath = indexPath.element else {return}
+            let genre = GenreShareManager.shared.genres[indexPath.row]
+            QueryShareManager.shared.addQuery(key: "genre", value: genre.code)
         }).disposed(by: disposeBag)
         
+        //MARK: 距離
+        //~300m
+        lengthFirst.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.lengthTapped.onNext(1)
+        }).disposed(by: disposeBag)
+        //~500m
+        lengthSecond.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.lengthTapped.onNext(2)
+        }).disposed(by: disposeBag)
+        //~1000m
+        lengthThird.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.lengthTapped.onNext(3)
+        }).disposed(by: disposeBag)
+        //~2000m
+        lengthFourth.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.lengthTapped.onNext(4)
+        }).disposed(by: disposeBag)
+        //~3000m
+        lengthFifth.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.lengthTapped.onNext(5)
+        }).disposed(by: disposeBag)
+        
+        viewModel.outputs.activeLength.subscribe({ [weak self] int in
+            guard let self = self else {return}
+            let buttons = [self.lengthFirst, self.lengthSecond, self.lengthThird,
+                           self.lengthFourth, self.lengthFifth]
+            for i in 0...4 {
+                if i + 1 == int.element! {
+                    self.activeLength(button: buttons[i]!, active: true)
+                } else {
+                    self.activeLength(button: buttons[i]!, active: false)
+                }
+            }
+        }).disposed(by: disposeBag)
+        
+        //料金
+        feeField.rx.text.orEmpty.bind(to: viewModel.inputs.feeInput).disposed(by: disposeBag)
+        
+        viewModel.outputs.validFee.bind(to: feeField.rx.text).disposed(by: disposeBag)
         
         
-        viewModel.outputs.items.bind(to: collectionView.rx.items(dataSource: datasource!))
-            .disposed(by: disposeBag)
+        //アラート
+        viewModel.outputs.alert.subscribe({ [weak self] type in
+            if AlertShareManager.shared.shown {return}
+            let alertView = AlertView(frame: UIScreen.main.bounds)
+            self?.addSubview(alertView)
+            alertView.show(type: .feeOver)
+        }).disposed(by: disposeBag)
     }
     
-    func show() {
-        baseView.animate(.slide(way: .in, direction: .up), duration: 0.5, damping: nil, velocity: nil, force: nil).delay(0.1)
-        UIApplication.shared.windows.first{$0.isKeyWindow}?.addSubview(self)
-    }
-    private func dismiss() {
-        baseView.animate(.slide(way: .out, direction: .down), duration: 0.5, damping: nil, velocity: nil, force: nil).completion {
-            self.removeFromSuperview()
-        }
+    
+    @objc func done() {
+        endEditing(true)
     }
 }
 //MARK: AlertViewDelegate
@@ -129,7 +177,10 @@ extension DetailSearchView: AlertViewDelegate {
         case .noSave:
             dismiss()
         case .reset:
-            dismiss()
+            QueryShareManager.shared.resetQuery()
+            viewModel.inputs.lengthTapped.onNext(99)
+            collectionView.reloadData()
+            feeField.text = nil
         default:
             break
         }
@@ -140,7 +191,7 @@ extension DetailSearchView: AlertViewDelegate {
         case .noSave:
             dismiss()
         case .reset:
-            dismiss()
+            break
         default:
             break
         }
@@ -149,7 +200,12 @@ extension DetailSearchView: AlertViewDelegate {
 
 //MARK: UISearchBarDelegate
 extension DetailSearchView: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+    }
 }
 
 
@@ -223,6 +279,17 @@ extension DetailSearchView {
             cell.setupCell(item: items)
             return cell
         })
+        viewModel.outputs.items.bind(to: collectionView.rx.items(dataSource: datasource!))
+            .disposed(by: disposeBag)
+    }
+    func activeLength(button: UIButton, active: Bool) {
+        if active {
+            button.backgroundColor = .systemYellow
+            button.setTitleColor(.white, for: .normal)
+        } else {
+            button.backgroundColor = .white
+            button.setTitleColor(.black, for: .normal)
+        }
     }
     
     func openCloseAnimation(view: UIView, image: UIImageView) {
@@ -236,5 +303,22 @@ extension DetailSearchView {
             }
             view.isHidden.toggle()
         })
+    }
+    func setupToolBar(_ toolBar: UIToolbar, target: UIView, action: Selector) {
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: target, action: action)
+        toolBar.setItems([spacerItem, doneItem], animated: true)
+    }
+    
+    func show() {
+        baseView.animate(.slide(way: .in, direction: .up), duration: 0.5, damping: nil, velocity: nil, force: nil).delay(0.1)
+        UIApplication.shared.windows.first{$0.isKeyWindow}?.addSubview(self)
+    }
+    private func dismiss() {
+        baseView.animate(.slide(way: .out, direction: .down), duration: 0.5, damping: nil, velocity: nil, force: nil).completion {
+            self.removeFromSuperview()
+        }
     }
 }

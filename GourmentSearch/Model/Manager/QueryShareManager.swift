@@ -14,8 +14,14 @@ class QueryShareManager {
     
     func addQuery(key: String, value: String) {
         QueryShareManager.shared.queries[key] = value
+        print("addQuery::\(queries)")
     }
     func getQuery() -> [String:Any]{
+//        print("getQuery::\(queries)")
         return QueryShareManager.shared.queries
+    }
+    func resetQuery() {
+        QueryShareManager.shared.queries = [:]
+        print("getQuery::\(queries)")
     }
 }
