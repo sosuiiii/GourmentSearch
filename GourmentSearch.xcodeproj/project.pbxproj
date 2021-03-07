@@ -12,6 +12,14 @@
 		3D0D1CE325F3D458005BC2C0 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE125F3D458005BC2C0 /* ModalViewController.swift */; };
 		3D0D1CE825F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */; };
 		3D0D1CE925F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */; };
+		3D0D1CEF25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */; };
+		3D0D1CF025F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */; };
+		3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */; };
+		3D0D1CF225F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */; };
+		3D0D1CF725F44BFD005BC2C0 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CF625F44BFD005BC2C0 /* ModalViewModel.swift */; };
+		3D0D1CF825F44BFD005BC2C0 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CF625F44BFD005BC2C0 /* ModalViewModel.swift */; };
+		3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
+		3D0D1CFE25F44F67005BC2C0 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
@@ -98,6 +106,10 @@
 		161E7E38632734874E294B7D /* Pods-GourmentSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GourmentSearch.release.xcconfig"; path = "Target Support Files/Pods-GourmentSearch/Pods-GourmentSearch.release.xcconfig"; sourceTree = "<group>"; };
 		3D0D1CE125F3D458005BC2C0 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3D0D1CE725F3D53E005BC2C0 /* ModalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModalViewController.storyboard; sourceTree = "<group>"; };
+		3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPepperResponseCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotPepperResponseCollectionViewCell.xib; sourceTree = "<group>"; };
+		3D0D1CF625F44BFD005BC2C0 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
+		3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopObject.swift; sourceTree = "<group>"; };
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +260,7 @@
 				3DF3E3F425F30E4500E9F55E /* DetailSearchViewModel.swift */,
 				3DF3E40025F3381500E9F55E /* MapViewModel.swift */,
 				3DF3E45A25F3639900E9F55E /* ListViewModel.swift */,
+				3D0D1CF625F44BFD005BC2C0 /* ModalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -330,6 +343,8 @@
 				3DF3E49325F3695F00E9F55E /* HotPepperResponseTableViewCell.swift */,
 				3DF3E49425F3695F00E9F55E /* HotPepperResponseTableViewCell.xib */,
 				3DF3E4D925F3959900E9F55E /* ErrorHandler.swift */,
+				3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */,
+				3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -346,6 +361,7 @@
 		3DF3E41025F33C0B00E9F55E /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -487,6 +503,7 @@
 				3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */,
 				3D0D1CE825F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */,
 				3DF3E38E25F3057C00E9F55E /* AlertView.xib in Resources */,
+				3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */,
 				3DF3E2F125F2FA9A00E9F55E /* Assets.xcassets in Resources */,
 				3DF3E49725F3695F00E9F55E /* HotPepperResponseTableViewCell.xib in Resources */,
 				3DF3E39A25F305A700E9F55E /* DetailSearchView.xib in Resources */,
@@ -502,6 +519,7 @@
 				3DF3E49825F3695F00E9F55E /* HotPepperResponseTableViewCell.xib in Resources */,
 				3DF3E38F25F3057C00E9F55E /* AlertView.xib in Resources */,
 				3DF3E3C225F306F000E9F55E /* GenreCollectionViewCell.xib in Resources */,
+				3D0D1CF225F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */,
 				3DF3E39B25F305A700E9F55E /* DetailSearchView.xib in Resources */,
 				3D0D1CE925F3D53E005BC2C0 /* ModalViewController.storyboard in Resources */,
 			);
@@ -687,13 +705,16 @@
 				3DF3E49525F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3D0D1CE225F3D458005BC2C0 /* ModalViewController.swift in Sources */,
+				3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
 				3DF3E45B25F3639900E9F55E /* ListViewModel.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
+				3D0D1CF725F44BFD005BC2C0 /* ModalViewModel.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
 				3DF3E42725F349B300E9F55E /* TextFieldValidation.swift in Sources */,
+				3D0D1CEF25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */,
 				3DF3E3D925F3095900E9F55E /* FavoriteViewController.swift in Sources */,
 				3DF3E44925F35D8800E9F55E /* QueryShareManager.swift in Sources */,
 				3DF3E47325F3645700E9F55E /* HotPepperResponseDataSource.swift in Sources */,
@@ -708,7 +729,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF3E3DA25F3095900E9F55E /* FavoriteViewController.swift in Sources */,
+				3D0D1CFE25F44F67005BC2C0 /* ShopObject.swift in Sources */,
 				3DF3E3C025F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
+				3D0D1CF025F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */,
 				3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */,
 				3DF3E49625F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
@@ -720,6 +743,7 @@
 				3DF3E4DB25F3959900E9F55E /* ErrorHandler.swift in Sources */,
 				3DF3E35725F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
 				3DF3E39525F3059B00E9F55E /* DetailSearchView.swift in Sources */,
+				3D0D1CF825F44BFD005BC2C0 /* ModalViewModel.swift in Sources */,
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
 				3DF3E44A25F35D8800E9F55E /* QueryShareManager.swift in Sources */,
 				3DF3E4D525F394FA00E9F55E /* Error.swift in Sources */,
