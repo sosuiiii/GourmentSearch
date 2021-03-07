@@ -81,6 +81,8 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
                 _alert.accept(.feeOver)
             }
             print("予算:\(validFee.0)円")
+            let code = FeeInputValidation.getBudgetCode(fee: validFee.0)
+            QueryShareManager.shared.addQuery(key: "budget", value: code)
             _validFee.accept("\(validFee.0)")
         }
     }

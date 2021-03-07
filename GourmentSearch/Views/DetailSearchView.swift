@@ -148,13 +148,15 @@ class DetailSearchView: UIView, Reusable {
             }
         }).disposed(by: disposeBag)
         
-        //料金
+        //MARK:料金
         feeField.rx.text.orEmpty.bind(to: viewModel.inputs.feeInput).disposed(by: disposeBag)
         
         viewModel.outputs.validFee.bind(to: feeField.rx.text).disposed(by: disposeBag)
         
         
-        //アラート
+        
+        
+        //MARK:アラート
         viewModel.outputs.alert.subscribe({ [weak self] type in
             if AlertShareManager.shared.shown {return}
             let alertView = AlertView(frame: UIScreen.main.bounds)
