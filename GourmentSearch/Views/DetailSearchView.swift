@@ -153,6 +153,61 @@ class DetailSearchView: UIView, Reusable {
         
         viewModel.outputs.validFee.bind(to: feeField.rx.text).disposed(by: disposeBag)
         
+        //MARK:こだわり条件
+        withWifi.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.withWifi.tag)
+            self.activeOther(button: self.withWifi)
+        }).disposed(by: disposeBag)
+        withPersonalSpace.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.withPersonalSpace.tag)
+            self.activeOther(button: self.withPersonalSpace)
+        }).disposed(by: disposeBag)
+        credit.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.credit.tag)
+            self.activeOther(button: self.credit)
+        }).disposed(by: disposeBag)
+        freeFood.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.freeFood.tag)
+            self.activeOther(button: self.freeFood)
+        }).disposed(by: disposeBag)
+        freeDrink.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.freeDrink.tag)
+            self.activeOther(button: self.freeDrink)
+        }).disposed(by: disposeBag)
+        japLiquor.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.japLiquor.tag)
+            self.activeOther(button: self.japLiquor)
+        }).disposed(by: disposeBag)
+        shochu.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.shochu.tag)
+            self.activeOther(button: self.shochu)
+        }).disposed(by: disposeBag)
+        cocktail.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.cocktail.tag)
+            self.activeOther(button: self.cocktail)
+        }).disposed(by: disposeBag)
+        wine.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.inputs.wifi.onNext(self.wine.tag)
+            self.activeOther(button: self.wine)
+        }).disposed(by: disposeBag)
+        numberOfPeople.rx.text.orEmpty.bind(to: viewModel.inputs.numberOfPeople).disposed(by: disposeBag)
+        
+        viewModel.outputs.resetOtherOutput.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            let buttons = [self.withWifi, self.withPersonalSpace, self.credit, self.freeFood, self.freeDrink, self.japLiquor, self.shochu,self.cocktail,self.wine]
+            for button in buttons {
+                self.activeOther(button: button ?? UIButton(), reset: true)
+            }
+        }).disposed(by: disposeBag)
         
         
         
@@ -167,6 +222,9 @@ class DetailSearchView: UIView, Reusable {
     
     
     @objc func done() {
+        if feeField.text == "" {
+            viewModel.inputs.feeInput.onNext("")
+        }
         endEditing(true)
     }
 }
@@ -183,6 +241,8 @@ extension DetailSearchView: AlertViewDelegate {
             viewModel.inputs.lengthTapped.onNext(99)
             collectionView.reloadData()
             feeField.text = nil
+            numberOfPeople.text = nil
+            viewModel.inputs.resetOther.onNext(Void())
         default:
             break
         }
@@ -285,13 +345,31 @@ extension DetailSearchView {
             .disposed(by: disposeBag)
     }
     func activeLength(button: UIButton, active: Bool) {
-        if active {
-            button.backgroundColor = .systemYellow
-            button.setTitleColor(.white, for: .normal)
-        } else {
-            button.backgroundColor = .white
-            button.setTitleColor(.black, for: .normal)
+        UIView.animate(withDuration: 0.3, animations: {
+            if active {
+                button.backgroundColor = .systemYellow
+                button.setTitleColor(.white, for: .normal)
+            } else {
+                button.backgroundColor = .white
+                button.setTitleColor(.black, for: .normal)
+            }
+        })
+    }
+    func activeOther(button: UIButton, reset: Bool = false) {
+        if reset {
+            button.tag = 0
+            button.setImage(UIImage(named: "check_off"), for: .normal)
+            return
         }
+        
+        if button.tag == 0 {
+            button.tag = 1
+            button.setImage(UIImage(named: "check_on"), for: .normal)
+        } else {
+            button.tag = 0
+            button.setImage(UIImage(named: "check_off"), for: .normal)
+        }
+        
     }
     
     func openCloseAnimation(view: UIView, image: UIImageView) {
