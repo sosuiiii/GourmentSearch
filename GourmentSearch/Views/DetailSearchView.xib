@@ -11,24 +11,45 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailSearchView" customModule="GourmentSearch" customModuleProvider="target">
             <connections>
                 <outlet property="baseView" destination="CgK-La-Mli" id="DDG-hv-gZ4"/>
+                <outlet property="closeButton" destination="jxS-Xh-ZIc" id="WWV-nX-nK7"/>
+                <outlet property="cocktail" destination="H6w-1A-fd0" id="0F7-wM-wos"/>
                 <outlet property="collectionView" destination="uB9-AG-p4Z" id="rg1-Zk-j37"/>
+                <outlet property="credit" destination="aAH-rS-p7g" id="X2K-pq-nQV"/>
                 <outlet property="feeArrowImage" destination="dmJ-Fl-xOw" id="coz-x9-Cug"/>
                 <outlet property="feeButton" destination="liQ-4w-yO8" id="FKE-Sm-ln6"/>
+                <outlet property="feeField" destination="wxt-rp-KsU" id="ZL1-zX-rTL"/>
                 <outlet property="feeView" destination="xRl-6a-OGz" id="hnH-7m-8D0"/>
+                <outlet property="freeDrink" destination="Wd0-5l-YaN" id="cfw-Dm-da3"/>
+                <outlet property="freeFood" destination="31s-4S-ZGn" id="8hk-mb-VX9"/>
                 <outlet property="genreArrowImage" destination="Mss-Wu-nQv" id="RKa-dD-EFW"/>
                 <outlet property="genreButton" destination="ifo-lj-Kss" id="UyS-lm-PTA"/>
                 <outlet property="genreView" destination="1BQ-Bk-Q57" id="E34-g4-IwZ"/>
+                <outlet property="japLiquor" destination="pM1-oC-m2F" id="oan-fx-Zm3"/>
                 <outlet property="lengthArrowImage" destination="ckM-7C-030" id="WKM-Uz-TSa"/>
                 <outlet property="lengthButton" destination="ysC-Jh-FkH" id="rkK-1q-t5b"/>
+                <outlet property="lengthFifth" destination="rjy-TN-0s0" id="4Vi-Hi-2rc"/>
+                <outlet property="lengthFirst" destination="KHm-MV-dsu" id="UAf-ut-f1c"/>
+                <outlet property="lengthFourth" destination="U2J-dE-f4y" id="KhP-su-3Og"/>
+                <outlet property="lengthSecond" destination="fDt-eZ-m0c" id="J4A-pa-eev"/>
+                <outlet property="lengthThird" destination="0HB-XM-dUu" id="Yz4-G3-7En"/>
                 <outlet property="lengthView" destination="anX-ic-jq5" id="IVC-9c-DKa"/>
+                <outlet property="numberOfPeople" destination="WBB-0V-mQ4" id="j0o-Ig-0aF"/>
                 <outlet property="otherArrowImage" destination="WOH-TU-5Q0" id="ffB-Ol-pO9"/>
                 <outlet property="otherButton" destination="SV4-QV-knx" id="F8c-dd-Wzq"/>
                 <outlet property="otherView" destination="G1s-QK-qFj" id="mjr-kU-mEa"/>
+                <outlet property="resetButton" destination="swJ-cJ-rlU" id="9bE-gE-0e0"/>
+                <outlet property="saveButton" destination="KLp-vj-tJQ" id="faA-X3-4IW"/>
+                <outlet property="scrollView" destination="hPx-Ch-74d" id="qCw-sl-Gy5"/>
+                <outlet property="searchBar" destination="ytv-KX-JmC" id="BQ0-x9-MkC"/>
+                <outlet property="shochu" destination="Dmg-Ae-A2a" id="yye-pR-xBm"/>
+                <outlet property="wine" destination="3XC-uw-JKG" id="aBS-AB-A2B"/>
+                <outlet property="withPersonalSpace" destination="1rA-01-T1Q" id="FyP-xO-HhC"/>
+                <outlet property="withWifi" destination="vep-Rr-vaJ" id="REG-vC-bKa"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="CgK-La-Mli" customClass="AnimatableView" customModule="IBAnimatable">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="1009"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1397"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-uH-gEt" userLabel="HeaderView">
@@ -63,10 +84,10 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPx-Ch-74d" customClass="SubUIScrollView" customModule="GourmentSearch" customModuleProvider="target">
-                    <rect key="frame" x="8" y="164" width="359" height="651"/>
+                    <rect key="frame" x="8" y="164" width="359" height="1039"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsF-28-IWn">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="441.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="801.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gK4-V4-hdZ">
                                     <rect key="frame" x="0.0" y="121.5" width="359" height="140"/>
@@ -168,7 +189,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KBW-r1-aJ8">
-                                    <rect key="frame" x="0.0" y="261.5" width="359" height="60"/>
+                                    <rect key="frame" x="0.0" y="261.5" width="359" height="140"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZx-Fe-JDd">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
@@ -217,8 +238,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="ysC-Jh-FkH" secondAttribute="trailing" id="v3N-AL-3wg"/>
                                             </constraints>
                                         </view>
-                                        <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anX-ic-jq5">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="80"/>
+                                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anX-ic-jq5">
+                                            <rect key="frame" x="0.0" y="60" width="359" height="80"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHm-MV-dsu">
                                                     <rect key="frame" x="20" y="11" width="70" height="25"/>
@@ -350,7 +371,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z8q-h6-qKg">
-                                    <rect key="frame" x="0.0" y="321.5" width="359" height="60"/>
+                                    <rect key="frame" x="0.0" y="401.5" width="359" height="140"/>
                                     <subviews>
                                         <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qg8-Xf-WTL">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
@@ -399,8 +420,8 @@
                                                 <constraint firstItem="uSO-eC-PUq" firstAttribute="centerY" secondItem="5V6-O1-Vbn" secondAttribute="centerY" id="orB-My-Fbq"/>
                                             </constraints>
                                         </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRl-6a-OGz">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="80"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRl-6a-OGz">
+                                            <rect key="frame" x="0.0" y="60" width="359" height="80"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxt-rp-KsU">
                                                     <rect key="frame" x="20" y="36.5" width="120" height="34"/>
@@ -438,7 +459,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WOs-Fd-AvW">
-                                    <rect key="frame" x="0.0" y="381.5" width="359" height="60"/>
+                                    <rect key="frame" x="0.0" y="541.5" width="359" height="260"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PJ-9u-7BC">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
@@ -487,8 +508,8 @@
                                                 <constraint firstItem="SV4-QV-knx" firstAttribute="leading" secondItem="7PJ-9u-7BC" secondAttribute="leading" id="xF9-2O-O9J"/>
                                             </constraints>
                                         </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G1s-QK-qFj">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="200"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G1s-QK-qFj">
+                                            <rect key="frame" x="0.0" y="60" width="359" height="200"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wifi有り" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HC-D5-4Wy">
                                                     <rect key="frame" x="20" y="15" width="61" height="20.5"/>
@@ -824,7 +845,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="l6c-ad-RlN"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLp-vj-tJQ">
-                    <rect key="frame" x="8" y="865" width="359" height="50"/>
+                    <rect key="frame" x="8" y="1253" width="359" height="50"/>
                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Wvh-pZ-DAd"/>
@@ -838,7 +859,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swJ-cJ-rlU">
-                    <rect key="frame" x="8" y="815" width="359" height="50"/>
+                    <rect key="frame" x="8" y="1203" width="359" height="50"/>
                     <color key="backgroundColor" red="1" green="0.51620613449999997" blue="0.42535270879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="7f3-5P-xe2"/>
@@ -871,7 +892,7 @@
                 <constraint firstItem="KLp-vj-tJQ" firstAttribute="top" secondItem="swJ-cJ-rlU" secondAttribute="bottom" id="yre-xG-zAf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-541.304347826087" y="57.924107142857139"/>
+            <point key="canvasLocation" x="-541.304347826087" y="76.674107142857139"/>
         </view>
     </objects>
     <resources>
