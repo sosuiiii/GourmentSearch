@@ -244,6 +244,7 @@ extension DetailSearchView: AlertViewDelegate {
             collectionView.reloadData()
             feeField.text = nil
             viewModel.inputs.resetOther.onNext(Void())
+            searchBar.text = nil
         default:
             break
         }
