@@ -49,6 +49,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
         self.datasource = _datasource.asObservable()
         
+        let mockData = BehaviorRelay<[HotPepperResponseDataSource]>(value: [HotPepperResponseDataSource(items: [])])
+        self.datasource = mockData.asObservable()
+        
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
             _validatedText.accept(textOver.0)
