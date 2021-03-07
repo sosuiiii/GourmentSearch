@@ -100,6 +100,9 @@ class DetailSearchView: UIView, Reusable {
             alertView.show(type: .reset)
         }).disposed(by: disposeBag)
         
+        //MARK: キーワード
+        searchBar.rx.text.orEmpty.bind(to: viewModel.inputs.search).disposed(by: disposeBag)
+        
         //MARK: ジャンル
         collectionView.rx.itemSelected.subscribe({ indexPath in
             guard let indexPath = indexPath.element else {return}
@@ -211,10 +214,11 @@ class DetailSearchView: UIView, Reusable {
         
         //MARK:アラート
         viewModel.outputs.alert.subscribe({ [weak self] type in
+            guard let element = type.element, let type = element else { return }
             if AlertShareManager.shared.shown {return}
             let alertView = AlertView(frame: UIScreen.main.bounds)
             self?.addSubview(alertView)
-            alertView.show(type: .feeOver)
+            alertView.show(type: type)
         }).disposed(by: disposeBag)
     }
     

@@ -13,6 +13,8 @@ import RxCocoa
 
 
 protocol DetailSerachViewModelInput {
+    
+    var search: AnyObserver<String> {get}
     var row: AnyObserver<Int> {get}
     var lengthTapped: AnyObserver<Int> {get}
     var feeInput: AnyObserver<String> {get}
@@ -26,15 +28,15 @@ protocol DetailSerachViewModelInput {
     var shochu: AnyObserver<Int> {get}
     var cocktail: AnyObserver<Int> {get}
     var wine: AnyObserver<Int> {get}
-    var numberOfPeople: AnyObserver<String> {get}
     
     var resetOther: AnyObserver<Void> {get}
 }
 
 protocol DetailSearchViewModelOutput {
+    var validSearch: Observable<String> {get}
     var items: Observable<[GenreDataSource]> {get}
     var activeLength: Observable<Int> {get}
-    var alert: Observable<AlertType> {get}
+    var alert: Observable<AlertType?> {get}
     var validFee: Observable<String> {get}
     
     var wifiActive: Observable<Bool> {get}
@@ -57,9 +59,8 @@ protocol DetailSearchViewModelType {
 
 class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOutput {
     
-    
-    
     //Input
+    var search: AnyObserver<String>
     var row: AnyObserver<Int>
     var lengthTapped: AnyObserver<Int>
     var feeInput: AnyObserver<String>
@@ -72,13 +73,13 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
     var shochu: AnyObserver<Int>
     var cocktail: AnyObserver<Int>
     var wine: AnyObserver<Int>
-    var numberOfPeople: AnyObserver<String>
     var resetOther: AnyObserver<Void>
     
     //Output
+    var validSearch: Observable<String>
     var items: Observable<[GenreDataSource]>
     var activeLength: Observable<Int>
-    var alert: Observable<AlertType>
+    var alert: Observable<AlertType?>
     var validFee: Observable<String>
     var wifiActive: Observable<Bool>
     var personalSpaceActive: Observable<Bool>
@@ -99,7 +100,7 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
         items = _items.asObservable()
         let _activeLength = PublishRelay<Int>()
         activeLength = _activeLength.asObservable()
-        let _alert = PublishRelay<AlertType>()
+        let _alert = PublishRelay<AlertType?>()
         alert = _alert.asObservable()
         let _validFee = PublishRelay<String>()
         validFee = _validFee.asObservable()
@@ -123,10 +124,21 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
         wineActive = _wineActive.asObservable()
         let _resetOtherOutput = PublishRelay<Void>()
         resetOtherOutput = _resetOtherOutput.asObservable()
+        let _validSearch = PublishRelay<String>()
+        validSearch = _validSearch.asObservable()
+        
+        //検索
+        self.search = AnyObserver<String>() { text in
+            guard let text = text.element else {return}
+            let validText = TextFieldValidation.validateOverCount(text: text)
+            QueryShareManager.shared.addQuery(key: "keyword", value: validText.0)
+            _validSearch.accept(validText.0)
+            _alert.accept(validText.1)
+        }
         
         //ジャンル
         self.row = AnyObserver<Int>() { row in
-            guard let row = row.element else {return}
+//            GenreCollectionViewCellで管理
         }
         //距離 1-300m ~  5-3000m 99-リセット
         self.lengthTapped = AnyObserver<Int>() { range in
