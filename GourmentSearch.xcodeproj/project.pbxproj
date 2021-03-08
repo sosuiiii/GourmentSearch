@@ -20,6 +20,8 @@
 		3D0D1D3725F4F407005BC2C0 /* FeeInputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D3525F4F406005BC2C0 /* FeeInputValidation.swift */; };
 		3D0D1D4225F50372005BC2C0 /* AlertShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */; };
 		3D0D1D4325F50372005BC2C0 /* AlertShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */; };
+		3D0D1D8D25F67CA5005BC2C0 /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */; };
+		3D0D1D8E25F67CA5005BC2C0 /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
@@ -110,6 +112,7 @@
 		3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopObject.swift; sourceTree = "<group>"; };
 		3D0D1D3525F4F406005BC2C0 /* FeeInputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeInputValidation.swift; sourceTree = "<group>"; };
 		3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShareManager.swift; sourceTree = "<group>"; };
+		3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 				3DF3E4D925F3959900E9F55E /* ErrorHandler.swift */,
 				3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */,
 				3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */,
+				3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -698,6 +702,7 @@
 				3DF3E3BF25F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
 				3D0D1D4225F50372005BC2C0 /* AlertShareManager.swift in Sources */,
 				3DF3E34F25F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3D0D1D8D25F67CA5005BC2C0 /* CopyLabel.swift in Sources */,
 				3DF3E41E25F33C9600E9F55E /* GenreShareManager.swift in Sources */,
 				3DF3E3E025F30A7B00E9F55E /* SubUIScrollView.swift in Sources */,
 				3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */,
@@ -733,6 +738,7 @@
 				3D0D1CF025F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */,
 				3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */,
 				3DF3E49625F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
+				3D0D1D8E25F67CA5005BC2C0 /* CopyLabel.swift in Sources */,
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
 				3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */,
 				3D0D1D4325F50372005BC2C0 /* AlertShareManager.swift in Sources */,

@@ -42,7 +42,7 @@ extension GourmentAPI: TargetType {
         var parameter = [
             "key": "b38e665d2e650c87",
             "format": "json",
-            "count": 30
+            "count": 50
         ] as [String : Any]
         switch self {
         case .search(let keyValue):

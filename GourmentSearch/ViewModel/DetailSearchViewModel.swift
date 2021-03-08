@@ -14,6 +14,7 @@ import RxCocoa
 
 protocol DetailSerachViewModelInput {
     
+    var initView: AnyObserver<Void> {get}
     var search: AnyObserver<String> {get}
     var row: AnyObserver<Int> {get}
     var lengthTapped: AnyObserver<Int> {get}
@@ -60,6 +61,7 @@ protocol DetailSearchViewModelType {
 class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOutput {
     
     //Input
+    var initView: AnyObserver<Void>
     var search: AnyObserver<String>
     var row: AnyObserver<Int>
     var lengthTapped: AnyObserver<Int>
@@ -132,7 +134,8 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
             guard let text = text.element else {return}
             let validText = TextFieldValidation.validateOverCount(text: text)
             QueryShareManager.shared.addQuery(key: "keyword", value: validText.0)
-            _validSearch.accept(validText.0)
+            if validText.0 == nil {return}
+            _validSearch.accept(validText.0!)
             _alert.accept(validText.1)
         }
         
@@ -152,7 +155,7 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
         self.feeInput = AnyObserver<String> { str in
             guard let str = str.element else {return}
             if str.isEmpty {
-                QueryShareManager.shared.addQuery(key: "budget", value: "B011")
+                QueryShareManager.shared.addQuery(key: "budget", value: nil)
             }
             guard let fee = Int(str) else {return}
             let validFee = FeeInputValidation.isOver(fee: fee)
@@ -195,6 +198,38 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
         }
         self.resetOther = AnyObserver<Void> { _ in
             _resetOtherOutput.accept(Void())
+        }
+        self.initView = AnyObserver<Void> { _ in
+            let queries = QueryShareManager.shared.getQuery()
+            print(queries)
+            if let keyword = queries["keyword"] {
+                print(keyword)
+                _validSearch.accept(keyword as! String)
+            }
+            if let range = queries["range"] {
+                _activeLength.accept(Int(range as! String)!)
+            }
+            if let _ = queries["wifi"] {
+                _wifiActive.accept(true)
+            }
+            if let _ = queries["free_food"] {
+                _freeFoodActive.accept(true)
+            }
+            if let _ = queries["free_drink"] {
+                _freeDrinkActive.accept(true)
+            }
+            if let _ = queries["sake"] {
+                _japLiquorActive.accept(true)
+            }
+            if let _ = queries["shochu"] {
+                _shochuActive.accept(true)
+            }
+            if let _ = queries["cocktail"] {
+                _cocktailActive.accept(true)
+            }
+            if let _ = queries["wine"] {
+                _wineActive.accept(true)
+            }
         }
     }
 }

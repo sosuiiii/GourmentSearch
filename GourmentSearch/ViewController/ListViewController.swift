@@ -50,6 +50,11 @@ class ListViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
 }
+extension ListViewController: HotPepperTableViewCellDelegate {
+    func starTapped(item: Shop?) {
+        print(item?.name)
+    }
+}
 
 extension ListViewController: AlertViewDelegate {
     func positiveTapped(type: AlertType) {
@@ -74,6 +79,7 @@ extension ListViewController {
         datasource = RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>(configureCell: { _, tableView, indexPath, items in
             let cell = tableView.dequeueReusableCell(withIdentifier: HotPepperResponseTableViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseTableViewCell
             cell.setupCell(item: items)
+            cell.delegate = self
             return cell
         })
     }
