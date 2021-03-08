@@ -10,16 +10,22 @@ import Instantiate
 import InstantiateStandard
 import SDWebImage
 
+protocol HotPepperTableViewCellDelegate {
+    func starTapped(item: Shop?)
+}
+
 class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
 
     
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var name: CopyLabel!
     @IBOutlet weak var budget: UILabel!
-    @IBOutlet weak var genreAndStation: UILabel!
+    @IBOutlet weak var genreAndStation: CopyLabel!
+    @IBOutlet weak var starIcon: UIImageView!
     private var noImageURL = URL(string: "https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png")
-    
+    var delegate:HotPepperTableViewCellDelegate?
+    private var shop:Shop?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +37,7 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
     }
     
     func setupCell(item: Shop) {
+        shop = item
         setImageBySDWebImage(with: item.logoImage ?? noImageURL)
         name.text = item.name
         budget.text = item.budget?.name
@@ -45,6 +52,11 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
                 print("sd_webImage::error:\(String(describing: error))")
             }
         }
+    }
+    @IBAction func starTapped(_ sender: Any) {
+        
+        starIcon.image = UIImage(named: "star_on")
+        delegate?.starTapped(item: shop)
     }
     
 }
