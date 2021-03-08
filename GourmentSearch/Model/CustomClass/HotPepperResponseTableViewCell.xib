@@ -25,14 +25,14 @@
                                     <constraint firstAttribute="width" secondItem="38B-zd-sYX" secondAttribute="height" multiplier="1:1" id="P5L-8v-ZUt"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="しゃぶしゃぶ温野菜亀戸店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="O7b-kn-3eS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="しゃぶしゃぶ温野菜亀戸店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="O7b-kn-3eS" customClass="CopyLabel" customModule="GourmentSearch" customModuleProvider="target">
                                 <rect key="frame" x="121" y="12" width="262" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="居酒屋/亀戸駅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txe-Nw-S4l">
-                                <rect key="frame" x="121" y="94" width="262" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="居酒屋/亀戸駅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="txe-Nw-S4l" customClass="CopyLabel" customModule="GourmentSearch" customModuleProvider="target">
+                                <rect key="frame" x="121" y="94" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0Oj-oi-cuu"/>
                                 </constraints>
@@ -40,8 +40,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000円〜3000円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-jD-vMZ">
-                                <rect key="frame" x="121" y="65" width="262" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000円〜3000円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-jD-vMZ">
+                                <rect key="frame" x="121" y="65" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="d8F-jP-zUO"/>
                                 </constraints>
@@ -49,22 +49,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_off" translatesAutoresizingMaskIntoConstraints="NO" id="EOH-Nr-YTI">
+                                <rect key="frame" x="343.5" y="77.5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="ZaL-pl-vcU"/>
+                                    <constraint firstAttribute="height" constant="25" id="zYN-nR-kVd"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ar8-9p-bco">
+                                <rect key="frame" x="331" y="65" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6Tt-J3-j6I"/>
+                                    <constraint firstAttribute="height" constant="50" id="yRR-jn-7mN"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="starTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bU8-EJ-v9c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="EOH-Nr-YTI" firstAttribute="centerY" secondItem="Ar8-9p-bco" secondAttribute="centerY" id="1Uv-ym-FIs"/>
                             <constraint firstItem="38B-zd-sYX" firstAttribute="top" secondItem="n6h-5D-Gwh" secondAttribute="top" constant="10" id="Csu-lz-KjY"/>
                             <constraint firstItem="gdz-jD-vMZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O7b-kn-3eS" secondAttribute="bottom" constant="8" id="GBc-6n-ebo"/>
                             <constraint firstItem="O7b-kn-3eS" firstAttribute="leading" secondItem="38B-zd-sYX" secondAttribute="trailing" constant="8" id="Glq-B5-R0g"/>
                             <constraint firstItem="gdz-jD-vMZ" firstAttribute="leading" secondItem="38B-zd-sYX" secondAttribute="trailing" constant="8" id="Kkh-D7-3On"/>
                             <constraint firstItem="txe-Nw-S4l" firstAttribute="leading" secondItem="38B-zd-sYX" secondAttribute="trailing" constant="8" symbolic="YES" id="O2t-dZ-ZPD"/>
-                            <constraint firstAttribute="trailing" secondItem="txe-Nw-S4l" secondAttribute="trailing" constant="8" id="O55-6X-sbR"/>
+                            <constraint firstAttribute="trailing" secondItem="txe-Nw-S4l" secondAttribute="trailing" constant="70" id="O55-6X-sbR"/>
+                            <constraint firstAttribute="trailing" secondItem="Ar8-9p-bco" secondAttribute="trailing" constant="10" id="W1C-Xo-QBs"/>
                             <constraint firstAttribute="bottom" secondItem="38B-zd-sYX" secondAttribute="bottom" constant="10" id="Xbf-tL-mjs"/>
+                            <constraint firstItem="EOH-Nr-YTI" firstAttribute="centerX" secondItem="Ar8-9p-bco" secondAttribute="centerX" id="ZSA-Jk-QdK"/>
+                            <constraint firstAttribute="bottom" secondItem="Ar8-9p-bco" secondAttribute="bottom" constant="10" id="bof-83-c9s"/>
                             <constraint firstItem="O7b-kn-3eS" firstAttribute="top" secondItem="n6h-5D-Gwh" secondAttribute="top" constant="12" id="c0V-zm-Fsb"/>
                             <constraint firstItem="38B-zd-sYX" firstAttribute="leading" secondItem="n6h-5D-Gwh" secondAttribute="leading" constant="8" id="hv8-HK-hXA"/>
                             <constraint firstAttribute="trailing" secondItem="O7b-kn-3eS" secondAttribute="trailing" constant="8" id="iGq-Mw-JlS"/>
                             <constraint firstItem="txe-Nw-S4l" firstAttribute="top" secondItem="gdz-jD-vMZ" secondAttribute="bottom" constant="8" symbolic="YES" id="ima-gd-wu2"/>
                             <constraint firstAttribute="bottom" secondItem="txe-Nw-S4l" secondAttribute="bottom" constant="10" id="pCk-Yl-XIN"/>
-                            <constraint firstAttribute="trailing" secondItem="gdz-jD-vMZ" secondAttribute="trailing" constant="8" id="pdh-S9-rQd"/>
+                            <constraint firstAttribute="trailing" secondItem="gdz-jD-vMZ" secondAttribute="trailing" constant="70" id="pdh-S9-rQd"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -81,11 +102,15 @@
             <connections>
                 <outlet property="baseView" destination="n6h-5D-Gwh" id="TRM-ie-A1V"/>
                 <outlet property="budget" destination="gdz-jD-vMZ" id="IVX-TQ-OZo"/>
-                <outlet property="genreAndStation" destination="txe-Nw-S4l" id="mLh-0v-hzM"/>
+                <outlet property="genreAndStation" destination="txe-Nw-S4l" id="S3g-Dc-IBG"/>
                 <outlet property="logoImage" destination="38B-zd-sYX" id="NUg-Xa-UQE"/>
-                <outlet property="name" destination="O7b-kn-3eS" id="Fa9-df-RzJ"/>
+                <outlet property="name" destination="O7b-kn-3eS" id="F62-G8-wMI"/>
+                <outlet property="starIcon" destination="EOH-Nr-YTI" id="eKw-aL-T5y"/>
             </connections>
             <point key="canvasLocation" x="203.62318840579712" y="114.17410714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="star_off" width="512" height="512"/>
+    </resources>
 </document>

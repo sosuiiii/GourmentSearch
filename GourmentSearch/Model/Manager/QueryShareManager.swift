@@ -19,11 +19,8 @@ class QueryShareManager {
         } else {
             QueryShareManager.shared.queries[key] = nil
         }
-        print("addQuery::\(queries)")
-        
     }
     func getQuery() -> [String:Any]{
-//        print("getQuery::\(queries)")
         return QueryShareManager.shared.queries
     }
     func resetQuery() {

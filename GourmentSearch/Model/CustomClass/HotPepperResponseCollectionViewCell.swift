@@ -36,7 +36,7 @@ class HotPepperResponseCollectionViewCell: UICollectionViewCell, Reusable {
         setImageBySDWebImage(with: item.logoImage ?? noImageURL)
         name.text = item.name
         fee.text = item.budget?.name
-        genreAndStation.text = "\(item.genre.name)/\(String(describing: item.stationName))"
+        genreAndStation.text = "\(item.genre.name)/\(item.stationName ?? "")"
     }
     func setImageBySDWebImage(with url: URL?) {
         logoImage.sd_setImage(with: url) { [weak self] image, error, _, _ in

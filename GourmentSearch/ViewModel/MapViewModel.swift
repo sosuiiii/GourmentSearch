@@ -56,7 +56,8 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
-            _validatedText.accept(textOver.0)
+            if textOver.0 == nil { return }
+            _validatedText.accept(textOver.0!)
             if textOver.1 == nil {return}
             _alert.accept(textOver.1)
         }
@@ -74,7 +75,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         }).subscribe({ event in
             switch event {
             case .next(let response):
-                print(response)
+                print("responceCount:\(response.results.shop.count)")
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
                 _showCell.accept(Void())
             case .error(_):

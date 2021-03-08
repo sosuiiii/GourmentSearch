@@ -65,7 +65,7 @@ class DetailSearchView: UIView, Reusable {
     @IBOutlet weak var wine: UIButton!
     
     weak var delegate: DetailSearchViewDelegate?
-    var viewModel = DetailSearchViewModel()
+    var viewModel:DetailSearchViewModelType = DetailSearchViewModel()
     private var toolBar = UIToolbar()
     private var datasource: RxCollectionViewSectionedReloadDataSource<GenreDataSource>?
     private var disposeBag = DisposeBag()
@@ -220,6 +220,37 @@ class DetailSearchView: UIView, Reusable {
             self?.addSubview(alertView)
             alertView.show(type: type)
         }).disposed(by: disposeBag)
+        
+        //MARK: 復帰
+        viewModel.outputs.wifiActive.subscribe({ [weak self] bool in
+            guard let self = self else {return}
+            self.activeOther(button: self.withWifi)
+        }).disposed(by: disposeBag)
+        viewModel.outputs.freeFoodActive.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.activeOther(button: self.freeFood)
+        }).disposed(by: disposeBag)
+        viewModel.outputs.freeDrinkActive.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.activeOther(button: self.freeDrink)
+        }).disposed(by: disposeBag)
+        viewModel.outputs.japLiquorActive.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.activeOther(button: self.japLiquor)
+        }).disposed(by: disposeBag)
+        viewModel.outputs.shochuActive.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.activeOther(button: self.shochu)
+        }).disposed(by: disposeBag)
+        viewModel.outputs.cocktailActive.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.activeOther(button: self.cocktail)
+        }).disposed(by: disposeBag)
+        viewModel.outputs.wineActive.subscribe({ [weak self] _ in
+            guard let self = self else {return}
+            self.activeOther(button: self.wine)
+        }).disposed(by: disposeBag)
+        viewModel.inputs.initView.onNext(Void())
     }
     
     
@@ -280,17 +311,8 @@ extension DetailSearchView: UISearchBarDelegate {
 
 
 
-//MARK: CollectionViewDelegate,DataSource
-extension DetailSearchView:  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreCollectionViewCell.reusableIdentifier, for: indexPath) as! GenreCollectionViewCell
-        return cell
-    }
-    
+//MARK: CollectionViewDelegateFlowLayout
+extension DetailSearchView:  UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -330,6 +352,9 @@ extension DetailSearchView {
         let view = Bundle.main.loadNibNamed(DetailSearchView.reusableIdentifier, owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         genreArrowImage.transform = .init(rotationAngle: (CGFloat.pi / 2))
+        if let keyword = QueryShareManager.shared.getQuery()["keyword"] {
+            searchBar.text = keyword as? String
+        }
         addSubview(view)
     }
     

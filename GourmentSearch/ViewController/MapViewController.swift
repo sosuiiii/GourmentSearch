@@ -62,10 +62,6 @@ class MapViewController: UIViewController {
             alertView.show(type: alertType.element!!)
         }).disposed(by: disposeBag)
         
-        viewModel.outputs.datasource.subscribe({ data in
-            print(data)
-        }).disposed(by: disposeBag)
-        
         viewModel.outputs.datasource.bind(to: collectionView.rx.items(dataSource: datasource!)).disposed(by: disposeBag)
         
         viewModel.outputs.showCell.subscribe({ [weak self] _ in
