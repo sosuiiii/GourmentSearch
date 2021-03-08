@@ -23,7 +23,7 @@ class QueryShareManager {
         
     }
     func getQuery() -> [String:Any]{
-//        print("getQuery::\(queries)")
+        print("getQuery::\(queries)")
         return QueryShareManager.shared.queries
     }
     func resetQuery() {

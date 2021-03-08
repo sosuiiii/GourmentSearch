@@ -51,7 +51,8 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
-            _validatedText.accept(textOver.0)
+            if textOver.0 == nil {return}
+            _validatedText.accept(textOver.0!)
             if textOver.1 == nil {return}
             _alert.accept(textOver.1)
         }
@@ -69,7 +70,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         }).subscribe({ event in
             switch event {
             case .next(let response):
-                print(response)
+                print("responseCount:\(response.results.shop.count)")
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
             case .error(_):
                 _alert.accept(.unexpectedServerError)

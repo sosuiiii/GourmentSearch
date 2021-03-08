@@ -132,7 +132,8 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
             guard let text = text.element else {return}
             let validText = TextFieldValidation.validateOverCount(text: text)
             QueryShareManager.shared.addQuery(key: "keyword", value: validText.0)
-            _validSearch.accept(validText.0)
+            if validText.0 == nil {return}
+            _validSearch.accept(validText.0!)
             _alert.accept(validText.1)
         }
         

@@ -321,6 +321,8 @@ extension DetailSearchView {
         let view = Bundle.main.loadNibNamed(DetailSearchView.reusableIdentifier, owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         genreArrowImage.transform = .init(rotationAngle: (CGFloat.pi / 2))
+        let queries = QueryShareManager.shared.getQuery()
+        
         addSubview(view)
     }
     
