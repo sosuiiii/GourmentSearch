@@ -77,3 +77,59 @@ extension GourmentAPI: TargetType {
         return ["Content-Type": "application/json"]
     }
 }
+
+//MARK: 経路検索
+enum MapAPI {
+    case search(start: String, goal: String)
+}
+extension MapAPI: TargetType {
+    var baseURL: URL {
+        return URL(string: "https://maps.googleapis.com/maps/api/directions")!
+    }
+    
+    var path: String {
+        switch self {
+        case .search:
+            return "/json"
+        }
+    }
+    
+    var method: Method {
+        switch self {
+        case .search:
+            return .get
+        }
+    }
+    
+    var sampleData: Data {
+        return Data()
+    }
+    var parameters: [String: Any] {
+        var parameter = [
+
+            "key":"AIzaSyAhLVH0AI2PYWS3G_dHAcLbNPwkZ2fA76c"
+        ] as [String : Any]
+        switch self {
+        case .search(let start, let goal):
+            parameter["origin"] = start
+            parameter["destination"] = goal
+            return parameter
+        }
+    }
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .search:
+            return Moya.URLEncoding.queryString
+        }
+    }
+    var task: Task {
+        switch self {
+        case .search:
+            print(parameters)
+            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        }
+    }
+    var headers: [String : String]? {
+        return ["Content-Type": "application/json"]
+    }
+}

@@ -30,10 +30,7 @@ class ListViewController: UIViewController {
             detailView.show()
         }).disposed(by: disposeBag)
         
-        searchBar.rx.text.orEmpty.subscribe({ [weak self] text in
-            self?.viewModel.inputs.searchText.onNext(text.element!)
-        }).disposed(by: disposeBag)
-        
+        searchBar.rx.text.orEmpty.bind(to: viewModel.inputs.searchText).disposed(by: disposeBag)
         
         
         //MARK: Output

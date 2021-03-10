@@ -22,6 +22,10 @@
 		3D0D1D4325F50372005BC2C0 /* AlertShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */; };
 		3D0D1D8D25F67CA5005BC2C0 /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */; };
 		3D0D1D8E25F67CA5005BC2C0 /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */; };
+		3D14D28F25F8E27D00636426 /* MapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D28E25F8E27D00636426 /* MapEntity.swift */; };
+		3D14D29025F8E27D00636426 /* MapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D28E25F8E27D00636426 /* MapEntity.swift */; };
+		3D14D29525F8EBD500636426 /* MapFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D29425F8EBD500636426 /* MapFunction.swift */; };
+		3D14D29625F8EBD500636426 /* MapFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D29425F8EBD500636426 /* MapFunction.swift */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
@@ -31,8 +35,8 @@
 		3DF3E30A25F2FA9B00E9F55E /* GourmentSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E30925F2FA9B00E9F55E /* GourmentSearchUITests.swift */; };
 		3DF3E34025F2FF6300E9F55E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E33F25F2FF6300E9F55E /* Repository.swift */; };
 		3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E33F25F2FF6300E9F55E /* Repository.swift */; };
-		3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34825F2FF6F00E9F55E /* Entity.swift */; };
-		3DF3E34A25F2FF6F00E9F55E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34825F2FF6F00E9F55E /* Entity.swift */; };
+		3DF3E34925F2FF6F00E9F55E /* HotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34825F2FF6F00E9F55E /* HotEntity.swift */; };
+		3DF3E34A25F2FF6F00E9F55E /* HotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34825F2FF6F00E9F55E /* HotEntity.swift */; };
 		3DF3E34F25F2FF8E00E9F55E /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34E25F2FF8E00E9F55E /* Moya.swift */; };
 		3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E34E25F2FF8E00E9F55E /* Moya.swift */; };
 		3DF3E35625F3000800E9F55E /* IBDesignable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E35525F3000800E9F55E /* IBDesignable+Extension.swift */; };
@@ -113,6 +117,8 @@
 		3D0D1D3525F4F406005BC2C0 /* FeeInputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeInputValidation.swift; sourceTree = "<group>"; };
 		3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShareManager.swift; sourceTree = "<group>"; };
 		3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
+		3D14D28E25F8E27D00636426 /* MapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntity.swift; sourceTree = "<group>"; };
+		3D14D29425F8EBD500636426 /* MapFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFunction.swift; sourceTree = "<group>"; };
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +133,7 @@
 		3DF3E30925F2FA9B00E9F55E /* GourmentSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmentSearchUITests.swift; sourceTree = "<group>"; };
 		3DF3E30B25F2FA9B00E9F55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF3E33F25F2FF6300E9F55E /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		3DF3E34825F2FF6F00E9F55E /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		3DF3E34825F2FF6F00E9F55E /* HotEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotEntity.swift; sourceTree = "<group>"; };
 		3DF3E34E25F2FF8E00E9F55E /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
 		3DF3E35525F3000800E9F55E /* IBDesignable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IBDesignable+Extension.swift"; sourceTree = "<group>"; };
 		3DF3E38725F3057000E9F55E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -188,6 +194,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D14D28725F8E23600636426 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3DF3E34825F2FF6F00E9F55E /* HotEntity.swift */,
+				3D14D28E25F8E27D00636426 /* MapEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		3DF3E2DB25F2FA9900E9F55E = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				3DF3E33F25F2FF6300E9F55E /* Repository.swift */,
-				3DF3E34825F2FF6F00E9F55E /* Entity.swift */,
 				3DF3E34E25F2FF8E00E9F55E /* Moya.swift */,
 			);
 			path = API;
@@ -326,6 +340,7 @@
 				3DF3E35425F2FFD600E9F55E /* Validation */,
 				3DF3E33D25F2FF4900E9F55E /* DataSource */,
 				3DF3E33B25F2FF3000E9F55E /* API */,
+				3D14D28725F8E23600636426 /* Entity */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,6 +363,7 @@
 				3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */,
 				3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */,
 				3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */,
+				3D14D29425F8EBD500636426 /* MapFunction.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -709,7 +725,9 @@
 				3DF3E49525F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */,
-				3DF3E34925F2FF6F00E9F55E /* Entity.swift in Sources */,
+				3DF3E34925F2FF6F00E9F55E /* HotEntity.swift in Sources */,
+				3D14D28F25F8E27D00636426 /* MapEntity.swift in Sources */,
+				3D14D29525F8EBD500636426 /* MapFunction.swift in Sources */,
 				3DF3E45B25F3639900E9F55E /* ListViewModel.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
@@ -739,11 +757,12 @@
 				3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */,
 				3DF3E49625F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3D0D1D8E25F67CA5005BC2C0 /* CopyLabel.swift in Sources */,
+				3D14D29625F8EBD500636426 /* MapFunction.swift in Sources */,
 				3DF3E2FF25F2FA9B00E9F55E /* GourmentSearchTests.swift in Sources */,
 				3DF3E34125F2FF6300E9F55E /* Repository.swift in Sources */,
 				3D0D1D4325F50372005BC2C0 /* AlertShareManager.swift in Sources */,
 				3DF3E3F025F30D6D00E9F55E /* GenreDataSource.swift in Sources */,
-				3DF3E34A25F2FF6F00E9F55E /* Entity.swift in Sources */,
+				3DF3E34A25F2FF6F00E9F55E /* HotEntity.swift in Sources */,
 				3DF3E3CB25F3094700E9F55E /* MapViewController.swift in Sources */,
 				3DF3E3E125F30A7B00E9F55E /* SubUIScrollView.swift in Sources */,
 				3DF3E4DB25F3959900E9F55E /* ErrorHandler.swift in Sources */,
@@ -751,6 +770,7 @@
 				3DF3E39525F3059B00E9F55E /* DetailSearchView.swift in Sources */,
 				3D0D1CF825F44BFD005BC2C0 /* ModalViewModel.swift in Sources */,
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
+				3D14D29025F8E27D00636426 /* MapEntity.swift in Sources */,
 				3DF3E44A25F35D8800E9F55E /* QueryShareManager.swift in Sources */,
 				3DF3E4D525F394FA00E9F55E /* Error.swift in Sources */,
 				3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */,

@@ -13,6 +13,7 @@ import RxCocoa
 protocol MapViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
+    var location: AnyObserver<(String, String)> {get}
 }
 
 protocol MapViewModelOutput {
@@ -20,6 +21,7 @@ protocol MapViewModelOutput {
     var validatedText: Observable<String>{get}
     var datasource: Observable<[HotPepperResponseDataSource]>{get}
     var showCell: Observable<Void>{get}
+    var direction: Observable<Direction>{get}
 }
 
 protocol MapViewModelType {
@@ -33,11 +35,13 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     //Input
     var searchText: AnyObserver<String>
     var search: AnyObserver<String>
+    var location: AnyObserver<(String, String)>
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
     var datasource: Observable<[HotPepperResponseDataSource]>
     var showCell: Observable<Void>
+    var direction: Observable<Direction>
     //property
     private var disposeBag = DisposeBag()
     
@@ -53,6 +57,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
         self.datasource = _datasource.asObservable()
+        
+        let _direction = PublishRelay<Direction>()
+        self.direction = _direction.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -80,6 +87,25 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 _showCell.accept(Void())
             case .error(_):
                 _alert.accept(.unexpectedServerError)
+            case .completed:
+                break
+            }
+        }).disposed(by: disposeBag)
+        let _location = PublishRelay<(String, String)>()
+        self.location = AnyObserver<(String, String)>() { startEnd in
+            guard let startEnd = startEnd.element else {return}
+            _location.accept(startEnd)
+        }
+        _location.flatMapLatest({ startEnd  -> Observable<Direction> in
+            return try Repository.direction(start: startEnd.0, goal: startEnd.0)
+        }).subscribe({ event in
+            switch event {
+            case .next(let direction):
+                _direction.accept(direction)
+                print(direction)
+            case .error(let error):
+                print(error)
+                _alert.accept(.error)
             case .completed:
                 break
             }
