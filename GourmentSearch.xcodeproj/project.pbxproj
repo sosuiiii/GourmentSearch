@@ -26,6 +26,10 @@
 		3D14D29025F8E27D00636426 /* MapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D28E25F8E27D00636426 /* MapEntity.swift */; };
 		3D14D29525F8EBD500636426 /* MapFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D29425F8EBD500636426 /* MapFunction.swift */; };
 		3D14D29625F8EBD500636426 /* MapFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D29425F8EBD500636426 /* MapFunction.swift */; };
+		3D14D2B825F992BA00636426 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D14D2B725F992BA00636426 /* Property List.plist */; };
+		3D14D2B925F992BA00636426 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D14D2B725F992BA00636426 /* Property List.plist */; };
+		3D14D2BE25F9933200636426 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D2BD25F9933200636426 /* KeyManager.swift */; };
+		3D14D2BF25F9933200636426 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D2BD25F9933200636426 /* KeyManager.swift */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
@@ -119,6 +123,8 @@
 		3D0D1D8C25F67CA5005BC2C0 /* CopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
 		3D14D28E25F8E27D00636426 /* MapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntity.swift; sourceTree = "<group>"; };
 		3D14D29425F8EBD500636426 /* MapFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFunction.swift; sourceTree = "<group>"; };
+		3D14D2B725F992BA00636426 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		3D14D2BD25F9933200636426 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,6 +243,7 @@
 				3DF3E2F025F2FA9A00E9F55E /* Assets.xcassets */,
 				3DF3E2F225F2FA9A00E9F55E /* LaunchScreen.storyboard */,
 				3DF3E2F525F2FA9A00E9F55E /* Info.plist */,
+				3D14D2B725F992BA00636426 /* Property List.plist */,
 			);
 			path = GourmentSearch;
 			sourceTree = "<group>";
@@ -374,6 +381,7 @@
 				3DF3E41D25F33C9600E9F55E /* GenreShareManager.swift */,
 				3DF3E44825F35D8800E9F55E /* QueryShareManager.swift */,
 				3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */,
+				3D14D2BD25F9933200636426 /* KeyManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -520,6 +528,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D14D2B825F992BA00636426 /* Property List.plist in Resources */,
 				3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */,
 				3DF3E38E25F3057C00E9F55E /* AlertView.xib in Resources */,
 				3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */,
@@ -535,6 +544,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D14D2B925F992BA00636426 /* Property List.plist in Resources */,
 				3DF3E49825F3695F00E9F55E /* HotPepperResponseTableViewCell.xib in Resources */,
 				3DF3E38F25F3057C00E9F55E /* AlertView.xib in Resources */,
 				3DF3E3C225F306F000E9F55E /* GenreCollectionViewCell.xib in Resources */,
@@ -725,6 +735,7 @@
 				3DF3E49525F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */,
+				3D14D2BE25F9933200636426 /* KeyManager.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* HotEntity.swift in Sources */,
 				3D14D28F25F8E27D00636426 /* MapEntity.swift in Sources */,
 				3D14D29525F8EBD500636426 /* MapFunction.swift in Sources */,
@@ -765,6 +776,7 @@
 				3DF3E34A25F2FF6F00E9F55E /* HotEntity.swift in Sources */,
 				3DF3E3CB25F3094700E9F55E /* MapViewController.swift in Sources */,
 				3DF3E3E125F30A7B00E9F55E /* SubUIScrollView.swift in Sources */,
+				3D14D2BF25F9933200636426 /* KeyManager.swift in Sources */,
 				3DF3E4DB25F3959900E9F55E /* ErrorHandler.swift in Sources */,
 				3DF3E35725F3000800E9F55E /* IBDesignable+Extension.swift in Sources */,
 				3DF3E39525F3059B00E9F55E /* DetailSearchView.swift in Sources */,

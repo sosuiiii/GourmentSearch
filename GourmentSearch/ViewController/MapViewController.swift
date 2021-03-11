@@ -70,11 +70,13 @@ class MapViewController: UIViewController {
             self.openClose()
         }).disposed(by: disposeBag)
         
+        //パスを受け取り経路を表示する
         viewModel.outputs.direction.subscribe({ [weak self] direction in
             guard let self = self else {return}
             let path = MapFunction.showRoute(direction.element!)
             let poly = GMSPolyline(path: path)
             poly.strokeWidth = 4.0
+            poly.strokeColor = .systemYellow
             poly.map = self.mapView
         }).disposed(by: disposeBag)
     }
@@ -82,12 +84,12 @@ class MapViewController: UIViewController {
 //MARK: HotPepperCollectionViewCellDelegate
 extension MapViewController: HotPepperCollectionViewCellDelegate {
     func way(lat: Double, lng: Double) {
+        print(lat, lng)
         if let location = locationManager.location?.coordinate {
             let startLocation = "\(location.latitude),\(location.longitude)"
             let endLocation = "\(lat),\(lng)"
             viewModel.inputs.location.onNext((startLocation, endLocation))
         }
-        
     }
     func save(row: Int) {
     }

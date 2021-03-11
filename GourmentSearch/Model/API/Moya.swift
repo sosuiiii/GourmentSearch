@@ -105,10 +105,8 @@ extension MapAPI: TargetType {
         return Data()
     }
     var parameters: [String: Any] {
-        var parameter = [
-
-            "key":"AIzaSyAhLVH0AI2PYWS3G_dHAcLbNPwkZ2fA76c"
-        ] as [String : Any]
+        
+        var parameter = ["key":KeyManager.shared.key] as [String : Any]
         switch self {
         case .search(let start, let goal):
             parameter["origin"] = start

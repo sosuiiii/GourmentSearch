@@ -97,7 +97,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             _location.accept(startEnd)
         }
         _location.flatMapLatest({ startEnd  -> Observable<Direction> in
-            return try Repository.direction(start: startEnd.0, goal: startEnd.0)
+            return try Repository.direction(start: startEnd.0, goal: startEnd.1)
         }).subscribe({ event in
             switch event {
             case .next(let direction):
