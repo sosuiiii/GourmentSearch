@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
+import PKHUD
 
 protocol MapViewModelInput {
     var searchText: AnyObserver<String>{get}
@@ -23,6 +24,7 @@ protocol MapViewModelOutput {
     var datasource: Observable<[HotPepperResponseDataSource]>{get}
     var showCell: Observable<Void>{get}
     var direction: Observable<Direction>{get}
+    var hud: Observable<HUDContentType>{get}
 }
 
 protocol MapViewModelType {
@@ -44,6 +46,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     var datasource: Observable<[HotPepperResponseDataSource]>
     var showCell: Observable<Void>
     var direction: Observable<Direction>
+    var hud: Observable<HUDContentType>
     //property
     private var disposeBag = DisposeBag()
     
@@ -62,6 +65,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _direction = PublishRelay<Direction>()
         self.direction = _direction.asObservable()
+        
+        let _hud = PublishRelay<HUDContentType>()
+        self.hud = _hud.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -87,8 +93,10 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 print("responceCount:\(response.results.shop.count)")
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
                 _showCell.accept(Void())
+                _hud.accept(.success)
             case .error(_):
-                _alert.accept(.unexpectedServerError)
+                _hud.accept(.error)
+//                _alert.accept(.unexpectedServerError)
             case .completed:
                 break
             }

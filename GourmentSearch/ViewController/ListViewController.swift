@@ -47,12 +47,15 @@ class ListViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
 }
+//MARK: HotPepperTableViewCellDelegate
 extension ListViewController: HotPepperTableViewCellDelegate {
     func starTapped(item: Shop?) {
-        print(item?.name)
+        if let shop = item {
+            viewModel.inputs.save.onNext(shop)
+        }
     }
 }
-
+//MARK: AlertViewDelegate
 extension ListViewController: AlertViewDelegate {
     func positiveTapped(type: AlertType) {
     }

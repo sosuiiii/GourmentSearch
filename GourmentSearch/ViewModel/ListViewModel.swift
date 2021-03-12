@@ -14,6 +14,7 @@ import RxCocoa
 protocol ListViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
+    var save: AnyObserver<Shop> {get}
 }
 
 protocol ListViewModelOutput {
@@ -32,6 +33,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
     //Input
     var searchText: AnyObserver<String>
     var search: AnyObserver<String>
+    var save: AnyObserver<Shop>
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
@@ -78,6 +80,12 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
                 break
             }
         }).disposed(by: disposeBag)
+        
+        self.save = AnyObserver<Shop>() { shop in
+            let object = ShopObject(shop: shop.element!)
+            RealmManager.addEntity(object: object)
+            print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
+        }
     }
 }
 

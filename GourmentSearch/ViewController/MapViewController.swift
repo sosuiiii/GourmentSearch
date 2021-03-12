@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 import GoogleMaps
 import CoreLocation
+import PKHUD
 
 class MapViewController: UIViewController {
     
@@ -33,7 +34,7 @@ class MapViewController: UIViewController {
         setupRx()
         setupMap()
         collectionView.transform = .init(translationX: 0, y: 250)
-
+        
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
@@ -79,12 +80,30 @@ class MapViewController: UIViewController {
             poly.strokeColor = .systemYellow
             poly.map = self.mapView
         }).disposed(by: disposeBag)
+        
+        viewModel.outputs.hud.subscribe({ type in
+            HUD.show(.success)
+        }).disposed(by: disposeBag)
+        
+    }
+}
+
+//MARK:UISearchBarDelegate
+extension MapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        HUD.show(.progress)
+        viewModel.inputs.search.onNext(searchBar.text ?? "")
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
     }
 }
 
 //MARK: HotPepperCollectionViewCellDelegate
 extension MapViewController: HotPepperCollectionViewCellDelegate {
     func save(shop: Shop) {
+        HUD.show(.progress)
         viewModel.inputs.save.onNext(shop)
     }
     
@@ -189,16 +208,6 @@ extension MapViewController {
         }, completion: { _ in
             self.shown.toggle()
         })
-    }
-}
-//MARK:UISearchBarDelegate
-extension MapViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        viewModel.inputs.search.onNext(searchBar.text ?? "")
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
     }
 }
 
