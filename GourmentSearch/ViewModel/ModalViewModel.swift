@@ -57,7 +57,7 @@ class ModalViewModel: ModalViewModelInput, ModalViewModelOutput {
         }
         
         _waySearch.subscribe({ shop in
-            
+             
         }).disposed(by: disposeBag)
     }
 }

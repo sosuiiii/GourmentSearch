@@ -203,7 +203,7 @@
         <!--お気に入り-->
         <scene sceneID="sHD-hQ-pN0">
             <objects>
-                <viewController id="NIG-xh-m9F" customClass="FavoritesViewController" customModule="GourmentSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NIG-xh-m9F" customClass="FavoriteViewController" customModule="GourmentSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y7B-8f-6Vj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -213,18 +213,9 @@
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ynn-2H-WcK">
-                                <rect key="frame" x="10" y="178" width="394" height="635"/>
+                                <rect key="frame" x="10" y="104" width="394" height="709"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fbp-PO-TUg">
-                                <rect key="frame" x="20" y="124" width="374" height="32"/>
-                                <segments>
-                                    <segment title="安い順"/>
-                                    <segment title="高い順"/>
-                                    <segment title="近い順"/>
-                                    <segment title="スター数"/>
-                                </segments>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルスポ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEH-iS-kU8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -239,27 +230,27 @@
                         <viewLayoutGuide key="safeArea" id="K6X-dl-Cpm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fbp-PO-TUg" firstAttribute="top" secondItem="CEH-iS-kU8" secondAttribute="bottom" constant="20" id="0Nm-d1-5Aw"/>
+                            <constraint firstItem="Ynn-2H-WcK" firstAttribute="top" secondItem="TIw-kr-d1o" secondAttribute="bottom" id="18f-hU-ezP"/>
                             <constraint firstItem="TIw-kr-d1o" firstAttribute="top" secondItem="y7B-8f-6Vj" secondAttribute="top" id="2px-X0-R0M"/>
-                            <constraint firstItem="fbp-PO-TUg" firstAttribute="leading" secondItem="K6X-dl-Cpm" secondAttribute="leading" constant="20" id="5wH-cG-vHH"/>
                             <constraint firstItem="K6X-dl-Cpm" firstAttribute="trailing" secondItem="Ynn-2H-WcK" secondAttribute="trailing" constant="10" id="C73-xI-703"/>
                             <constraint firstItem="CEH-iS-kU8" firstAttribute="top" secondItem="K6X-dl-Cpm" secondAttribute="top" id="DIw-aI-eY3"/>
                             <constraint firstItem="Ynn-2H-WcK" firstAttribute="leading" secondItem="K6X-dl-Cpm" secondAttribute="leading" constant="10" id="Dij-Rl-Xbz"/>
                             <constraint firstItem="TIw-kr-d1o" firstAttribute="trailing" secondItem="K6X-dl-Cpm" secondAttribute="trailing" id="L7B-Gu-3io"/>
                             <constraint firstItem="CEH-iS-kU8" firstAttribute="leading" secondItem="K6X-dl-Cpm" secondAttribute="leading" id="NH0-BE-pCd"/>
                             <constraint firstItem="CEH-iS-kU8" firstAttribute="trailing" secondItem="K6X-dl-Cpm" secondAttribute="trailing" id="Qoz-Y2-25A"/>
-                            <constraint firstItem="Ynn-2H-WcK" firstAttribute="top" secondItem="fbp-PO-TUg" secondAttribute="bottom" constant="23" id="Xvu-K4-OzL"/>
-                            <constraint firstItem="K6X-dl-Cpm" firstAttribute="trailing" secondItem="fbp-PO-TUg" secondAttribute="trailing" constant="20" id="dk7-hZ-QgC"/>
                             <constraint firstItem="Ynn-2H-WcK" firstAttribute="bottom" secondItem="K6X-dl-Cpm" secondAttribute="bottom" id="mJn-Qd-xoX"/>
                             <constraint firstItem="TIw-kr-d1o" firstAttribute="leading" secondItem="K6X-dl-Cpm" secondAttribute="leading" id="tHY-ni-ykr"/>
                             <constraint firstItem="CEH-iS-kU8" firstAttribute="bottom" secondItem="TIw-kr-d1o" secondAttribute="bottom" id="tzc-lW-H27"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="お気に入り" image="star" catalog="system" id="BWT-r7-hJ8"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ynn-2H-WcK" id="bBE-TL-qRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcG-93-a4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844" y="837.03148425787117"/>
+            <point key="canvasLocation" x="843.47826086956525" y="836.38392857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ILa-QV-TRB">
