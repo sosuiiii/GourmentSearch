@@ -47,6 +47,7 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
         let object = RealmManager.getEntityList(type: ShopObject.self)
         for i in 0..<object.count {
             if object[i].name == item.name {
+                starIcon.tag = 1
                 starIcon.image = UIImage(named: "star_on")
             } else {
                 starIcon.image = UIImage(named: "star_off")
