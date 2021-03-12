@@ -177,6 +177,11 @@ extension MapViewController {
         mapView.delegate = self
         setupToolBar(toolBar, target: self, action: #selector(done))
         searchBar.inputAccessoryView = toolBar
+        
+        if let location = locationManager.location?.coordinate {
+            QueryShareManager.shared.addQuery(key: "lat", value: "\(location.latitude)")
+            QueryShareManager.shared.addQuery(key: "lng", value: "\(location.longitude)")
+        }
     }
     @objc func done() {
         searchBar.text = ""
