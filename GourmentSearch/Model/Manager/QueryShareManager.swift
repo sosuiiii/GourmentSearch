@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import CoreLocation
 
 class QueryShareManager {
     private var queries:[String:Any] = [:]
@@ -25,6 +26,10 @@ class QueryShareManager {
     }
     func resetQuery() {
         QueryShareManager.shared.queries = [:]
+        if let location = CLLocationManager().location?.coordinate {
+            QueryShareManager.shared.addQuery(key: "lat", value: "\(location.latitude)")
+            QueryShareManager.shared.addQuery(key: "lng", value: "\(location.longitude)")
+        }
         print("getQuery::\(queries)")
     }
     

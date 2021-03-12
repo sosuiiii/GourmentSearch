@@ -9,11 +9,13 @@ import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
+import PKHUD
 
 protocol MapViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
     var location: AnyObserver<(String, String)> {get}
+    var save: AnyObserver<Shop> {get}
 }
 
 protocol MapViewModelOutput {
@@ -22,6 +24,7 @@ protocol MapViewModelOutput {
     var datasource: Observable<[HotPepperResponseDataSource]>{get}
     var showCell: Observable<Void>{get}
     var direction: Observable<Direction>{get}
+    var hud: Observable<HUDContentType>{get}
 }
 
 protocol MapViewModelType {
@@ -36,12 +39,14 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     var searchText: AnyObserver<String>
     var search: AnyObserver<String>
     var location: AnyObserver<(String, String)>
+    var save: AnyObserver<Shop>
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
     var datasource: Observable<[HotPepperResponseDataSource]>
     var showCell: Observable<Void>
     var direction: Observable<Direction>
+    var hud: Observable<HUDContentType>
     //property
     private var disposeBag = DisposeBag()
     
@@ -60,6 +65,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _direction = PublishRelay<Direction>()
         self.direction = _direction.asObservable()
+        
+        let _hud = PublishRelay<HUDContentType>()
+        self.hud = _hud.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -85,12 +93,16 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 print("responceCount:\(response.results.shop.count)")
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
                 _showCell.accept(Void())
+                _hud.accept(.success)
             case .error(_):
-                _alert.accept(.unexpectedServerError)
+                _hud.accept(.error)
+//                _alert.accept(.unexpectedServerError)
             case .completed:
                 break
             }
         }).disposed(by: disposeBag)
+        
+        
         let _location = PublishRelay<(String, String)>()
         self.location = AnyObserver<(String, String)>() { startEnd in
             guard let startEnd = startEnd.element else {return}
@@ -110,6 +122,14 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 break
             }
         }).disposed(by: disposeBag)
+        
+        
+        self.save = AnyObserver<Shop>() { shop in
+            let object = ShopObject(shop: shop.element!)
+            RealmManager.addEntity(object: object)
+            print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
+            _alert.accept(.favorite)
+        }
     }
 }
 

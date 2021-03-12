@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 import GoogleMaps
 import CoreLocation
+import PKHUD
 
 class MapViewController: UIViewController {
     
@@ -21,11 +22,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = MapViewModel()
+    private var viewModel = MapViewModel() as MapViewModelType
     private var datasource: RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
     private var shown = false
+    private var toolBar = UIToolbar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +38,12 @@ class MapViewController: UIViewController {
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
-            self?.view.addSubview(detailView)
+            detailView.viewModel.outputs.validSearch.bind(to: self.searchBar.rx.text)
+                .disposed(by: self.disposeBag)
+            self.view.addSubview(detailView)
+            self.view.endEditing(true)
             detailView.show()
         }).disposed(by: disposeBag)
         
@@ -47,7 +53,6 @@ class MapViewController: UIViewController {
             guard let self = self else {return}
             self.openClose()
         }).disposed(by: disposeBag)
-        
         
         //MARK: Output
         viewModel.outputs.validatedText.bind(to: searchBar.rx.text)
@@ -79,10 +84,33 @@ class MapViewController: UIViewController {
             poly.strokeColor = .systemYellow
             poly.map = self.mapView
         }).disposed(by: disposeBag)
+        
+        viewModel.outputs.hud.subscribe({ type in
+            HUD.hide()
+        }).disposed(by: disposeBag)
+        
     }
 }
+
+//MARK:UISearchBarDelegate
+extension MapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        HUD.show(.progress)
+        viewModel.inputs.search.onNext(searchBar.text ?? "")
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+    }
+}
+
 //MARK: HotPepperCollectionViewCellDelegate
 extension MapViewController: HotPepperCollectionViewCellDelegate {
+    func save(shop: Shop) {
+        HUD.show(.progress)
+        viewModel.inputs.save.onNext(shop)
+    }
+    
     func way(lat: Double, lng: Double) {
         print(lat, lng)
         if let location = locationManager.location?.coordinate {
@@ -90,8 +118,6 @@ extension MapViewController: HotPepperCollectionViewCellDelegate {
             let endLocation = "\(lat),\(lng)"
             viewModel.inputs.location.onNext((startLocation, endLocation))
         }
-    }
-    func save(row: Int) {
     }
 }
 
@@ -149,6 +175,17 @@ extension MapViewController {
     func setupView() {
         searchBar.delegate = self
         mapView.delegate = self
+        setupToolBar(toolBar, target: self, action: #selector(done))
+        searchBar.inputAccessoryView = toolBar
+        
+        if let location = locationManager.location?.coordinate {
+            QueryShareManager.shared.addQuery(key: "lat", value: "\(location.latitude)")
+            QueryShareManager.shared.addQuery(key: "lng", value: "\(location.longitude)")
+        }
+    }
+    @objc func done() {
+        searchBar.text = ""
+        self.view.endEditing(true)
     }
     func setupMap() {
         mapView.animate(toZoom: 16)
@@ -187,15 +224,12 @@ extension MapViewController {
             self.shown.toggle()
         })
     }
-}
-//MARK:UISearchBarDelegate
-extension MapViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        viewModel.inputs.search.onNext(searchBar.text ?? "")
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
+    func setupToolBar(_ toolBar: UIToolbar, target: UIViewController, action: Selector) {
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: target, action: action)
+        toolBar.setItems([spacerItem, doneItem], animated: true)
     }
 }
 
@@ -207,3 +241,4 @@ extension MapViewController: AlertViewDelegate {
     func negativeTapped(type: AlertType) {
     }
 }
+

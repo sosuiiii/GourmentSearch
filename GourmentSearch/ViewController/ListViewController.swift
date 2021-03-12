@@ -8,6 +8,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import PKHUD
 
 class ListViewController: UIViewController {
     
@@ -16,17 +17,22 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = ListViewModel()
+    private var viewModel = ListViewModel() as ListViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>?
-
+    private var toolBar = UIToolbar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
-            self?.view.addSubview(detailView)
+            detailView.viewModel.outputs.validSearch.bind(to: self.searchBar.rx.text)
+                .disposed(by: self.disposeBag)
+            self.view.addSubview(detailView)
+            self.view.endEditing(true)
             detailView.show()
         }).disposed(by: disposeBag)
         
@@ -45,14 +51,25 @@ class ListViewController: UIViewController {
             self?.view.addSubview(alertView)
             alertView.show(type: alertType.element!!)
         }).disposed(by: disposeBag)
+        
+        viewModel.outputs.hud.subscribe({ type in
+            HUD.hide()
+        }).disposed(by: disposeBag)
     }
 }
+//MARK: HotPepperTableViewCellDelegate
 extension ListViewController: HotPepperTableViewCellDelegate {
-    func starTapped(item: Shop?) {
-        print(item?.name)
+    func starTapped(item: Shop?, on: Bool) {
+        if let shop = item, on{
+            viewModel.inputs.save.onNext(shop)
+        } else if let shop = item, !on {
+            let name = shop.name
+            viewModel.inputs.delete.onNext(name)
+        }
     }
 }
 
+//MARK: AlertViewDelegate
 extension ListViewController: AlertViewDelegate {
     func positiveTapped(type: AlertType) {
     }
@@ -70,6 +87,9 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController {
     func setupView() {
         searchBar.delegate = self
+        setupToolBar(toolBar, target: self, action: #selector(done))
+        searchBar.inputAccessoryView = toolBar
+        
         tableView.register(UINib(nibName: HotPepperResponseTableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: HotPepperResponseTableViewCell.reusableIdentifier)
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
@@ -80,11 +100,23 @@ extension ListViewController {
             return cell
         })
     }
+    func setupToolBar(_ toolBar: UIToolbar, target: UIViewController, action: Selector) {
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: target, action: action)
+        toolBar.setItems([spacerItem, doneItem], animated: true)
+    }
+    @objc func done() {
+        searchBar.text = ""
+        self.view.endEditing(true)
+    }
 }
 //MARK:UISearchBarDelegate
 extension ListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        HUD.show(.progress)
         viewModel.inputs.search.onNext(searchBar.text ?? "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
