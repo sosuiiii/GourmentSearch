@@ -27,8 +27,12 @@ class ListViewController: UIViewController {
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
-            self?.view.addSubview(detailView)
+            detailView.viewModel.outputs.validSearch.bind(to: self.searchBar.rx.text)
+                .disposed(by: self.disposeBag)
+            self.view.addSubview(detailView)
+            self.view.endEditing(true)
             detailView.show()
         }).disposed(by: disposeBag)
         
@@ -64,6 +68,7 @@ extension ListViewController: HotPepperTableViewCellDelegate {
         }
     }
 }
+
 //MARK: AlertViewDelegate
 extension ListViewController: AlertViewDelegate {
     func positiveTapped(type: AlertType) {

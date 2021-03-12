@@ -102,7 +102,7 @@ class DetailSearchView: UIView, Reusable {
         
         //MARK: キーワード
         searchBar.rx.text.orEmpty.bind(to: viewModel.inputs.search).disposed(by: disposeBag)
-        
+        viewModel.outputs.validSearch.bind(to: searchBar.rx.text).disposed(by: disposeBag)
         //MARK: ジャンル
         collectionView.rx.itemSelected.subscribe({ indexPath in
             guard let indexPath = indexPath.element else {return}
