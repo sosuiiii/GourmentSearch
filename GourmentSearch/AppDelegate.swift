@@ -17,9 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let googleKey = "AIzaSyAhLVH0AI2PYWS3G_dHAcLbNPwkZ2fA76c"
-        GMSServices.provideAPIKey(googleKey)
+        GMSServices.provideAPIKey("AIzaSyAhLVH0AI2PYWS3G_dHAcLbNPwkZ2fA76c")
+        KeyManager.shared.hot = "b38e665d2e650c87"
         
         //キャッシュ代わり
         if !shared.genres.isEmpty {return true}
@@ -31,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
