@@ -17,7 +17,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = ListViewModel()
+    private var viewModel = ListViewModel() as ListViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var toolBar = UIToolbar()
     

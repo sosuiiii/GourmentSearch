@@ -13,6 +13,7 @@ import RxDataSources
 
 protocol FavoriteViewModelInput {
     var updateFavorite: AnyObserver<Void> {get}
+    var delete: AnyObserver<String> {get}
 }
 
 protocol FavoriteViewModelOutput {
@@ -28,6 +29,7 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
     
     //Input
     var updateFavorite: AnyObserver<Void>
+    var delete: AnyObserver<String>
     //Output
     var dataSource: Observable<[FavoriteShopDataSource]>
     
@@ -50,6 +52,10 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
             }
             let datasource = [FavoriteShopDataSource(items: obj)]
             _dataSource.accept(datasource)
+        }
+        
+        self.delete = AnyObserver<String>() { name in
+            RealmManager.deleteOneObject(type: ShopObject.self, name: name.element!)
         }
     }
 }

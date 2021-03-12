@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = MapViewModel()
+    private var viewModel = MapViewModel() as MapViewModelType
     private var datasource: RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
