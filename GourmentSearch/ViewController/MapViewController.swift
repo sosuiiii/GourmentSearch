@@ -49,7 +49,6 @@ class MapViewController: UIViewController {
             self.openClose()
         }).disposed(by: disposeBag)
         
-        
         //MARK: Output
         viewModel.outputs.validatedText.bind(to: searchBar.rx.text)
             .disposed(by: disposeBag)
@@ -82,7 +81,7 @@ class MapViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         viewModel.outputs.hud.subscribe({ type in
-            HUD.show(.success)
+            HUD.hide()
         }).disposed(by: disposeBag)
         
     }

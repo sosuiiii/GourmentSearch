@@ -10,17 +10,20 @@ import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
+import PKHUD
 
 protocol ListViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
     var save: AnyObserver<Shop> {get}
+    var delete: AnyObserver<String> {get}
 }
 
 protocol ListViewModelOutput {
     var alert: Observable<AlertType?>{get}
     var validatedText: Observable<String>{get}
     var datasource: Observable<[HotPepperResponseDataSource]>{get}
+    var hud: Observable<HUDContentType>{get}
 }
 
 protocol ListViewModelType {
@@ -34,10 +37,12 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
     var searchText: AnyObserver<String>
     var search: AnyObserver<String>
     var save: AnyObserver<Shop>
+    var delete: AnyObserver<String>
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
     var datasource: Observable<[HotPepperResponseDataSource]>
+    var hud: Observable<HUDContentType>
     //property
     private var disposeBag = DisposeBag()
     
@@ -50,6 +55,9 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         
         let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
         self.datasource = _datasource.asObservable()
+        
+        let _hud = PublishRelay<HUDContentType>()
+        self.hud = _hud.asObservable()
         
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
@@ -73,9 +81,11 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             switch event {
             case .next(let response):
                 print("responseCount:\(response.results.shop.count)")
+                _hud.accept(.success)
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
             case .error(_):
-                _alert.accept(.unexpectedServerError)
+                _hud.accept(.error)
+//                _alert.accept(.unexpectedServerError)
             case .completed:
                 break
             }
@@ -85,6 +95,9 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             let object = ShopObject(shop: shop.element!)
             RealmManager.addEntity(object: object)
             print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
+        }
+        self.delete = AnyObserver<String>() { name in
+            RealmManager.deleteOneObject(type: ShopObject.self, name: name.element!)
         }
     }
 }

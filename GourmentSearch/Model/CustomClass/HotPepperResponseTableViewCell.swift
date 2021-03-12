@@ -11,7 +11,7 @@ import InstantiateStandard
 import SDWebImage
 
 protocol HotPepperTableViewCellDelegate {
-    func starTapped(item: Shop?)
+    func starTapped(item: Shop?, on: Bool)
 }
 
 class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
@@ -75,12 +75,12 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
         if starIcon.tag == 0 {
             starIcon.tag = 1
             starIcon.image = UIImage(named: "star_on")
+            delegate?.starTapped(item: shop, on: true)
         } else {
             starIcon.tag = 0
             starIcon.image = UIImage(named: "star_off")
+            delegate?.starTapped(item: shop, on: false)
         }
-        
-        delegate?.starTapped(item: shop)
     }
     
 }

@@ -8,6 +8,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import PKHUD
 
 class ListViewController: UIViewController {
     
@@ -45,13 +46,20 @@ class ListViewController: UIViewController {
             self?.view.addSubview(alertView)
             alertView.show(type: alertType.element!!)
         }).disposed(by: disposeBag)
+        
+        viewModel.outputs.hud.subscribe({ type in
+            HUD.hide()
+        }).disposed(by: disposeBag)
     }
 }
 //MARK: HotPepperTableViewCellDelegate
 extension ListViewController: HotPepperTableViewCellDelegate {
-    func starTapped(item: Shop?) {
-        if let shop = item {
+    func starTapped(item: Shop?, on: Bool) {
+        if let shop = item, on{
             viewModel.inputs.save.onNext(shop)
+        } else if let shop = item, !on {
+            let name = shop.name
+            viewModel.inputs.delete.onNext(name)
         }
     }
 }
@@ -88,6 +96,7 @@ extension ListViewController {
 extension ListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        HUD.show(.progress)
         viewModel.inputs.search.onNext(searchBar.text ?? "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
