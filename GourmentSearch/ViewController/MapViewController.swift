@@ -27,6 +27,7 @@ class MapViewController: UIViewController {
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
     private var shown = false
+    private var toolBar = UIToolbar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,6 +171,12 @@ extension MapViewController {
     func setupView() {
         searchBar.delegate = self
         mapView.delegate = self
+        setupToolBar(toolBar, target: self, action: #selector(done))
+        searchBar.inputAccessoryView = toolBar
+    }
+    @objc func done() {
+        searchBar.text = ""
+        self.view.endEditing(true)
     }
     func setupMap() {
         mapView.animate(toZoom: 16)
@@ -207,6 +214,13 @@ extension MapViewController {
         }, completion: { _ in
             self.shown.toggle()
         })
+    }
+    func setupToolBar(_ toolBar: UIToolbar, target: UIViewController, action: Selector) {
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: target, action: action)
+        toolBar.setItems([spacerItem, doneItem], animated: true)
     }
 }
 

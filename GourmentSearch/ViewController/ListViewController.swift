@@ -19,7 +19,8 @@ class ListViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var viewModel = ListViewModel()
     private var datasource: RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>?
-
+    private var toolBar = UIToolbar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -81,6 +82,9 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController {
     func setupView() {
         searchBar.delegate = self
+        setupToolBar(toolBar, target: self, action: #selector(done))
+        searchBar.inputAccessoryView = toolBar
+        
         tableView.register(UINib(nibName: HotPepperResponseTableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: HotPepperResponseTableViewCell.reusableIdentifier)
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
@@ -90,6 +94,17 @@ extension ListViewController {
             cell.delegate = self
             return cell
         })
+    }
+    func setupToolBar(_ toolBar: UIToolbar, target: UIViewController, action: Selector) {
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: target, action: action)
+        toolBar.setItems([spacerItem, doneItem], animated: true)
+    }
+    @objc func done() {
+        searchBar.text = ""
+        self.view.endEditing(true)
     }
 }
 //MARK:UISearchBarDelegate
