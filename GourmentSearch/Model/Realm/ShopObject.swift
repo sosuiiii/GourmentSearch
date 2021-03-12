@@ -5,41 +5,33 @@
 //  Created by TanakaSoushi on 2021/03/07.
 //
 
-import Foundation
+import UIKit
+import Realm
 import RealmSwift
 
-class ShopObject: Object{
-    @objc dynamic var name = ""
-    @objc dynamic var genre = ""
-    @objc dynamic var station = ""
-    @objc dynamic var lat = 0
-    @objc dynamic var lng = 0
-    @objc dynamic var budget = ""
+@objcMembers
+class ShopObject: Object {
     
-    func save(item: Shop) {
-        var realm: Realm?
-        do {
-            realm = try Realm()
-        } catch let error{
-            print("Realmインスタンスの代入に失敗しました:\(error)")
-        }
-        
-        do {
-            try realm?.write {
-                realm?.add(ShopObject(value: [
-                    "name": item.name,
-                    "genre": item.genre,
-                    "station": item.stationName ?? "_",
-                    "lat": item.lat,
-                    "lng": item.lng,
-                    "budget": item.budget?.name ?? "_"
-                ]))
-            }
-        } catch let error {
-            print("Realmへの保存に失敗しました:\(error)")
-        }
+    dynamic var name = ""
+    dynamic var budgetName = ""
+    dynamic var genre = ""
+    dynamic var station = ""
+    dynamic var logoImage:URL?
+    dynamic var lat = 0.0
+    dynamic var lng = 0.0
+    
+    convenience init(response: Shop) {
+        self.init()
+        name = response.name
+        budgetName = response.budget?.name ?? ""
+        genre = response.genre.name
+        station = response.stationName ?? ""
+        logoImage = response.logoImage
+        lat = response.lat
+        lng = response.lng
     }
-}
-struct Hoge {
-    var name: String
+    
+    override class func primaryKey() -> String? {
+        return "name"
+    }
 }

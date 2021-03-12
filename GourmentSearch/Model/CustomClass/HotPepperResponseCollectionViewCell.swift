@@ -12,7 +12,7 @@ import SDWebImage
 
 protocol HotPepperCollectionViewCellDelegate: class {
     func way(lat: Double, lng: Double)
-    func save(row: Int)
+    func save(shop: Shop)
 }
 
 
@@ -54,6 +54,9 @@ class HotPepperResponseCollectionViewCell: UICollectionViewCell, Reusable {
         }
     }
     @IBAction func saveTapped(_ sender: Any) {
+        if let shop = shop {
+            delegate?.save(shop: shop)
+        }
     }
     
 }

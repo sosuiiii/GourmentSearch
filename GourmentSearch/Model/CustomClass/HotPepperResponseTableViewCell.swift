@@ -26,6 +26,7 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
     private var noImageURL = URL(string: "https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png")
     var delegate:HotPepperTableViewCellDelegate?
     private var shop:Shop?
+    private var object: ShopObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +45,14 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
         genreAndStation.text = "\(item.genre.name)/\(item.stationName ?? "")駅"
     }
     
+    func setupFavorite(item: ShopObject) {
+        starIcon.image = UIImage(named: "star_on")
+        setImageBySDWebImage(with: item.logoImage ?? noImageURL)
+        name.text = item.name
+        budget.text = item.budgetName
+        genreAndStation.text = "\(item.genre)/\(item.station)駅"
+    }
+    
     func setImageBySDWebImage(with url: URL?) {
         logoImage.sd_setImage(with: url) { [weak self] image, error, _, _ in
             if error == nil, let image = image {
@@ -54,8 +63,14 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
         }
     }
     @IBAction func starTapped(_ sender: Any) {
+        if starIcon.tag == 0 {
+            starIcon.tag = 1
+            starIcon.image = UIImage(named: "star_on")
+        } else {
+            starIcon.tag = 0
+            starIcon.image = UIImage(named: "star_off")
+        }
         
-        starIcon.image = UIImage(named: "star_on")
         delegate?.starTapped(item: shop)
     }
     
