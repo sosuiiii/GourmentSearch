@@ -11,8 +11,8 @@ import InstantiateStandard
 import SDWebImage
 
 protocol HotPepperCollectionViewCellDelegate: class {
-    func way(row: Int)
-    func save(row: Int)
+    func way(lat: Double, lng: Double)
+    func save(shop: Shop)
 }
 
 
@@ -25,7 +25,7 @@ class HotPepperResponseCollectionViewCell: UICollectionViewCell, Reusable {
     @IBOutlet weak var way: UIButton!
     @IBOutlet weak var save: UIButton!
     weak var delegate:HotPepperCollectionViewCellDelegate?
-    
+    var shop:Shop?
     private var noImageURL = URL(string: "https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png")
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +33,7 @@ class HotPepperResponseCollectionViewCell: UICollectionViewCell, Reusable {
     }
     
     func setupCell(item: Shop, row: Int) {
+        shop = item
         setImageBySDWebImage(with: item.logoImage ?? noImageURL)
         name.text = item.name
         fee.text = item.budget?.name
@@ -48,9 +49,14 @@ class HotPepperResponseCollectionViewCell: UICollectionViewCell, Reusable {
         }
     }
     @IBAction func wayTapped(_ sender: Any) {
-        
+        if let shop = shop {
+            delegate?.way(lat: shop.lat, lng: shop.lng)
+        }
     }
     @IBAction func saveTapped(_ sender: Any) {
+        if let shop = shop {
+            delegate?.save(shop: shop)
+        }
     }
     
 }

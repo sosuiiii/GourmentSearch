@@ -11,6 +11,7 @@ import RxSwift
 
 final class Repository {
     private static let apiProvider = MoyaProvider<GourmentAPI>()
+    private static let mapProvider = MoyaProvider<MapAPI>()
 }
 extension Repository {
     
@@ -41,4 +42,12 @@ extension Repository {
         })
     }
     
+    
+    static func direction(start: String, goal: String) throws -> Observable<Direction> {
+        return mapProvider.rx.request(.search(start: start, goal: goal))
+            .map { response in
+                try APIResponseStatusCodeHandler.handleStatusCode(response)
+                return try JSONDecoder().decode(Direction.self, from: response.data)
+            }.asObservable()
+    }
 }

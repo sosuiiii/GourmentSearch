@@ -41,9 +41,7 @@ class MapViewController: UIViewController {
             detailView.show()
         }).disposed(by: disposeBag)
         
-        searchBar.rx.text.orEmpty.subscribe({ [weak self] text in
-            self?.viewModel.inputs.searchText.onNext(text.element!)
-        }).disposed(by: disposeBag)
+        searchBar.rx.text.orEmpty.bind(to: viewModel.inputs.searchText).disposed(by: disposeBag)
         
         listButton.rx.tap.subscribe({ [weak self] _ in
             guard let self = self else {return}
@@ -72,25 +70,61 @@ class MapViewController: UIViewController {
             self.openClose()
         }).disposed(by: disposeBag)
         
-        
+        //パスを受け取り経路を表示する
+        viewModel.outputs.direction.subscribe({ [weak self] direction in
+            guard let self = self else {return}
+            let path = MapFunction.showRoute(direction.element!)
+            let poly = GMSPolyline(path: path)
+            poly.strokeWidth = 4.0
+            poly.strokeColor = .systemYellow
+            poly.map = self.mapView
+        }).disposed(by: disposeBag)
     }
-    func openClose() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-            if !self.shown {
-                self.listButton.transform = .init(translationX: 0, y: -170)
-                self.collectionView.transform = .init(translationX: 0, y: 0)
-            } else {
-                self.listButton.transform = .init(translationX: 0, y: 0)
-                self.collectionView.transform = .init(translationX: 0, y: 250)
-            }
-        }, completion: { _ in
-            self.shown.toggle()
-        })
+}
+//MARK: HotPepperCollectionViewCellDelegate
+extension MapViewController: HotPepperCollectionViewCellDelegate {
+    func way(lat: Double, lng: Double) {
+        print(lat, lng)
+        if let location = locationManager.location?.coordinate {
+            let startLocation = "\(location.latitude),\(location.longitude)"
+            let endLocation = "\(lat),\(lng)"
+            viewModel.inputs.location.onNext((startLocation, endLocation))
+        }
+    }
+    func save(row: Int) {
     }
 }
 
-extension MapViewController: UICollectionViewDelegate{
+//MARK: GMSMapViewDelegate
+extension MapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+//        print(coordinate)
+        marker.position = coordinate
+        marker.title = "The Imperial Palace"
+        marker.snippet = "Tokyo"
+        marker.map = mapView
+        self.mapView = mapView
+    }
 }
+//MARK: CLLocationManagerDelegate
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            manager.requestLocation()
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            return
+        }
+    }
+    /// 位置情報取得の認可状態が変化した際とCLLocationManagerのインスタンスが生成された際に呼び出されるメソッド
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+//        let startLocation = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
+    }
+}
+
 
 
 //MARK: UICollectionViewDelegateFlowLayout
@@ -110,23 +144,6 @@ extension MapViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//MARK: GMSMapViewDelegate
-extension MapViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-//        print(coordinate)
-        
-        marker.position = coordinate
-        marker.title = "The Imperial Palace"
-        marker.snippet = "Tokyo"
-        marker.map = mapView
-        self.mapView = mapView
-        
-    }
-//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-//        print(position)
-//    }
-    
-}
 //MARK:ビュー
 extension MapViewController {
     func setupView() {
@@ -153,7 +170,21 @@ extension MapViewController {
         datasource = RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>(configureCell: {_, collectionView, indexPath, items in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HotPepperResponseCollectionViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseCollectionViewCell
             cell.setupCell(item: items, row: indexPath.row)
+            cell.delegate = self
             return cell
+        })
+    }
+    func openClose() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            if !self.shown {
+                self.listButton.transform = .init(translationX: 0, y: -170)
+                self.collectionView.transform = .init(translationX: 0, y: 0)
+            } else {
+                self.listButton.transform = .init(translationX: 0, y: 0)
+                self.collectionView.transform = .init(translationX: 0, y: 250)
+            }
+        }, completion: { _ in
+            self.shown.toggle()
         })
     }
 }
