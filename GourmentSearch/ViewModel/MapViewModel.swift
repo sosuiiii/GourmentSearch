@@ -14,6 +14,7 @@ protocol MapViewModelInput {
     var searchText: AnyObserver<String>{get}
     var search: AnyObserver<String>{get}
     var location: AnyObserver<(String, String)> {get}
+    var save: AnyObserver<Shop> {get}
 }
 
 protocol MapViewModelOutput {
@@ -36,6 +37,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     var searchText: AnyObserver<String>
     var search: AnyObserver<String>
     var location: AnyObserver<(String, String)>
+    var save: AnyObserver<Shop>
     //Output
     var alert: Observable<AlertType?>
     var validatedText: Observable<String>
@@ -91,6 +93,8 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 break
             }
         }).disposed(by: disposeBag)
+        
+        
         let _location = PublishRelay<(String, String)>()
         self.location = AnyObserver<(String, String)>() { startEnd in
             guard let startEnd = startEnd.element else {return}
@@ -110,6 +114,14 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 break
             }
         }).disposed(by: disposeBag)
+        
+        
+        self.save = AnyObserver<Shop>() { shop in
+            let object = ShopObject(shop: shop.element!)
+            RealmManager.addEntity(object: object)
+            print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
+            _alert.accept(.favorite)
+        }
     }
 }
 

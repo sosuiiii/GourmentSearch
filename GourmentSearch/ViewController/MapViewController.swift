@@ -33,7 +33,7 @@ class MapViewController: UIViewController {
         setupRx()
         setupMap()
         collectionView.transform = .init(translationX: 0, y: 250)
-        
+
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
@@ -81,8 +81,13 @@ class MapViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
 }
+
 //MARK: HotPepperCollectionViewCellDelegate
 extension MapViewController: HotPepperCollectionViewCellDelegate {
+    func save(shop: Shop) {
+        viewModel.inputs.save.onNext(shop)
+    }
+    
     func way(lat: Double, lng: Double) {
         print(lat, lng)
         if let location = locationManager.location?.coordinate {
@@ -90,8 +95,6 @@ extension MapViewController: HotPepperCollectionViewCellDelegate {
             let endLocation = "\(lat),\(lng)"
             viewModel.inputs.location.onNext((startLocation, endLocation))
         }
-    }
-    func save(row: Int) {
     }
 }
 
@@ -207,3 +210,4 @@ extension MapViewController: AlertViewDelegate {
     func negativeTapped(type: AlertType) {
     }
 }
+

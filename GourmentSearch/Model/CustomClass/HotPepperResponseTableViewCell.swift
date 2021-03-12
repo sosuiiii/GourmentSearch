@@ -43,11 +43,20 @@ class HotPepperResponseTableViewCell: UITableViewCell, Reusable {
         name.text = item.name
         budget.text = item.budget?.name
         genreAndStation.text = "\(item.genre.name)/\(item.stationName ?? "")駅"
+        
+        let object = RealmManager.getEntityList(type: ShopObject.self)
+        for i in 0..<object.count {
+            if object[i].name == item.name {
+                starIcon.image = UIImage(named: "star_on")
+            } else {
+                starIcon.image = UIImage(named: "star_off")
+            }
+        }
     }
     
     func setupFavorite(item: ShopObject) {
         starIcon.image = UIImage(named: "star_on")
-        setImageBySDWebImage(with: item.logoImage ?? noImageURL)
+        setImageBySDWebImage(with: URL(string: item.logoImage))
         name.text = item.name
         budget.text = item.budgetName
         genreAndStation.text = "\(item.genre)/\(item.station)駅"

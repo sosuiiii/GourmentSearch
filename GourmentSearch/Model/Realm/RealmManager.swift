@@ -20,6 +20,17 @@ class RealmManager {
         }
         //print("realmファイル場所: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
+    static func deleteOneObject<T: Object>(type: T.Type, name: String) {
+        do {
+            let realm = try Realm()
+            let object = realm.objects(type.self).filter("name == '\(name)'")
+            try realm.write {
+                realm.delete(object)
+            }
+        } catch let error as NSError {
+            print("RealmManager.deleteObject: " + error.localizedDescription)
+        }
+    }
     
     static func deleteEntity<T: Object>(object: T) {
         let realm = try! Realm()
