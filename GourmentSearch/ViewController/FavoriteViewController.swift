@@ -17,6 +17,7 @@ class FavoriteViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var viewModel = FavoriteViewModel() as FavoriteViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<FavoriteShopDataSource>?
+    private var name:String?
     
     override func viewWillAppear(_ animated: Bool) {
         //タブバーなのでwillでアップデートする
@@ -35,6 +36,34 @@ class FavoriteViewController: UIViewController {
             .disposed(by: disposeBag)
         
     }
+    
+    
+}
+//MARK: HotPepperTableViewCellDelegate
+extension FavoriteViewController: HotPepperTableViewCellDelegate {
+    func starTapped(item: Shop?, on: Bool) {
+        if let shop = item, !on {
+            let alert = AlertView(frame: UIScreen.main.bounds)
+            view.addSubview(alert)
+            alert.show(type: .delete)
+            let name = shop.name
+            viewModel.inputs.delete.onNext(name)
+        }
+    }
+}
+//MARK: AlertViewDelegate
+extension FavoriteViewController: AlertViewDelegate {
+    func positiveTapped(type: AlertType) {
+        if let name = name {
+            viewModel.inputs.delete.onNext(name)
+        }
+    }
+    func negativeTapped(type: AlertType) {
+    }
+}
+
+//MARK: ビュー
+extension FavoriteViewController {
     private func setupView() {
         tableView.register(UINib(nibName: HotPepperResponseTableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: HotPepperResponseTableViewCell.reusableIdentifier)
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -48,6 +77,7 @@ class FavoriteViewController: UIViewController {
     }
 }
 
+//MARK: UITableViewDelegate
 extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
