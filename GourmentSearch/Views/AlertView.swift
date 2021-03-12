@@ -21,6 +21,7 @@ enum AlertType {
     case textOver
     case unexpectedServerError
     case feeOver
+    case favorite
 }
 
 protocol AlertViewDelegate: class {
@@ -117,6 +118,11 @@ class AlertView: UIView, Reusable {
             message.text = "予算は100000円までです。"
             positiveButton.setTitle("閉じる", for: .normal)
             negativeButton.isHidden = true
+        case .favorite:
+            message.text = "お気に入りに追加しました"
+            positiveButton.setTitle("閉じる", for: .normal)
+            negativeButton.isHidden = true
+        
         }
         backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         popView.animate(.zoomInvert(way: .in), duration: 0.5, damping: nil, velocity: nil, force: nil).delay(0.1)

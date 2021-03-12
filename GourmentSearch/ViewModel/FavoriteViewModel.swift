@@ -6,14 +6,17 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 
 protocol FavoriteViewModelInput {
-    
+    var updateFavorite: AnyObserver<Void> {get}
 }
 
 protocol FavoriteViewModelOutput {
-    
+    var dataSource: Observable<[FavoriteShopDataSource]>{get}
 }
 
 protocol FavoriteViewModelType {
@@ -23,7 +26,31 @@ protocol FavoriteViewModelType {
 
 class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
     
+    //Input
+    var updateFavorite: AnyObserver<Void>
+    //Output
+    var dataSource: Observable<[FavoriteShopDataSource]>
+    
     init() {
+        let objects = RealmManager.getEntityList(type: ShopObject.self)
+        var obj:[ShopObject] = []
+        for object in objects {
+            obj.append(object)
+        }
+        let datasource = [FavoriteShopDataSource(items: obj)]
+        
+        let _dataSource = BehaviorRelay<[FavoriteShopDataSource]>(value: datasource)
+        dataSource = _dataSource.asObservable()
+        
+        updateFavorite = AnyObserver<Void>() { _ in
+            let objects = RealmManager.getEntityList(type: ShopObject.self)
+            var obj:[ShopObject] = []
+            for object in objects {
+                obj.append(object)
+            }
+            let datasource = [FavoriteShopDataSource(items: obj)]
+            _dataSource.accept(datasource)
+        }
     }
 }
 

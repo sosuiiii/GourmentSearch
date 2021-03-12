@@ -10,17 +10,29 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class FavoriteViewController: UIViewController, UIScrollViewDelegate {
+class FavoriteViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = ListViewModel()
+    private var viewModel = FavoriteViewModel() as FavoriteViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<FavoriteShopDataSource>?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //タブバーなのでwillでアップデートする
+        viewModel.inputs.updateFavorite.onNext(Void())
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
+        //input
+        
+        
+        //output
+        viewModel.outputs.dataSource.bind(to: tableView.rx.items(dataSource: datasource!))
+            .disposed(by: disposeBag)
         
     }
     private func setupView() {
@@ -33,5 +45,11 @@ class FavoriteViewController: UIViewController, UIScrollViewDelegate {
 //            cell.delegate = self
             return cell
         })
+    }
+}
+
+extension FavoriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
 }

@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 import GoogleMaps
 import CoreLocation
+import PKHUD
 
 class MapViewController: UIViewController {
     
@@ -48,7 +49,6 @@ class MapViewController: UIViewController {
             self.openClose()
         }).disposed(by: disposeBag)
         
-        
         //MARK: Output
         viewModel.outputs.validatedText.bind(to: searchBar.rx.text)
             .disposed(by: disposeBag)
@@ -79,10 +79,33 @@ class MapViewController: UIViewController {
             poly.strokeColor = .systemYellow
             poly.map = self.mapView
         }).disposed(by: disposeBag)
+        
+        viewModel.outputs.hud.subscribe({ type in
+            HUD.hide()
+        }).disposed(by: disposeBag)
+        
     }
 }
+
+//MARK:UISearchBarDelegate
+extension MapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        HUD.show(.progress)
+        viewModel.inputs.search.onNext(searchBar.text ?? "")
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+    }
+}
+
 //MARK: HotPepperCollectionViewCellDelegate
 extension MapViewController: HotPepperCollectionViewCellDelegate {
+    func save(shop: Shop) {
+        HUD.show(.progress)
+        viewModel.inputs.save.onNext(shop)
+    }
+    
     func way(lat: Double, lng: Double) {
         print(lat, lng)
         if let location = locationManager.location?.coordinate {
@@ -90,8 +113,6 @@ extension MapViewController: HotPepperCollectionViewCellDelegate {
             let endLocation = "\(lat),\(lng)"
             viewModel.inputs.location.onNext((startLocation, endLocation))
         }
-    }
-    func save(row: Int) {
     }
 }
 
@@ -188,16 +209,6 @@ extension MapViewController {
         })
     }
 }
-//MARK:UISearchBarDelegate
-extension MapViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        viewModel.inputs.search.onNext(searchBar.text ?? "")
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-    }
-}
 
 //MARK: AlertViewDelegate
 extension MapViewController: AlertViewDelegate {
@@ -207,3 +218,4 @@ extension MapViewController: AlertViewDelegate {
     func negativeTapped(type: AlertType) {
     }
 }
+
