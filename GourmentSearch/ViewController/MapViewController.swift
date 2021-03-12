@@ -27,6 +27,7 @@ class MapViewController: UIViewController {
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
     private var shown = false
+    private var toolBar = UIToolbar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,12 @@ class MapViewController: UIViewController {
         
         //MARK: Input
         detailButton.rx.tap.subscribe({ [weak self] _ in
+            guard let self = self else {return}
             let detailView = DetailSearchView(frame: UIScreen.main.bounds)
-            self?.view.addSubview(detailView)
+            detailView.viewModel.outputs.validSearch.bind(to: self.searchBar.rx.text)
+                .disposed(by: self.disposeBag)
+            self.view.addSubview(detailView)
+            self.view.endEditing(true)
             detailView.show()
         }).disposed(by: disposeBag)
         
@@ -170,6 +175,17 @@ extension MapViewController {
     func setupView() {
         searchBar.delegate = self
         mapView.delegate = self
+        setupToolBar(toolBar, target: self, action: #selector(done))
+        searchBar.inputAccessoryView = toolBar
+        
+        if let location = locationManager.location?.coordinate {
+            QueryShareManager.shared.addQuery(key: "lat", value: "\(location.latitude)")
+            QueryShareManager.shared.addQuery(key: "lng", value: "\(location.longitude)")
+        }
+    }
+    @objc func done() {
+        searchBar.text = ""
+        self.view.endEditing(true)
     }
     func setupMap() {
         mapView.animate(toZoom: 16)
@@ -207,6 +223,13 @@ extension MapViewController {
         }, completion: { _ in
             self.shown.toggle()
         })
+    }
+    func setupToolBar(_ toolBar: UIToolbar, target: UIViewController, action: Selector) {
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: target, action: action)
+        toolBar.setItems([spacerItem, doneItem], animated: true)
     }
 }
 
