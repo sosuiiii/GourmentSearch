@@ -14,8 +14,8 @@
 
 ## 技術面  
 MVVMを採用し、どこかがFatにならないようにした。
-ViewModelがFatになりがちなので、バリデーションロジックや  
-保存などのデータアクセス層へのアクセスをなるべくモデル層に切り出した。  
+ViewModelがFatになりがちなので、バリデーションロジックや   
+DBなどのデータへのアクセスをなるべくモデル層に切り出した。  
 KickstarterのViewModelインターフェースパターンでで特に見られる
 冗長なObserverやObservableのローカル変数の再定義を解決するために、  
 propertyWrapperを使ってそれを不要にした。  
@@ -23,7 +23,9 @@ propertyWrapperを使ってそれを不要にした。
    中で使う分にはrelayにアクセス出来るので再定義が不要になる。  
 
 ## 実装日数  
-5日ほど (業務後の2時間作業を３日分まとめて1日としてカウントして5日)
+7日ほど  
+土日を使った作業が2日
+業務後の2時間作業が３日  
 細かい修正やテストコードで2~3日
 
 ## API  
@@ -44,16 +46,24 @@ MVVM : KickstarterのViewModelインターフェースを採用
 RxSwift / RxCocoa ： 関数型×リアクティブプログラミング  
 RxDataSource ： CollectionViewやTableViewにデータをバインドする  
 Moya ： API周りを担当  
-RealmSwift ： データベース。自作クラスのRealmManagerを使うこと。  
+RealmSwift ： データベース。自作クラスのRealmManagerを使うこと  
 PKHUD ： progressなどの簡易的なポップを出してくれる  
-IBAnimatable ： アニメーションを提供してくれる。ポップ表示に使用。  
-エラーハンドルのためのカスタムクラス ： ErrorHandler参照。ステータスコードでハンドルしている。  
-SDWebImage : 画像をキャッシュしてくれる。TableViewで重宝。  
+IBAnimatable ： アニメーションを提供してくれる。ポップ表示に使用  
+SDWebImage : 画像をキャッシュしてくれる。TableViewで重宝  
 GoogleMaps, Direction : マップ表示と経路表示  
-Quick, Nimble, RxTest : テストコード用
+Quick, Nimble, RxTest : テストコード用  
+CoreLocation : 位置情報などを取得できる  
+--以下カスタムクラス  
+PropertyWrapper : Observable、Observerの再定義を不要にするラッパー  
+RealmManager  : RealmSwiftの扱いを簡単にしてくれるクラス  
+ErrorHandler ： ステータスコードでハンドルするクラス    
 
 ## CI  
 Bitrize  
+
+## 今後の予定  
+絞り込み画面のUIコンポーネントが多く記述量の多さが目立つので  
+リファクタの検討  
 
 
 
