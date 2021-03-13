@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import PKHUD
 
 class FavoriteViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class FavoriteViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var viewModel = FavoriteViewModel() as FavoriteViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<FavoriteShopDataSource>?
-    private var name:String?
+    private var name = ""
     
     override func viewWillAppear(_ animated: Bool) {
         //タブバーなのでwillでアップデートする
@@ -35,28 +36,34 @@ class FavoriteViewController: UIViewController {
         viewModel.outputs.dataSource.bind(to: tableView.rx.items(dataSource: datasource!))
             .disposed(by: disposeBag)
         
+        viewModel.outputs.hud.subscribe({ type in
+            HUD.show(type.element!)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
+                HUD.hide()
+            })
+        }).disposed(by: disposeBag)
+        
     }
     
     
 }
 //MARK: HotPepperTableViewCellDelegate
 extension FavoriteViewController: HotPepperTableViewCellDelegate {
+    func favoriteStarTapped(object: ShopObject) {
+        name = object.name
+        let alert = AlertView(frame: UIScreen.main.bounds)
+        alert.delegate = self
+        view.addSubview(alert)
+        alert.show(type: .delete)
+    }
+    
     func starTapped(item: Shop?, on: Bool) {
-        if let shop = item, !on {
-            let alert = AlertView(frame: UIScreen.main.bounds)
-            view.addSubview(alert)
-            alert.show(type: .delete)
-            let name = shop.name
-            viewModel.inputs.delete.onNext(name)
-        }
     }
 }
 //MARK: AlertViewDelegate
 extension FavoriteViewController: AlertViewDelegate {
     func positiveTapped(type: AlertType) {
-        if let name = name {
             viewModel.inputs.delete.onNext(name)
-        }
     }
     func negativeTapped(type: AlertType) {
     }
@@ -71,7 +78,7 @@ extension FavoriteViewController {
         datasource = RxTableViewSectionedReloadDataSource<FavoriteShopDataSource>(configureCell: { _, tableView, indexPath, items in
             let cell = tableView.dequeueReusableCell(withIdentifier: HotPepperResponseTableViewCell.reusableIdentifier, for: indexPath) as! HotPepperResponseTableViewCell
             cell.setupFavorite(item: items)
-//            cell.delegate = self
+            cell.delegate = self
             return cell
         })
     }

@@ -25,6 +25,7 @@ protocol MapViewModelOutput {
     var showCell: Observable<Void>{get}
     var direction: Observable<Direction>{get}
     var hud: Observable<HUDContentType>{get}
+    var hide: Observable<Void> {get}
 }
 
 protocol MapViewModelType {
@@ -47,6 +48,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     var showCell: Observable<Void>
     var direction: Observable<Direction>
     var hud: Observable<HUDContentType>
+    var hide: Observable<Void>
     //property
     private var disposeBag = DisposeBag()
     
@@ -69,6 +71,9 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         let _hud = PublishRelay<HUDContentType>()
         self.hud = _hud.asObservable()
         
+        let _hide = PublishRelay<Void>()
+        self.hide = _hide.asObservable()
+        
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
             if textOver.0 == nil { return }
@@ -82,6 +87,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             _search.accept(text.element!)
         }
         _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+            _hud.accept(.progress)
             var validText = text
             if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
@@ -93,7 +99,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 print("responceCount:\(response.results.shop.count)")
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
                 _showCell.accept(Void())
-                _hud.accept(.success)
+                _hide.accept(Void())
             case .error(_):
                 _hud.accept(.error)
 //                _alert.accept(.unexpectedServerError)
@@ -128,7 +134,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             let object = ShopObject(shop: shop.element!)
             RealmManager.addEntity(object: object)
             print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
-            _alert.accept(.favorite)
+            _hud.accept(.success)
         }
     }
 }

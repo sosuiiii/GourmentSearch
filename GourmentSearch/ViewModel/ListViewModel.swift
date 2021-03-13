@@ -24,6 +24,7 @@ protocol ListViewModelOutput {
     var validatedText: Observable<String>{get}
     var datasource: Observable<[HotPepperResponseDataSource]>{get}
     var hud: Observable<HUDContentType>{get}
+    var hide: Observable<Void>{get}
 }
 
 protocol ListViewModelType {
@@ -43,6 +44,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
     var validatedText: Observable<String>
     var datasource: Observable<[HotPepperResponseDataSource]>
     var hud: Observable<HUDContentType>
+    var hide: Observable<Void>
     //property
     private var disposeBag = DisposeBag()
     
@@ -59,6 +61,9 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         let _hud = PublishRelay<HUDContentType>()
         self.hud = _hud.asObservable()
         
+        let _hide = PublishRelay<Void>()
+        self.hide = _hide.asObservable()
+        
         self.searchText = AnyObserver<String>() { text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
             if textOver.0 == nil {return}
@@ -72,6 +77,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             _search.accept(text.element!)
         }
         _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+            _hud.accept(.progress)
             var validText = text
             if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
@@ -81,7 +87,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             switch event {
             case .next(let response):
                 print("responseCount:\(response.results.shop.count)")
-                _hud.accept(.success)
+                _hide.accept(Void())
                 _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
             case .error(_):
                 _hud.accept(.error)
@@ -94,6 +100,7 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
         self.save = AnyObserver<Shop>() { shop in
             let object = ShopObject(shop: shop.element!)
             RealmManager.addEntity(object: object)
+            _hud.accept(.success)
             print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
         }
         self.delete = AnyObserver<String>() { name in
