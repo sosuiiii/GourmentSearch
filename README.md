@@ -1,4 +1,5 @@
 # GourmentSearch  
+![Videotogif](https://user-images.githubusercontent.com/41160560/111022384-ca692480-8415-11eb-82ab-6dc65c13a768.gif)
 
 ## アプリの特徴  
 マップ画面では検索結果から経路表示ができて迷わない  
