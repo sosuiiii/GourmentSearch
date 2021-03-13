@@ -66,6 +66,9 @@ class ListViewController: UIViewController {
 }
 //MARK: HotPepperTableViewCellDelegate
 extension ListViewController: HotPepperTableViewCellDelegate {
+    func favoriteStarTapped(object: ShopObject) {
+    }
+    
     func starTapped(item: Shop?, on: Bool) {
         if let shop = item, on{
             viewModel.inputs.save.onNext(shop)
