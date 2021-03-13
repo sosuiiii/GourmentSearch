@@ -30,11 +30,13 @@ protocol FavoriteViewModelType {
 class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
     
     //Input
-    var updateFavorite: AnyObserver<Void>
-    var delete: AnyObserver<String>
+    @AnyObserverWrapper var updateFavorite: AnyObserver<Void>
+    @AnyObserverWrapper var delete: AnyObserver<String>
     //Output
     var dataSource: Observable<[FavoriteShopDataSource]>
-    var hud: Observable<HUDContentType>
+    @PublishRelayWrapper var hud: Observable<HUDContentType>
+    //property
+    private var disposeBag = DisposeBag()
     
     init() {
         let objects = RealmManager.getEntityList(type: ShopObject.self)
@@ -44,23 +46,12 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
         }
         let datasource = [FavoriteShopDataSource(items: obj)]
         
+        //レルムのお気に入りリストを流す
         let _dataSource = BehaviorRelay<[FavoriteShopDataSource]>(value: datasource)
         dataSource = _dataSource.asObservable()
         
-        let _hud = PublishRelay<HUDContentType>()
-        hud = _hud.asObservable()
-        
-        updateFavorite = AnyObserver<Void>() { _ in
-            let objects = RealmManager.getEntityList(type: ShopObject.self)
-            var obj:[ShopObject] = []
-            for object in objects {
-                obj.append(object)
-            }
-            let datasource = [FavoriteShopDataSource(items: obj)]
-            _dataSource.accept(datasource)
-        }
-        
-        self.delete = AnyObserver<String>() { name in
+        //お気に入り削除
+        let _ = $delete.subscribe({ name in
             RealmManager.deleteOneObject(type: ShopObject.self, name: name.element!)
             let objects = RealmManager.getEntityList(type: ShopObject.self)
             var obj:[ShopObject] = []
@@ -68,9 +59,20 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
                 obj.append(object)
             }
             let datasource = [FavoriteShopDataSource(items: obj)]
-            _hud.accept(.success)
+            self.$hud.accept(.success)
             _dataSource.accept(datasource)
-        }
+        }).disposed(by: disposeBag)
+        
+        //お気に入り削除後に削除後のデータを流す
+        let _ = $updateFavorite.subscribe({ _ in
+            let objects = RealmManager.getEntityList(type: ShopObject.self)
+            var obj:[ShopObject] = []
+            for object in objects {
+                obj.append(object)
+            }
+            let datasource = [FavoriteShopDataSource(items: obj)]
+            _dataSource.accept(datasource)
+        }).disposed(by: disposeBag)
     }
 }
 
