@@ -17,7 +17,7 @@
 MVVMを採用し、どこかがFatにならないようにした。  
 ViewModelがFatになりがちなので、バリデーションロジックや   
 DBなどのデータへのアクセスをなるべくモデル層に切り出した。  
-KickstarterのViewModelインターフェースパターンでで特に見られる
+KickstarterのViewModelインターフェースパターンでで特に見られる  
 冗長なObserverやObservableのローカル変数の再定義を解決するために、  
 propertyWrapperを使ってそれを不要にした。  
 -> 外からアクセスする際はobservableが参照され、  
@@ -56,7 +56,7 @@ Quick, Nimble, RxTest : テストコード用
 CoreLocation : 位置情報などを取得できる  
 --以下カスタムクラス  
 PropertyWrapper : Observable、Observerの再定義を不要にするラッパー  
-(https://gist.github.com/sgr-ksmt/2cc92d8c7d517e08767fbe296b6da720)
+(https://gist.github.com/sgr-ksmt/2cc92d8c7d517e08767fbe296b6da720)  
 RealmManager  : RealmSwiftの扱いを簡単にしてくれるクラス  
 ErrorHandler ： ステータスコードでハンドルするクラス    
 
