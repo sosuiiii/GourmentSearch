@@ -37,57 +37,33 @@ protocol MapViewModelType {
 class MapViewModel: MapViewModelInput, MapViewModelOutput {
     
     //Input
-    var searchText: AnyObserver<String>
-    var search: AnyObserver<String>
-    var location: AnyObserver<(String, String)>
-    var save: AnyObserver<Shop>
+    @AnyObserverWrapper var searchText: AnyObserver<String>
+    @AnyObserverWrapper var search: AnyObserver<String>
+    @AnyObserverWrapper var location: AnyObserver<(String, String)>
+    @AnyObserverWrapper var save: AnyObserver<Shop>
     //Output
-    var alert: Observable<AlertType?>
-    var validatedText: Observable<String>
-    var datasource: Observable<[HotPepperResponseDataSource]>
-    var showCell: Observable<Void>
-    var direction: Observable<Direction>
-    var hud: Observable<HUDContentType>
-    var hide: Observable<Void>
+    @PublishRelayWrapper var alert: Observable<AlertType?>
+    @PublishRelayWrapper var validatedText: Observable<String>
+    @PublishRelayWrapper var datasource: Observable<[HotPepperResponseDataSource]>
+    @PublishRelayWrapper var showCell: Observable<Void>
+    @PublishRelayWrapper var direction: Observable<Direction>
+    @PublishRelayWrapper var hud: Observable<HUDContentType>
+    @PublishRelayWrapper var hide: Observable<Void>
     //property
     private var disposeBag = DisposeBag()
     
     init() {
-        let _alert = PublishRelay<AlertType?>()
-        self.alert = _alert.asObservable()
         
-        let _validatedText = PublishRelay<String>()
-        self.validatedText = _validatedText.asObservable()
-        
-        let _showCell = PublishRelay<Void>()
-        self.showCell = _showCell.asObservable()
-        
-        let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
-        self.datasource = _datasource.asObservable()
-        
-        let _direction = PublishRelay<Direction>()
-        self.direction = _direction.asObservable()
-        
-        let _hud = PublishRelay<HUDContentType>()
-        self.hud = _hud.asObservable()
-        
-        let _hide = PublishRelay<Void>()
-        self.hide = _hide.asObservable()
-        
-        self.searchText = AnyObserver<String>() { text in
+        let _ = $searchText.subscribe({ text in
             let textOver = TextFieldValidation.validateOverCount(text: text.element!)
             if textOver.0 == nil { return }
-            _validatedText.accept(textOver.0!)
+            self.$validatedText.accept(textOver.0!)
             if textOver.1 == nil {return}
-            _alert.accept(textOver.1)
-        }
+            self.$alert.accept(textOver.1)
+        }).disposed(by: disposeBag)
         
-        let _search = PublishRelay<String>()
-        self.search = AnyObserver<String>() { text in
-            _search.accept(text.element!)
-        }
-        _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
-            _hud.accept(.progress)
+        let _ = $search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+            self.$hud.accept(.progress)
             var validText = text
             if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
@@ -97,45 +73,38 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             switch event {
             case .next(let response):
                 print("responceCount:\(response.results.shop.count)")
-                _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
-                _showCell.accept(Void())
-                _hide.accept(Void())
+                self.$datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
+                self.$showCell.accept(Void())
+                self.$hide.accept(Void())
             case .error(_):
-                _hud.accept(.error)
-//                _alert.accept(.unexpectedServerError)
+                self.$hud.accept(.error)
             case .completed:
                 break
             }
         }).disposed(by: disposeBag)
         
-        
-        let _location = PublishRelay<(String, String)>()
-        self.location = AnyObserver<(String, String)>() { startEnd in
-            guard let startEnd = startEnd.element else {return}
-            _location.accept(startEnd)
-        }
-        _location.flatMapLatest({ startEnd  -> Observable<Direction> in
+        let _ = $location.flatMapLatest({ startEnd  -> Observable<Direction> in
             return try Repository.direction(start: startEnd.0, goal: startEnd.1)
         }).subscribe({ event in
             switch event {
             case .next(let direction):
-                _direction.accept(direction)
+                self.$direction.accept(direction)
                 print(direction)
             case .error(let error):
                 print(error)
-                _alert.accept(.error)
+                self.$alert.accept(.error)
             case .completed:
                 break
             }
         }).disposed(by: disposeBag)
         
         
-        self.save = AnyObserver<Shop>() { shop in
+        let _ = $save.subscribe({ shop in
             let object = ShopObject(shop: shop.element!)
             RealmManager.addEntity(object: object)
             print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
-            _hud.accept(.success)
-        }
+            self.$hud.accept(.success)
+        }).disposed(by: disposeBag)
     }
 }
 

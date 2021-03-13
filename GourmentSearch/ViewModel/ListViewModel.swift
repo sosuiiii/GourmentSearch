@@ -35,49 +35,23 @@ protocol ListViewModelType {
 class ListViewModel: ListViewModelInput, ListViewModelOutput {
     
     //Input
-    var searchText: AnyObserver<String>
-    var search: AnyObserver<String>
-    var save: AnyObserver<Shop>
-    var delete: AnyObserver<String>
+    @AnyObserverWrapper var searchText: AnyObserver<String>
+    @AnyObserverWrapper var search: AnyObserver<String>
+    @AnyObserverWrapper var save: AnyObserver<Shop>
+    @AnyObserverWrapper var delete: AnyObserver<String>
     //Output
-    var alert: Observable<AlertType?>
-    var validatedText: Observable<String>
-    var datasource: Observable<[HotPepperResponseDataSource]>
-    var hud: Observable<HUDContentType>
-    var hide: Observable<Void>
+    @PublishRelayWrapper var alert: Observable<AlertType?>
+    @PublishRelayWrapper var validatedText: Observable<String>
+    @PublishRelayWrapper var datasource: Observable<[HotPepperResponseDataSource]>
+    @PublishRelayWrapper var hud: Observable<HUDContentType>
+    @PublishRelayWrapper var hide: Observable<Void>
     //property
     private var disposeBag = DisposeBag()
     
     init() {
-        let _alert = PublishRelay<AlertType?>()
-        self.alert = _alert.asObservable()
         
-        let _validatedText = PublishRelay<String>()
-        self.validatedText = _validatedText.asObservable()
-        
-        let _datasource = PublishRelay<[HotPepperResponseDataSource]>()
-        self.datasource = _datasource.asObservable()
-        
-        let _hud = PublishRelay<HUDContentType>()
-        self.hud = _hud.asObservable()
-        
-        let _hide = PublishRelay<Void>()
-        self.hide = _hide.asObservable()
-        
-        self.searchText = AnyObserver<String>() { text in
-            let textOver = TextFieldValidation.validateOverCount(text: text.element!)
-            if textOver.0 == nil {return}
-            _validatedText.accept(textOver.0!)
-            if textOver.1 == nil {return}
-            _alert.accept(textOver.1)
-        }
-        
-        let _search = PublishRelay<String>()
-        self.search = AnyObserver<String>() { text in
-            _search.accept(text.element!)
-        }
-        _search.flatMapLatest({ text -> Observable<HotPepperResponse> in
-            _hud.accept(.progress)
+        $search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+            self.$hud.accept(.progress)
             var validText = text
             if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
@@ -87,25 +61,33 @@ class ListViewModel: ListViewModelInput, ListViewModelOutput {
             switch event {
             case .next(let response):
                 print("responseCount:\(response.results.shop.count)")
-                _hide.accept(Void())
-                _datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
+                self.$hide.accept(Void())
+                self.$datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])
             case .error(_):
-                _hud.accept(.error)
-//                _alert.accept(.unexpectedServerError)
+                self.$hud.accept(.error)
             case .completed:
                 break
             }
         }).disposed(by: disposeBag)
         
-        self.save = AnyObserver<Shop>() { shop in
+        let _  = $searchText.subscribe({ text in
+            let textOver = TextFieldValidation.validateOverCount(text: text.element!)
+            if textOver.0 == nil {return}
+            self.$validatedText.accept(textOver.0!)
+            if textOver.1 == nil {return}
+            self.$alert.accept(textOver.1)
+        }).disposed(by: disposeBag)
+        
+        let _ = $save.subscribe({ shop in
             let object = ShopObject(shop: shop.element!)
             RealmManager.addEntity(object: object)
-            _hud.accept(.success)
+            self.$hud.accept(.success)
             print("EntityList:\(RealmManager.getEntityList(type: ShopObject.self))")
-        }
-        self.delete = AnyObserver<String>() { name in
+        }).disposed(by: disposeBag)
+        
+        let _ = $delete.subscribe({ name in
             RealmManager.deleteOneObject(type: ShopObject.self, name: name.element!)
-        }
+        }).disposed(by: disposeBag)
     }
 }
 
