@@ -86,6 +86,13 @@ class MapViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         viewModel.outputs.hud.subscribe({ type in
+            HUD.show(type.element!)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
+                HUD.hide()
+            })
+        }).disposed(by: disposeBag)
+        
+        viewModel.outputs.hide.subscribe({ _ in
             HUD.hide()
         }).disposed(by: disposeBag)
         
@@ -96,7 +103,6 @@ class MapViewController: UIViewController {
 extension MapViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        HUD.show(.progress)
         viewModel.inputs.search.onNext(searchBar.text ?? "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -107,7 +113,6 @@ extension MapViewController: UISearchBarDelegate {
 //MARK: HotPepperCollectionViewCellDelegate
 extension MapViewController: HotPepperCollectionViewCellDelegate {
     func save(shop: Shop) {
-        HUD.show(.progress)
         viewModel.inputs.save.onNext(shop)
     }
     
