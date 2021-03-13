@@ -12,8 +12,6 @@
 		3D0D1CF025F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CED25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift */; };
 		3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */; };
 		3D0D1CF225F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0D1CEE25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib */; };
-		3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
-		3D0D1CFE25F44F67005BC2C0 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
 		3D0D1D3625F4F407005BC2C0 /* FeeInputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D3525F4F406005BC2C0 /* FeeInputValidation.swift */; };
 		3D0D1D3725F4F407005BC2C0 /* FeeInputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D3525F4F406005BC2C0 /* FeeInputValidation.swift */; };
 		3D0D1D4225F50372005BC2C0 /* AlertShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1D4125F50372005BC2C0 /* AlertShareManager.swift */; };
@@ -31,6 +29,9 @@
 		3D14D31A25FB66F000636426 /* FavoriteShopDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D31825FB66F000636426 /* FavoriteShopDataSource.swift */; };
 		3D14D34A25FC8A7A00636426 /* RxWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D34925FC8A7A00636426 /* RxWrapper.swift */; };
 		3D14D34B25FC8A7A00636426 /* RxWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D34925FC8A7A00636426 /* RxWrapper.swift */; };
+		3D14D3A725FCCB2500636426 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
+		3D14D3B125FCCCD000636426 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D30D25FB646900636426 /* RealmManager.swift */; };
+		3D14D3B925FCCD2500636426 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
@@ -736,12 +737,12 @@
 				3DF3E3D325F3095000E9F55E /* ListViewController.swift in Sources */,
 				3DF3E49525F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
 				3DF3E40125F3381500E9F55E /* MapViewModel.swift in Sources */,
-				3D0D1CFD25F44F67005BC2C0 /* ShopObject.swift in Sources */,
 				3DF3E34925F2FF6F00E9F55E /* HotEntity.swift in Sources */,
 				3D14D28F25F8E27D00636426 /* MapEntity.swift in Sources */,
 				3D14D29525F8EBD500636426 /* MapFunction.swift in Sources */,
 				3DF3E45B25F3639900E9F55E /* ListViewModel.swift in Sources */,
 				3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */,
+				3D14D3A725FCCB2500636426 /* ShopObject.swift in Sources */,
 				3DF3E38825F3057000E9F55E /* AlertView.swift in Sources */,
 				3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
@@ -765,8 +766,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF3E3DA25F3095900E9F55E /* FavoriteViewController.swift in Sources */,
-				3D0D1CFE25F44F67005BC2C0 /* ShopObject.swift in Sources */,
 				3DF3E3C025F306F000E9F55E /* GenreCollectionViewCell.swift in Sources */,
+				3D14D3B125FCCCD000636426 /* RealmManager.swift in Sources */,
 				3D0D1CF025F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */,
 				3DF3E42825F349B300E9F55E /* TextFieldValidation.swift in Sources */,
 				3DF3E49625F3695F00E9F55E /* HotPepperResponseTableViewCell.swift in Sources */,
@@ -786,6 +787,7 @@
 				3DF3E35025F2FF8E00E9F55E /* Moya.swift in Sources */,
 				3D14D29025F8E27D00636426 /* MapEntity.swift in Sources */,
 				3DF3E44A25F35D8800E9F55E /* QueryShareManager.swift in Sources */,
+				3D14D3B925FCCD2500636426 /* ShopObject.swift in Sources */,
 				3DF3E4D525F394FA00E9F55E /* Error.swift in Sources */,
 				3DF3E40225F3381500E9F55E /* MapViewModel.swift in Sources */,
 				3D14D31A25FB66F000636426 /* FavoriteShopDataSource.swift in Sources */,
@@ -1014,7 +1016,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L496FTQGL3;
 				INFOPLIST_FILE = GourmentSearchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1037,7 +1039,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L496FTQGL3;
 				INFOPLIST_FILE = GourmentSearchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
