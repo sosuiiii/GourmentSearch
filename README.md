@@ -56,7 +56,7 @@ Quick, Nimble, RxTest : テストコード用
 CoreLocation : 位置情報などを取得できる  
 --以下カスタムクラス  
 PropertyWrapper : Observable、Observerの再定義を不要にするラッパー  
-(https://gist.github.com/sgr-ksmt/2cc92d8c7d517e08767fbe296b6da720)  
+参考(https://gist.github.com/sgr-ksmt/2cc92d8c7d517e08767fbe296b6da720)  
 RealmManager  : RealmSwiftの扱いを簡単にしてくれるクラス  
 ErrorHandler ： ステータスコードでハンドルするクラス    
 
