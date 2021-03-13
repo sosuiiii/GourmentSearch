@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxDataSources
+import PKHUD
 
 
 protocol FavoriteViewModelInput {
@@ -18,6 +19,7 @@ protocol FavoriteViewModelInput {
 
 protocol FavoriteViewModelOutput {
     var dataSource: Observable<[FavoriteShopDataSource]>{get}
+    var hud: Observable<HUDContentType>{get}
 }
 
 protocol FavoriteViewModelType {
@@ -32,6 +34,7 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
     var delete: AnyObserver<String>
     //Output
     var dataSource: Observable<[FavoriteShopDataSource]>
+    var hud: Observable<HUDContentType>
     
     init() {
         let objects = RealmManager.getEntityList(type: ShopObject.self)
@@ -43,6 +46,9 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
         
         let _dataSource = BehaviorRelay<[FavoriteShopDataSource]>(value: datasource)
         dataSource = _dataSource.asObservable()
+        
+        let _hud = PublishRelay<HUDContentType>()
+        hud = _hud.asObservable()
         
         updateFavorite = AnyObserver<Void>() { _ in
             let objects = RealmManager.getEntityList(type: ShopObject.self)
@@ -56,6 +62,14 @@ class FavoriteViewModel: FavoriteViewModelInput, FavoriteViewModelOutput {
         
         self.delete = AnyObserver<String>() { name in
             RealmManager.deleteOneObject(type: ShopObject.self, name: name.element!)
+            let objects = RealmManager.getEntityList(type: ShopObject.self)
+            var obj:[ShopObject] = []
+            for object in objects {
+                obj.append(object)
+            }
+            let datasource = [FavoriteShopDataSource(items: obj)]
+            _hud.accept(.success)
+            _dataSource.accept(datasource)
         }
     }
 }
