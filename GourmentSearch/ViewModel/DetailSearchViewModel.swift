@@ -61,98 +61,73 @@ protocol DetailSearchViewModelType {
 class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOutput {
     
     //Input
-    var initView: AnyObserver<Void>
-    var search: AnyObserver<String>
-    var row: AnyObserver<Int>
-    var lengthTapped: AnyObserver<Int>
-    var feeInput: AnyObserver<String>
-    var wifi: AnyObserver<Int>
-    var personalSpace: AnyObserver<Int>
-    var credit: AnyObserver<Int>
-    var freeFood: AnyObserver<Int>
-    var freeDrink: AnyObserver<Int>
-    var japLiquor: AnyObserver<Int>
-    var shochu: AnyObserver<Int>
-    var cocktail: AnyObserver<Int>
-    var wine: AnyObserver<Int>
-    var resetOther: AnyObserver<Void>
+    @AnyObserverWrapper var initView: AnyObserver<Void>
+    @AnyObserverWrapper var search: AnyObserver<String>
+    @AnyObserverWrapper var row: AnyObserver<Int>
+    @AnyObserverWrapper var lengthTapped: AnyObserver<Int>
+    @AnyObserverWrapper var feeInput: AnyObserver<String>
+    @AnyObserverWrapper var wifi: AnyObserver<Int>
+    @AnyObserverWrapper var personalSpace: AnyObserver<Int>
+    @AnyObserverWrapper var credit: AnyObserver<Int>
+    @AnyObserverWrapper var freeFood: AnyObserver<Int>
+    @AnyObserverWrapper var freeDrink: AnyObserver<Int>
+    @AnyObserverWrapper var japLiquor: AnyObserver<Int>
+    @AnyObserverWrapper var shochu: AnyObserver<Int>
+    @AnyObserverWrapper var cocktail: AnyObserver<Int>
+    @AnyObserverWrapper var wine: AnyObserver<Int>
+    @AnyObserverWrapper var resetOther: AnyObserver<Void>
     
     //Output
-    var validSearch: Observable<String>
+    @PublishRelayWrapper var validSearch: Observable<String>
     var items: Observable<[GenreDataSource]>
-    var activeLength: Observable<Int>
-    var alert: Observable<AlertType?>
-    var validFee: Observable<String>
-    var wifiActive: Observable<Bool>
-    var personalSpaceActive: Observable<Bool>
-    var creditActive: Observable<Bool>
-    var freeFoodActive: Observable<Bool>
-    var freeDrinkActive: Observable<Bool>
-    var japLiquorActive: Observable<Bool>
-    var shochuActive: Observable<Bool>
-    var cocktailActive: Observable<Bool>
-    var wineActive: Observable<Bool>
-    var resetOtherOutput: Observable<Void>
+    @PublishRelayWrapper var activeLength: Observable<Int>
+    @PublishRelayWrapper var alert: Observable<AlertType?>
+    @PublishRelayWrapper var validFee: Observable<String>
+    @PublishRelayWrapper var wifiActive: Observable<Bool>
+    @PublishRelayWrapper var personalSpaceActive: Observable<Bool>
+    @PublishRelayWrapper var creditActive: Observable<Bool>
+    @PublishRelayWrapper var freeFoodActive: Observable<Bool>
+    @PublishRelayWrapper var freeDrinkActive: Observable<Bool>
+    @PublishRelayWrapper var japLiquorActive: Observable<Bool>
+    @PublishRelayWrapper var shochuActive: Observable<Bool>
+    @PublishRelayWrapper var cocktailActive: Observable<Bool>
+    @PublishRelayWrapper var wineActive: Observable<Bool>
+    @PublishRelayWrapper var resetOtherOutput: Observable<Void>
+    
+    //property
+    private var disposeBag = DisposeBag()
     
     init() {
         
         let genreDataSource = [GenreDataSource(items: GenreShareManager.shared.genres)]
-        
         let _items = BehaviorRelay<[GenreDataSource]>(value: genreDataSource)
         items = _items.asObservable()
-        let _activeLength = PublishRelay<Int>()
-        activeLength = _activeLength.asObservable()
-        let _alert = PublishRelay<AlertType?>()
-        alert = _alert.asObservable()
-        let _validFee = PublishRelay<String>()
-        validFee = _validFee.asObservable()
-        let _wifiActive = PublishRelay<Bool>()
-        wifiActive = _wifiActive.asObservable()
-        let _personalSpaceActive = PublishRelay<Bool>()
-        personalSpaceActive = _personalSpaceActive.asObservable()
-        let _creditActive = PublishRelay<Bool>()
-        creditActive = _creditActive.asObservable()
-        let _freeFoodActive = PublishRelay<Bool>()
-        freeFoodActive = _freeFoodActive.asObservable()
-        let _freeDrinkActive = PublishRelay<Bool>()
-        freeDrinkActive = _freeDrinkActive.asObservable()
-        let _japLiquorActive = PublishRelay<Bool>()
-        japLiquorActive = _japLiquorActive.asObservable()
-        let _shochuActive = PublishRelay<Bool>()
-        shochuActive = _shochuActive.asObservable()
-        let _cocktailActive = PublishRelay<Bool>()
-        cocktailActive = _cocktailActive.asObservable()
-        let _wineActive = PublishRelay<Bool>()
-        wineActive = _wineActive.asObservable()
-        let _resetOtherOutput = PublishRelay<Void>()
-        resetOtherOutput = _resetOtherOutput.asObservable()
-        let _validSearch = PublishRelay<String>()
-        validSearch = _validSearch.asObservable()
-        
+
         //検索
-        self.search = AnyObserver<String>() { text in
+        let _ = $search.subscribe({ text in
             guard let text = text.element else {return}
             let validText = TextFieldValidation.validateOverCount(text: text)
             QueryShareManager.shared.addQuery(key: "keyword", value: validText.0)
             if validText.0 == nil {return}
-            _validSearch.accept(validText.0!)
-            _alert.accept(validText.1)
-        }
+            self.$validSearch.accept(validText.0!)
+            self.$alert.accept(validText.1)
+        }).disposed(by: disposeBag)
         
         //ジャンル
-        self.row = AnyObserver<Int>() { row in
+        let _ = $row.subscribe({ row in
 //            GenreCollectionViewCellで管理
-        }
+        }).disposed(by: disposeBag)
+        
         //距離 1-300m ~  5-3000m 99-リセット
-        self.lengthTapped = AnyObserver<Int>() { range in
+        let _ = $lengthTapped.subscribe({ range in
             guard let range = range.element else {return}
-            _activeLength.accept(range)
+            self.$activeLength.accept(range)
             if range == 99 {return}
             QueryShareManager.shared.addQuery(key: "range", value: "\(range)")
-            
-        }
+        }).disposed(by: disposeBag)
+        
         //料金
-        self.feeInput = AnyObserver<String> { str in
+        let _ = $feeInput.subscribe({ str in
             guard let str = str.element else {return}
             if str.isEmpty {
                 QueryShareManager.shared.addQuery(key: "budget", value: nil)
@@ -161,76 +136,79 @@ class DetailSearchViewModel: DetailSerachViewModelInput, DetailSearchViewModelOu
             let validFee = FeeInputValidation.isOver(fee: fee)
             let over = validFee.1
             if over {
-                _alert.accept(.feeOver)
+                self.$alert.accept(.feeOver)
             }
             print("予算:\(validFee.0)円")
             let code = FeeInputValidation.getBudgetCode(fee: validFee.0)
             QueryShareManager.shared.addQuery(key: "budget", value: code)
-            _validFee.accept("\(validFee.0)")
-        }
+            self.$validFee.accept("\(validFee.0)")
+        }).disposed(by: disposeBag)
+        
         //こだわり条件
-        self.wifi = AnyObserver<Int> { int in
+        let _ = $wifi.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "wifi", int: int)
-        }
-        self.personalSpace = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $personalSpace.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "private_room", int: int)
-        }
-        self.credit = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $credit.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "card", int: int)
-        }
-        self.freeFood = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $freeFood.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "free_food", int: int)
-        }
-        self.freeDrink = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $freeDrink.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "free_drink", int: int)
-        }
-        self.japLiquor = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $japLiquor.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "sake", int: int)
-        }
-        self.shochu = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $shochu.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "shochu", int: int)
-        }
-        self.cocktail = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $cocktail.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "cocktail", int: int)
-        }
-        self.wine = AnyObserver<Int> { int in
+        }).disposed(by: disposeBag)
+        let _ = $wine.subscribe({ int in
             QueryShareManager.shared.addQuery(key: "wine", int: int)
-        }
-        self.resetOther = AnyObserver<Void> { _ in
-            _resetOtherOutput.accept(Void())
-        }
-        self.initView = AnyObserver<Void> { _ in
+        }).disposed(by: disposeBag)
+        let _ = $resetOther.subscribe({ _ in
+            self.$resetOtherOutput.accept(Void())
+        }).disposed(by: disposeBag)
+        
+        
+        let _ = $initView.subscribe({ _ in
             let queries = QueryShareManager.shared.getQuery()
             print(queries)
             if let keyword = queries["keyword"] {
                 print(keyword)
-                _validSearch.accept(keyword as! String)
+                self.$validSearch.accept(keyword as! String)
             }
             if let range = queries["range"] {
-                _activeLength.accept(Int(range as! String)!)
+                self.$activeLength.accept(Int(range as! String)!)
             }
             if let _ = queries["wifi"] {
-                _wifiActive.accept(true)
+                self.$wifiActive.accept(true)
             }
             if let _ = queries["free_food"] {
-                _freeFoodActive.accept(true)
+                self.$freeFoodActive.accept(true)
             }
             if let _ = queries["free_drink"] {
-                _freeDrinkActive.accept(true)
+                self.$freeDrinkActive.accept(true)
             }
             if let _ = queries["sake"] {
-                _japLiquorActive.accept(true)
+                self.$japLiquorActive.accept(true)
             }
             if let _ = queries["shochu"] {
-                _shochuActive.accept(true)
+                self.$shochuActive.accept(true)
             }
             if let _ = queries["cocktail"] {
-                _cocktailActive.accept(true)
+                self.$cocktailActive.accept(true)
             }
             if let _ = queries["wine"] {
-                _wineActive.accept(true)
+                self.$wineActive.accept(true)
             }
-        }
+        }).disposed(by: disposeBag)
     }
 }
 
