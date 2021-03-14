@@ -83,10 +83,10 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             }
         }).disposed(by: disposeBag)
         
-        let _ = $location.flatMapLatest({ startEnd  -> Observable<Direction> in
-            return try Repository.direction(start: startEnd.0, goal: startEnd.1)
+        let _ = $location.flatMapLatest({ startEnd  -> Observable<Event<Direction>> in
+            return try Repository.direction(start: startEnd.0, goal: startEnd.1).materialize()
         }).subscribe({ event in
-            switch event {
+            switch event.element! {
             case .next(let direction):
                 self.$direction.accept(direction)
                 print(direction)
