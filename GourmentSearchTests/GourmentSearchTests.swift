@@ -72,10 +72,11 @@ class ValidationTests: XCTestCase {
     }
 }
 
-class MapViewModelTests: QuickSpec {
+class ViewModelTests: QuickSpec {
     let disposeBag = DisposeBag()
     
     override func spec() {
+        //MARK: DetailSearchViewModel
         describe("DetailSearchViewModelの入出力テスト") {
             context("適切なクエリがシングルトンに追加される") {
                 let scheduler = TestScheduler(initialClock: 0, resolution: 0.1)
@@ -105,7 +106,8 @@ class MapViewModelTests: QuickSpec {
                     expect(validTextObserver.events).to(equal([
                         Recorded.next(1, "肉")
                     ]))
-                    XCTAssertEqual(QueryShareManager.shared.getQuery()["keyword"] as! String, "肉")
+                    let keyword = QueryShareManager.shared.getQuery()["keyword"] as! String
+                    XCTAssertEqual(keyword, "肉")
                     expect(alertType.events).to(equal([
                         Recorded.next(1, nil)
                     ]))
@@ -128,10 +130,36 @@ class MapViewModelTests: QuickSpec {
                     ]))
                     
                     viewModel.inputs.lengthTapped.onNext(1)
-                    let range = QueryShareManager.shared.getQuery()["range"]
-                    XCTAssertEqual(range as! String, "1")
-                    
-                    
+                    let range = QueryShareManager.shared.getQuery()["range"] as! String
+                    XCTAssertEqual(range, "1")
+                }
+                it("料金入力時のクエリ確認"){
+                    let viewModel: DetailSearchViewModelType = DetailSearchViewModel()
+                    viewModel.inputs.feeInput.onNext("3000")
+                    let budget = QueryShareManager.shared.getQuery()["budget"] as! String
+                    XCTAssertEqual(budget, BudgetCode.b002.code)
+                }
+                it("こだわり条件のクエリ確認"){
+                    let viewModel: DetailSearchViewModelType = DetailSearchViewModel()
+                    viewModel.inputs.wifi.onNext(1)
+                    viewModel.inputs.personalSpace.onNext(1)
+                    viewModel.inputs.credit.onNext(1)
+                    viewModel.inputs.freeFood.onNext(1)
+                    viewModel.inputs.freeDrink.onNext(1)
+                    viewModel.inputs.japLiquor.onNext(1)
+                    viewModel.inputs.shochu.onNext(1)
+                    viewModel.inputs.cocktail.onNext(1)
+                    viewModel.inputs.wine.onNext(1)
+                    let query = QueryShareManager.shared.getQuery()
+                    XCTAssertEqual(query["wifi"] as! String, "1")
+                    XCTAssertEqual(query["private_room"] as! String, "1")
+                    XCTAssertEqual(query["card"] as! String, "1")
+                    XCTAssertEqual(query["free_food"] as! String, "1")
+                    XCTAssertEqual(query["free_drink"] as! String, "1")
+                    XCTAssertEqual(query["sake"] as! String, "1")
+                    XCTAssertEqual(query["shochu"] as! String, "1")
+                    XCTAssertEqual(query["cocktail"] as! String, "1")
+                    XCTAssertEqual(query["wine"] as! String, "1")
                 }
             }
         }
