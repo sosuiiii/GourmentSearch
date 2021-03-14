@@ -40,7 +40,7 @@ extension GourmentAPI: TargetType {
     }
     var parameters: [String: Any] {
         var parameter = [
-            "key": "b38e665d2e650c87",
+            "key": "APIKey",
             "format": "json",
             "count": 50
         ] as [String : Any]
@@ -106,7 +106,7 @@ extension MapAPI: TargetType {
     }
     var parameters: [String: Any] {
         
-        var parameter = ["key":"AIzaSyAhLVH0AI2PYWS3G_dHAcLbNPwkZ2fA76c"] as [String : Any]
+        var parameter = ["key":"APIKey"] as [String : Any]
         switch self {
         case .search(let start, let goal):
             parameter["origin"] = start
