@@ -62,15 +62,15 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
             self.$alert.accept(textOver.1)
         }).disposed(by: disposeBag)
         
-        let _ = $search.flatMapLatest({ text -> Observable<HotPepperResponse> in
+        let _ = $search.flatMapLatest({ text -> Observable<Event<HotPepperResponse>> in
             self.$hud.accept(.progress)
             var validText = text
             if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
             shared.addQuery(key: "keyword", value: validText)
-            return try Repository.search(keyValue: shared.getQuery())
+            return try Repository.search(keyValue: shared.getQuery()).materialize()
         }).subscribe({ event in
-            switch event {
+            switch event.element! {
             case .next(let response):
                 print("responceCount:\(response.results.shop.count)")
                 self.$datasource.accept([HotPepperResponseDataSource(items: response.results.shop)])

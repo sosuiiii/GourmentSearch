@@ -76,13 +76,16 @@ class MapViewModelTests: QuickSpec {
     let disposeBag = DisposeBag()
     
     override func spec() {
-        describe("MapViewModelの入出力テスト") {
-            context("適切な入力文字がクエリに追加される") {
+        describe("DetailSearchViewModelの入出力テスト") {
+            context("適切なクエリがシングルトンに追加される") {
                 let scheduler = TestScheduler(initialClock: 0, resolution: 0.1)
                 let input = [
                     Recorded.next(1, "肉"),
                 ]
-                it("空文字は何も返ってこない。") {
+                let intInput = [
+                    Recorded.next(1, 1)
+                ]
+                it("検索ワードをクエリに追加、適切なアラートタイプの返却") {
                     var validTextObserver: TestableObserver<String>
                     var alertType: TestableObserver<AlertType?>
                     do {
@@ -106,6 +109,29 @@ class MapViewModelTests: QuickSpec {
                     expect(alertType.events).to(equal([
                         Recorded.next(1, nil)
                     ]))
+                }
+                it("距離選択時のクエリ追加確認"){
+                    let viewModel: DetailSearchViewModelType = DetailSearchViewModel()
+                    var activeLength: TestableObserver<Int>
+                    do {
+                        let input = scheduler.createHotObservable(intInput)
+                        input.asObservable().subscribe(onNext: { value in
+                            viewModel.inputs.lengthTapped.onNext(value)
+                        }).disposed(by: self.disposeBag)
+                        activeLength = scheduler.createObserver(Int.self)
+                        viewModel.outputs.activeLength.bind(to: activeLength)
+                            .disposed(by: self.disposeBag)
+                        scheduler.start()
+                    }
+                    expect(activeLength.events).to(equal([
+                        Recorded.next(1, 1)
+                    ]))
+                    
+                    viewModel.inputs.lengthTapped.onNext(1)
+                    let range = QueryShareManager.shared.getQuery()["range"]
+                    XCTAssertEqual(range as! String, "1")
+                    
+                    
                 }
             }
         }
