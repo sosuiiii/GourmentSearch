@@ -6,6 +6,12 @@
 //
 
 import XCTest
+import RxSwift
+import Quick
+import Nimble
+import RxTest
+import PKHUD
+
 @testable import GourmentSearch
 
 class ValidationTests: XCTestCase {
@@ -63,5 +69,45 @@ class ValidationTests: XCTestCase {
             budget = FeeInputValidation.getBudgetCode(fee: 30001)
             XCTAssertEqual((budget), BudgetCode.b014.code)
         })
+    }
+}
+
+class MapViewModelTests: QuickSpec {
+    let disposeBag = DisposeBag()
+    
+    override func spec() {
+        describe("MapViewModelの入出力テスト") {
+            context("適切な入力文字がクエリに追加される") {
+                let scheduler = TestScheduler(initialClock: 0, resolution: 0.1)
+                let input = [
+                    Recorded.next(1, "肉"),
+                ]
+                it("空文字は何も返ってこない。") {
+                    var validTextObserver: TestableObserver<String>
+                    var alertType: TestableObserver<AlertType?>
+                    do {
+                        let viewModel: DetailSearchViewModelType = DetailSearchViewModel()
+                        let input = scheduler.createHotObservable(input)
+                        input.asObservable()
+                            .subscribe(onNext: { value in
+                                viewModel.inputs.search.onNext(value)
+                            }).disposed(by: self.disposeBag)
+                        
+                        validTextObserver = scheduler.createObserver(String.self)
+                        alertType = scheduler.createObserver(AlertType?.self)
+                        viewModel.outputs.validSearch.bind(to: validTextObserver).disposed(by: self.disposeBag)
+                        viewModel.outputs.alert.bind(to: alertType).disposed(by: self.disposeBag)
+                        scheduler.start()
+                    }
+                    expect(validTextObserver.events).to(equal([
+                        Recorded.next(1, "肉")
+                    ]))
+                    XCTAssertEqual(QueryShareManager.shared.getQuery()["keyword"] as! String, "肉")
+                    expect(alertType.events).to(equal([
+                        Recorded.next(1, nil)
+                    ]))
+                }
+            }
+        }
     }
 }
