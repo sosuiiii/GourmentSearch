@@ -63,6 +63,12 @@ ErrorHandler ： ステータスコードでハンドルするクラス
 ## CI  
 Bitrize  
 
+## テストライブラリ  
+XCTest  
+バリデーション用テスト  
+・RxTest/Quick/Nimble  
+RxSwift用のテスト  
+
 ## 今後の予定  
 ・絞り込み画面のUIコンポーネントが多く記述量の多さが目立つので  
  リファクタの検討  
