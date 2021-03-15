@@ -1,4 +1,7 @@
 # GourmentSearch  
+## ストアURL  
+[ぐるスポ](https://apps.apple.com/jp/app/%E3%81%90%E3%82%8B%E3%82%B9%E3%83%9D/id1558259279)  
+
 ## 使用した技術  
 MVVMアーキテクチャ  
 RxSwift/RxCocoa  
