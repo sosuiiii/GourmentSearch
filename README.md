@@ -77,8 +77,8 @@ googleマップの簡易機能を提供してくれるAPI
 google提供の経路を表示するための経緯を提供してくれるAPI  
 
 ## 今後の予定  
-・ViewModelへモデルのDIをし、インターフェースを作ってテスタビリティを改善する。
-・スピード重視でinputをAnyObserberで実装しているので、
+・ViewModelへモデルのDIをし、インターフェースを作ってテスタビリティを改善する。  
+・スピード重視でinputをAnyObserberで実装しているので、  
  Driver,Signalに置き換えてメインスレッドで通知させる。
 
 
