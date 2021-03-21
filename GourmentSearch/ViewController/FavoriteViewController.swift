@@ -10,15 +10,21 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import PKHUD
+import Instantiate
+import InstantiateStandard
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var tableView: UITableView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = FavoriteViewModel() as FavoriteViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<FavoriteShopDataSource>?
     private var name = ""
+    
+    private var viewModel: FavoriteViewModelType!
+    struct Dependency {
+        let viewModel: FavoriteViewModelType!
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         //タブバーなのでwillでアップデートする
@@ -88,5 +94,11 @@ extension FavoriteViewController {
 extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+}
+
+extension FavoriteViewController: Injectable {
+    func inject(_ dependency: Dependency) {
+        viewModel = dependency.viewModel
     }
 }
