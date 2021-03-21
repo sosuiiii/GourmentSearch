@@ -64,10 +64,8 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
         
         let _ = $search.flatMapLatest({ text -> Observable<Event<HotPepperResponse>> in
             self.$hud.accept(.progress)
-            var validText = text
-            if text.isEmpty { validText = "あ"}
             let shared = QueryShareManager.shared
-            shared.addQuery(key: "keyword", value: validText)
+            shared.addQuery(key: "keyword", value: text)
             return try Repository.search(keyValue: shared.getQuery()).materialize()
         }).subscribe({ event in
             switch event.element! {
