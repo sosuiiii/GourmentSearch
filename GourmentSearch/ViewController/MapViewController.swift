@@ -55,17 +55,17 @@ class MapViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         //MARK: Output
-        viewModel.outputs.validatedText.bind(to: searchBar.rx.text)
-            .disposed(by: disposeBag)
+        viewModel.outputs.validateTextDriver.drive(searchBar.rx.text).disposed(by: disposeBag)
         
-        viewModel.outputs.alert.subscribe({ [weak self] alertType in
+        viewModel.outputs.alertDriver.drive(onNext: { [weak self] alertType in
+            guard let alertType = alertType else {return}
             if AlertShareManager.shared.shown {return}
             let alertView = AlertView(frame: UIScreen.main.bounds)
             self?.view.addSubview(alertView)
-            alertView.show(type: alertType.element!!)
+            alertView.show(type: alertType)
         }).disposed(by: disposeBag)
         
-        viewModel.outputs.datasource.bind(to: collectionView.rx.items(dataSource: datasource!)).disposed(by: disposeBag)
+        viewModel.outputs.datasourceDriver.drive(collectionView.rx.items(dataSource: datasource!)).disposed(by: disposeBag)
         
         viewModel.outputs.showCell.subscribe({ [weak self] _ in
             guard let self = self else {return}

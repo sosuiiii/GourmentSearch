@@ -19,9 +19,9 @@ protocol MapViewModelInput {
 }
 
 protocol MapViewModelOutput {
-    var alert: Observable<AlertType?>{get}
-    var validatedText: Observable<String>{get}
-    var datasource: Observable<[HotPepperResponseDataSource]>{get}
+    var alertDriver: Driver<AlertType?>{get}
+    var validateTextDriver: Driver<String> {get}
+    var datasourceDriver: Driver<[HotPepperResponseDataSource]>{get}
     var showCell: Observable<Void>{get}
     var direction: Observable<Direction>{get}
     var hud: Observable<HUDContentType>{get}
@@ -44,6 +44,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     //Output
     @PublishRelayWrapper var alert: Observable<AlertType?>
     @PublishRelayWrapper var validatedText: Observable<String>
+    
     @PublishRelayWrapper var datasource: Observable<[HotPepperResponseDataSource]>
     @PublishRelayWrapper var showCell: Observable<Void>
     @PublishRelayWrapper var direction: Observable<Direction>
@@ -51,7 +52,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
     @PublishRelayWrapper var hide: Observable<Void>
     //property
     private var disposeBag = DisposeBag()
-    
+    private let cellDataRelay = BehaviorRelay<String>(value: "")
     init() {
         
         let _ = $searchText.subscribe({ text in
@@ -90,7 +91,7 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
                 print(direction)
             case .error(let error):
                 print(error)
-                self.$alert.accept(.error)
+                self.$hud.accept(.error)
             case .completed:
                 break
             }
@@ -109,4 +110,16 @@ class MapViewModel: MapViewModelInput, MapViewModelOutput {
 extension MapViewModel: MapViewModelType {
     var inputs: MapViewModelInput {return self}
     var outputs: MapViewModelOutput {return self}
+}
+
+extension MapViewModel {
+    var validateTextDriver: Driver<String> {
+        return validatedText.asDriver(onErrorJustReturn: "")
+    }
+    var alertDriver: Driver<AlertType?> {
+        return alert.asDriver(onErrorJustReturn: .none)
+    }
+    var datasourceDriver: Driver<[HotPepperResponseDataSource]> {
+        return datasource.asDriver(onErrorJustReturn: [])
+    }
 }
