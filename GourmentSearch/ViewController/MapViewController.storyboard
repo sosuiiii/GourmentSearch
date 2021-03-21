@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xn-B9-MMu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--マップ-->
+        <scene sceneID="L4K-N4-vpu">
+            <objects>
+                <viewController id="9xn-B9-MMu" customClass="MapViewController" customModule="GourmentSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jp0-KQ-4I6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-4K-cgw" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="184" width="414" height="629"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTj-EW-fBV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="キーワード" translatesAutoresizingMaskIntoConstraints="NO" id="NXy-QC-NZN">
+                                <rect key="frame" x="10" y="124" width="349" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7tu-Qc-SHf"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK3-9h-36g">
+                                <rect key="frame" x="349" y="683" width="55" height="55"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="kp3-aK-vI9"/>
+                                    <constraint firstAttribute="height" constant="55" id="yxs-c9-2U3"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="list.bullet" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.34999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfc-CV-xCB">
+                                <rect key="frame" x="364" y="127.5" width="35" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="詳細">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6SE-DS-xJD">
+                                <rect key="frame" x="0.0" y="583" width="414" height="220"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="Vfe-yE-u3H"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2cI-2B-Tjh">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルスポ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFs-cs-MqK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fOC-Un-d5J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6ap-WC-8t7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cTj-EW-fBV" firstAttribute="top" secondItem="Jp0-KQ-4I6" secondAttribute="top" id="2tq-VD-a43"/>
+                            <constraint firstItem="nfc-CV-xCB" firstAttribute="leading" secondItem="NXy-QC-NZN" secondAttribute="trailing" constant="5" id="3Mf-m8-dp0"/>
+                            <constraint firstItem="6ap-WC-8t7" firstAttribute="bottom" secondItem="6SE-DS-xJD" secondAttribute="bottom" constant="10" id="3ns-7L-utq"/>
+                            <constraint firstItem="6SE-DS-xJD" firstAttribute="leading" secondItem="6ap-WC-8t7" secondAttribute="leading" id="6To-XI-H0a"/>
+                            <constraint firstItem="jXw-4K-cgw" firstAttribute="trailing" secondItem="6ap-WC-8t7" secondAttribute="trailing" id="6uT-Bw-aeV"/>
+                            <constraint firstItem="nfc-CV-xCB" firstAttribute="centerY" secondItem="NXy-QC-NZN" secondAttribute="centerY" id="9PC-uh-4xB"/>
+                            <constraint firstItem="NXy-QC-NZN" firstAttribute="leading" secondItem="6ap-WC-8t7" secondAttribute="leading" constant="10" id="CsZ-Iv-X6r"/>
+                            <constraint firstItem="jXw-4K-cgw" firstAttribute="leading" secondItem="6ap-WC-8t7" secondAttribute="leading" id="FXX-Wf-1A3"/>
+                            <constraint firstItem="6ap-WC-8t7" firstAttribute="trailing" secondItem="eK3-9h-36g" secondAttribute="trailing" constant="10" id="HM5-Tf-pZY"/>
+                            <constraint firstItem="cFs-cs-MqK" firstAttribute="leading" secondItem="6ap-WC-8t7" secondAttribute="leading" id="HUj-4d-zny"/>
+                            <constraint firstItem="cTj-EW-fBV" firstAttribute="trailing" secondItem="6ap-WC-8t7" secondAttribute="trailing" id="ILw-1H-i59"/>
+                            <constraint firstItem="6ap-WC-8t7" firstAttribute="bottom" secondItem="eK3-9h-36g" secondAttribute="bottom" constant="75" id="NKN-dJ-cDn"/>
+                            <constraint firstItem="cFs-cs-MqK" firstAttribute="bottom" secondItem="cTj-EW-fBV" secondAttribute="bottom" id="RW6-Dv-K70"/>
+                            <constraint firstItem="NXy-QC-NZN" firstAttribute="top" secondItem="cFs-cs-MqK" secondAttribute="bottom" constant="20" id="Veh-7x-x0l"/>
+                            <constraint firstItem="jXw-4K-cgw" firstAttribute="top" secondItem="NXy-QC-NZN" secondAttribute="bottom" constant="20" id="dR3-DZ-ePE"/>
+                            <constraint firstItem="cTj-EW-fBV" firstAttribute="leading" secondItem="6ap-WC-8t7" secondAttribute="leading" id="fZ6-KV-ibe"/>
+                            <constraint firstItem="cFs-cs-MqK" firstAttribute="top" secondItem="6ap-WC-8t7" secondAttribute="top" id="gME-gl-H77"/>
+                            <constraint firstItem="cFs-cs-MqK" firstAttribute="trailing" secondItem="6ap-WC-8t7" secondAttribute="trailing" id="kOr-Tl-1jM"/>
+                            <constraint firstItem="6ap-WC-8t7" firstAttribute="trailing" secondItem="nfc-CV-xCB" secondAttribute="trailing" constant="15" id="lm5-CG-m6Z"/>
+                            <constraint firstItem="6SE-DS-xJD" firstAttribute="trailing" secondItem="6ap-WC-8t7" secondAttribute="trailing" id="ok5-NV-VSV"/>
+                            <constraint firstItem="jXw-4K-cgw" firstAttribute="bottom" secondItem="6ap-WC-8t7" secondAttribute="bottom" id="yPi-iL-wcr"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="マップ" image="mappin.and.ellipse" catalog="system" id="V9a-1t-M2B"/>
+                    <connections>
+                        <outlet property="collectionView" destination="6SE-DS-xJD" id="aHf-da-VGx"/>
+                        <outlet property="detailButton" destination="nfc-CV-xCB" id="kJZ-Rk-A0i"/>
+                        <outlet property="listButton" destination="eK3-9h-36g" id="w8J-zF-m7u"/>
+                        <outlet property="mapView" destination="jXw-4K-cgw" id="A5l-Q0-VKm"/>
+                        <outlet property="searchBar" destination="NXy-QC-NZN" id="bXv-ZK-PHe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3e1-N7-sFO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353.62318840579712" y="837.72321428571422"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8d5-pl-MOa">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bW6-HP-thw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5eb-1m-kOT">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9xn-B9-MMu" kind="relationship" relationship="viewControllers" id="lKZ-nn-fok"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOQ-VW-gcL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-556.52173913043487" y="837.72321428571422"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
