@@ -12,8 +12,10 @@ import RxDataSources
 import GoogleMaps
 import CoreLocation
 import PKHUD
+import Instantiate
+import InstantiateStandard
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var detailButton: UIButton!
@@ -22,12 +24,16 @@ class MapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = MapViewModel() as MapViewModelType
     private var datasource: RxCollectionViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var marker = GMSMarker()
     private var locationManager = CLLocationManager()
     private var shown = false
     private var toolBar = UIToolbar()
+    
+    private var viewModel: MapViewModelType!
+    struct Dependency {
+        let viewModel: MapViewModelType!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -244,6 +250,12 @@ extension MapViewController: AlertViewDelegate {
     }
     
     func negativeTapped(type: AlertType) {
+    }
+}
+
+extension MapViewController: Injectable {
+    func inject(_ dependency: Dependency) {
+        viewModel = dependency.viewModel
     }
 }
 

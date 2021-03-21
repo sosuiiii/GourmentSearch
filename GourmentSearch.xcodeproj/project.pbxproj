@@ -21,6 +21,10 @@
 		3D14D31925FB66F000636426 /* FavoriteShopDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D31825FB66F000636426 /* FavoriteShopDataSource.swift */; };
 		3D14D34A25FC8A7A00636426 /* RxWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14D34925FC8A7A00636426 /* RxWrapper.swift */; };
 		3D14D3A725FCCB2500636426 /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D1CFC25F44F67005BC2C0 /* ShopObject.swift */; };
+		3D546FD7260745EC008F9975 /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D546FD6260745EC008F9975 /* MapViewController.storyboard */; };
+		3D546FDC26074603008F9975 /* ListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D546FDB26074603008F9975 /* ListViewController.storyboard */; };
+		3D546FE126074610008F9975 /* FavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D546FE026074610008F9975 /* FavoriteViewController.storyboard */; };
+		3D546FE626074719008F9975 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D546FE526074719008F9975 /* TabViewController.swift */; };
 		3DF3E2E825F2FA9900E9F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */; };
 		3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */; };
 		3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */; };
@@ -95,6 +99,10 @@
 		3D14D31225FB667B00636426 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		3D14D31825FB66F000636426 /* FavoriteShopDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteShopDataSource.swift; sourceTree = "<group>"; };
 		3D14D34925FC8A7A00636426 /* RxWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWrapper.swift; sourceTree = "<group>"; };
+		3D546FD6260745EC008F9975 /* MapViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapViewController.storyboard; sourceTree = "<group>"; };
+		3D546FDB26074603008F9975 /* ListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListViewController.storyboard; sourceTree = "<group>"; };
+		3D546FE026074610008F9975 /* FavoriteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteViewController.storyboard; sourceTree = "<group>"; };
+		3D546FE526074719008F9975 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		3DF3E2E425F2FA9900E9F55E /* GourmentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF3E2E725F2FA9900E9F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF3E2E925F2FA9900E9F55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -262,10 +270,14 @@
 		3DF3E33A25F2FF2100E9F55E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3D546FE526074719008F9975 /* TabViewController.swift */,
 				3DF3E2ED25F2FA9900E9F55E /* Main.storyboard */,
 				3DF3E3C925F3094700E9F55E /* MapViewController.swift */,
+				3D546FD6260745EC008F9975 /* MapViewController.storyboard */,
 				3DF3E3D225F3095000E9F55E /* ListViewController.swift */,
+				3D546FDB26074603008F9975 /* ListViewController.storyboard */,
 				3DF3E3D825F3095900E9F55E /* FavoriteViewController.swift */,
+				3D546FE026074610008F9975 /* FavoriteViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -502,11 +514,14 @@
 				3DF3E2F425F2FA9A00E9F55E /* LaunchScreen.storyboard in Resources */,
 				3DF3E38E25F3057C00E9F55E /* AlertView.xib in Resources */,
 				3D0D1CF125F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.xib in Resources */,
+				3D546FE126074610008F9975 /* FavoriteViewController.storyboard in Resources */,
 				3DF3E2F125F2FA9A00E9F55E /* Assets.xcassets in Resources */,
 				3DF3E49725F3695F00E9F55E /* HotPepperResponseTableViewCell.xib in Resources */,
+				3D546FD7260745EC008F9975 /* MapViewController.storyboard in Resources */,
 				3DF3E39A25F305A700E9F55E /* DetailSearchView.xib in Resources */,
 				3DF3E3C125F306F000E9F55E /* GenreCollectionViewCell.xib in Resources */,
 				3DF3E2EF25F2FA9900E9F55E /* Main.storyboard in Resources */,
+				3D546FDC26074603008F9975 /* ListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +729,7 @@
 				3DF3E3F525F30E4500E9F55E /* DetailSearchViewModel.swift in Sources */,
 				3DF3E2EA25F2FA9900E9F55E /* SceneDelegate.swift in Sources */,
 				3DF3E42725F349B300E9F55E /* TextFieldValidation.swift in Sources */,
+				3D546FE626074719008F9975 /* TabViewController.swift in Sources */,
 				3D14D34A25FC8A7A00636426 /* RxWrapper.swift in Sources */,
 				3D0D1CEF25F443E4005BC2C0 /* HotPepperResponseCollectionViewCell.swift in Sources */,
 				3D14D31925FB66F000636426 /* FavoriteShopDataSource.swift in Sources */,

@@ -9,17 +9,23 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import PKHUD
+import Instantiate
+import InstantiateStandard
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     private var disposeBag = DisposeBag()
-    private var viewModel = ListViewModel() as ListViewModelType
     private var datasource: RxTableViewSectionedReloadDataSource<HotPepperResponseDataSource>?
     private var toolBar = UIToolbar()
+    
+    private var viewModel: ListViewModelType!
+    struct Dependency {
+        let viewModel: ListViewModelType!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,5 +136,11 @@ extension ListViewController: UISearchBarDelegate {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
+    }
+}
+
+extension ListViewController: Injectable {
+    func inject(_ dependency: Dependency) {
+        viewModel = dependency.viewModel
     }
 }
