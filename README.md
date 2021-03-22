@@ -27,7 +27,7 @@ Bitrise
 ## 技術・ライブラリ  
 【アーキテクチャ】  
 MVVM : KickstarterのViewModelインターフェースを採用  
-       ViewModelの宣言にはas ViewModelTypeとし、制約をつけること  
+       ViewModelの宣言時は型をViewModelTypeとし、制約をつけること    
 【リアクティブ】  
 RxSwift / RxCocoa ： 関数型×リアクティブプログラミング  
 RxDataSource ： CollectionViewやTableViewにデータをバインドする  
