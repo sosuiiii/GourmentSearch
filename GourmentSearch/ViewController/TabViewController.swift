@@ -8,33 +8,32 @@
 import UIKit
 
 class TabViewController: UITabBarController {
-    
-    var vcs:[UIViewController] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupMapVC()
-        setupListVC()
-        setupFavoriteVC()
-        self.setViewControllers(vcs, animated: false)
+
+        setViewControllers([
+            createMapViewController(),
+            createListViewController(),
+            createFavoriteViewController()
+        ], animated: false)
     }
-    func setupMapVC() {
-        let vm = MapViewModel()
-        let dependency = MapViewController.Dependency(viewModel: vm)
-        let vc = MapViewController.instantiate(with: dependency)
-        vcs.append(vc)
+    private func createMapViewController() -> UIViewController {
+        let mapViewModel = MapViewModel()
+        let dependency = MapViewController.Dependency(viewModel: mapViewModel)
+        let mapViewController = MapViewController.instantiate(with: dependency)
+        return mapViewController
     }
-    func setupListVC() {
-        let vm = ListViewModel()
-        let dependency = ListViewController.Dependency(viewModel: vm)
-        let vc = ListViewController.instantiate(with: dependency)
-        vcs.append(vc)
+    private func createListViewController() -> UIViewController {
+        let listViewModel = ListViewModel()
+        let dependency = ListViewController.Dependency(viewModel: listViewModel)
+        let listViewController = ListViewController.instantiate(with: dependency)
+        return listViewController
     }
-    func setupFavoriteVC() {
-        let vm = FavoriteViewModel()
-        let dependency = FavoriteViewController.Dependency(viewModel: vm)
-        let vc = FavoriteViewController.instantiate(with: dependency)
-        vcs.append(vc)
+    private func createFavoriteViewController() -> UIViewController {
+        let favoriteViewModel = FavoriteViewModel()
+        let dependency = FavoriteViewController.Dependency(viewModel: favoriteViewModel)
+        let favoriteViewController = FavoriteViewController.instantiate(with: dependency)
+        return favoriteViewController
     }
 }
