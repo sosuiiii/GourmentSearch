@@ -12,20 +12,22 @@ import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let disposeBag = DisposeBag()
-    var shared = GenreShareManager.shared
+    private let disposeBag = DisposeBag()
+    private let shared = GenreShareManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("APIKey")
         
         //キャッシュ代わり
-        if !shared.genres.isEmpty {return true}
-        Repository.getGenre().subscribe(onNext: { [weak self] response in
-            self?.shared.genres = response.results.genre
-        }, onError: { error in
-            print("ジャンルが取得できませんでした：\(error)")
-        }).disposed(by: disposeBag)
+        if shared.genres.isEmpty {
+            Repository.getGenre().subscribe(onNext: { [weak self] response in
+                guard let me = self else { return }
+                me.shared.genres = response.results.genre
+            }, onError: { error in
+                print("ジャンルが取得できませんでした：\(error)")
+            }).disposed(by: disposeBag)
+        }
         
         return true
     }
